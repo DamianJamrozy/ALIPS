@@ -2,12 +2,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php include("head-tag-contents.php");?>
+	<?php include("head-info.php");?>
 </head>
 <body>
 
-<?php include("design-top.php");?>
-<?php include("navigation.php");?>
+<?php include("header.php");?>
 
 <div class="container" id="main-content">
 	<h2>Welcome to my website!</h2>

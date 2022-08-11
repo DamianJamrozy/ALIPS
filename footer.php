@@ -1,5 +1,5 @@
 <div class="footer">
-	&copy; <?php print date("Y");?>
+ALIPS &copy; <?php print date("Y");?> All rights reserved. Developed by Damian Jamroży
 </div>
 
 <div class="background">

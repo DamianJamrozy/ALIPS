@@ -1,8 +1,11 @@
 <title><?php print $PAGE_TITLE;?></title>
 
 <?php if ($CURRENT_PAGE == "Index") { ?>
-	<meta name="description" content="" />
-	<meta name="keywords" content="" /> 
+	<meta charset="UTF-8">
+	<meta name="description" content="ALIPS to aplikacja utworzona przez Damiana Jamroży w 2022 roku. Wykorzystuje ona potencjał drzemiący w językach weebowych, pozwalając tym samym na kontrolę aplikacji poprzez eye tracking oraz speech recognition.">
+	<meta name="keywords" content="Damian Jamroży, Eye tracking, speech recognition, HTML, CSS, JavaScript">
+	<meta name="author" content="Damian Jamroży">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <?php } ?>
 
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -13,5 +16,6 @@
 	.footer {
 		font-size: 14px;
 		text-align: center;
+		
 	}
 </style>

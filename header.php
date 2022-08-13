@@ -1,6 +1,6 @@
 <div class="navi">
 <div class="top-nav-left">
-	<h1>ALIPS</h1>
+	<a href="Index.php"><h1>ALIPS</h1></a>
 </div>
 <div class="top-nav-right">
   <div class="menu-icon">
@@ -45,7 +45,7 @@
 .navi{
 	padding-top:1em;
 	width:100%;
-	height:10em;
+	height:5em;
 }
 
 .top-nav-left{

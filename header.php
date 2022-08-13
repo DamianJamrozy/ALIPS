@@ -3,10 +3,10 @@
 	<a href="Index.php"><h1>ALIPS</h1></a>
 </div>
 <div class="top-nav-right">
-  <div class="menu-icon">
-    <span class="line-1"></span>
-    <span class="line-2"></span>
-    <span class="line-3"></span>
+  <div class="menu-icon-on line-on" id="hambuger" onclick="hamburger_on()">
+    <span class="line-1-on" id="hamburger-line1"></span>
+    <span class="line-2-on" id="hamburger-line2"></span>
+    <span class="line-3-on" id="hamburger-line3"></span>
   </div>
 </div>
 </div>
@@ -70,22 +70,72 @@
 	padding-right: 20px;
 }
 
-.menu-icon {
+.menu-icon-on {
   display: grid;
   place-items: center;
   height: 55px;
   width: 100%;
   cursor: pointer;
-
 }
 
-.line-1, .line-2, .line-3 {
-  width: 42px;
-  justify-self: end;
-  width: 50px;
-    height: 3px;
-    background: #00D8EA;
-    display: block;
-    transition: all 0.3s ease-in-out;
+.menu-icon-off {
+  display: grid;
+  place-items: center;
+  height: 55px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.line-1-on, .line-2-on, .line-3-on {
+	width: 42px;
+	justify-self: end;
+	width: 50px;
+	height: 3px;
+	background: #00D8EA;
+	display: block;
+	transition: width 5s ease-in-out;
+}
+
+.line-1-off, .line-2-off, .line-3-off {
+	width: 42px;
+	justify-self: end;
+	width: 100%;
+	height: 3px;
+	background: #00D8EA;
+	display: block;
+	transition: all 0.15s ease-in-out;
 }
 </style>
+
+<script>
+	function hamburger_on(){
+
+		if(document.getElementById("hambuger").classList.contains('menu-icon-on')){
+			document.getElementById("hamburger-line1").classList.add('line-1-off');
+			document.getElementById("hamburger-line1").classList.remove('line-1-on');
+
+			document.getElementById("hamburger-line2").classList.add('line-2-off');
+			document.getElementById("hamburger-line2").classList.remove('line-2-on');
+
+			document.getElementById("hamburger-line3").classList.add('line-3-off');
+			document.getElementById("hamburger-line3").classList.remove('line-3-on');
+
+			document.getElementById("hambuger").classList.add('menu-icon-off');
+			document.getElementById("hambuger").classList.remove('menu-icon-on');
+		}
+		else{
+			document.getElementById("hamburger-line1").classList.add('line-1-on');
+			document.getElementById("hamburger-line1").classList.remove('line-1-off');
+
+			document.getElementById("hamburger-line2").classList.add('line-2-on');
+			document.getElementById("hamburger-line2").classList.remove('line-2-off');
+
+			document.getElementById("hamburger-line3").classList.add('line-3-on');
+			document.getElementById("hamburger-line3").classList.remove('line-3-off');
+
+			document.getElementById("hambuger").classList.add('menu-icon-on');
+			document.getElementById("hambuger").classList.remove('menu-icon-off');
+		}
+	}
+
+</script>

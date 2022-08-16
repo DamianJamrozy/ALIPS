@@ -16,16 +16,13 @@
 
 	<p style="margin-top:4em;">Poznaj świat naszymi oczami!</p>
 
-	<!-- <p style="margin-top:2em;"><button class="btn btn-animate">Zaczynajmy</button></p>
-	<p style="margin-top:4em;"><button class="button-dec button-dec-animate">Pomiń</button></p> -->
-
 	<p>
 	<button class="glow-on-hover" type="button">Zaczynajmy</button>
 </p>
 
 
 <p>
-	<div class="box"> Pomiń </div>
+<button class="glow-on-hover" type="button">Pomiń</button>
 </p>
 
 	</center>

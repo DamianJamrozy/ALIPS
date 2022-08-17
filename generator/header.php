@@ -28,7 +28,7 @@
 			<a class="nav-link <?php if ($CURRENT_PAGE == "friends") {?>active<?php }?>" href="friends.php">Moi znajomi</a>
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "config") {?>active<?php }?>" href="config.php">Konfiguracja</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "config") {?>active<?php }?>" href="reconfig.php">Konfiguracja</a>
 		</li>
 		<li class="nav-item">
 			<a class="nav-link <?php if ($CURRENT_PAGE == "login") {?>active<?php }?>" href="login.php">Zaloguj się</a>

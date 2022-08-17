@@ -2,7 +2,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<?php $PAGE_TITLE = "Home";?>
 	<?php include("./generator/head-info.php");?>
 </head>
 

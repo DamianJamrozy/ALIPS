@@ -7,41 +7,14 @@ body{
 
 /* START MAIN STYLE */
 .blue{
-    color:#00D8EA;
+    color:#339aaf;
 }
 
 a:link, a:visited, a:hover, a:active  {
-    color: #00D8EA;
+    color: #339aaf;
     text-decoration: none;
   }
 
-/* .background{
-    background-image:url("../files/img/primary/bg1.jpg");
-    background-repeat: no-repeat;
-    background-position: right top;
-    background-size: cover;
-    
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    z-index: -1;
-} */
-
-/* .background::after {
-    background-color: rgba(0,0,0,0.85);
-    content: "";
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    bottom: 0px;
-    left: 0px;
-    z-index: 0;
-} */
-/*  */
 #main-content {
     margin-top:0;
     z-index: 100;
@@ -81,8 +54,22 @@ a:link, a:visited, a:hover, a:active  {
 }
 /* END OF MAIN STYLE */
 
-/* START GLOWING BUTTONS */
+/* PARALAX EFECT */
 
+#parallax {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    /* background-image: url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-3.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-2.png), url(https://raw.githubusercontent.com/oscicen/oscicen.github.io/master/img/depth-1.png); */
+    background-image: url(../files/img/primary/paralax.png);
+    /* background-repeat: no-repeat; */
+    background-position: center;
+    background-position: 50% 50%;
+  }
+
+/* END PARALAX EFECT */
+
+/* START GLOWING BUTTONS */
 
 .glow-on-hover {
     width: 100%;

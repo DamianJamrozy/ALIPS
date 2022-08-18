@@ -8,14 +8,14 @@
 <body>
 
 <?php include("./generator/header.php");?>
-
+<div id="parallax">
 <div class="container" id="main-content">
-	<div class="left-side"></div>
 
+	<div class="left-side">
+	</div>
 	<div class="right-side">
 		
-		<h4> Poznaj świat naszymi oczami! </h4><br>
-		<p>Główne założenia aplikacji to:</p><br>
+		<br><br><br><h4> Poznaj świat naszymi oczami! </h4><br>
 
 		<div class="circle_box">
 			<div class="circle_container">
@@ -29,7 +29,7 @@
 			</div>	
 		</div>
 		<div class="circle_text_box">
-			Logic games
+			Logic games - Granie w gry logiczne nie tylko sprawia satysfakcję. Jest to złożona metoda wpływająca na wiele czynników, między innymi na zwiększenie poziomu skupienia, skrócenie czasu reakcji, a czasami nawet na aspekty moralne czy też światopoglądowe. Rozwój gier to rozwój ludzkości!
 		</div>
 
 		<div class="circle_box">
@@ -44,7 +44,7 @@
 			</div>	
 		</div>
 		<div class="circle_text_box">
-			Eye tracking
+			Eye tracking - Tam gdzie sięga Twoje oko, sięga też technologia ALIPS. W skrócie śledzimy położenie Twojego oka aby przełożyć jego działanie na oprogramowanie. Działamy w mrugnięciu oka.
 		</div>
 
 		<div class="circle_box">
@@ -59,7 +59,7 @@
 			</div>	
 		</div>
 		<div class="circle_text_box">
-			Speach recognition
+			Speach recognition - Mówisz, masz!  Staramy się wspierać nie tylko rozwój technologii związanej ze wzrokiem ale także z mową. Chcesz porozmawiać z naszym mini botem? Wypowiedz magiczne słowo, a on postara się sprostać Twoim oczekiwaniom.
 		</div>
 
 		<p>
@@ -82,8 +82,10 @@
 
 	</center> -->
 </div>
+</div>
+
+
 <script src="./js/index.js"></script>
 <?php include("./generator/footer.php");?>
-
 </body>
 </html>

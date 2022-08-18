@@ -138,7 +138,9 @@
 	justify-self: end;
 	width: 50px;
 	height: 3px;
-	background: #00D8EA;
+	/* background: #339aaf; */
+	background: rgb(51,154,175);
+	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
 	transition: width 2s ease-in-out;
 }
@@ -147,7 +149,9 @@
 	justify-self: end;
 	width: 100%;
 	height: 3px;
-	background: #00D8EA;
+	/* background: #339aaf; */
+	background: rgb(51,154,175);
+	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
 	transition: width 1.5s ease-in-out;
 }
@@ -156,7 +160,9 @@
 	justify-self: baseline;
 	width: 50px;
 	height: 3px;
-	background: #00D8EA;
+	/* background: #339aaf; */
+	background: rgb(51,154,175);
+	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
 	transition: width 1.5s ease-in-out;
 }
@@ -169,11 +175,18 @@
 	justify-self: baseline;
 	width: 100%;
 	height: 3px;
-	background: #00D8EA;
+	/* background-image: linear-gradient(to right top, #339aaf, #043997);
+	background: #00D8EA; */
+	background: rgb(51,154,175);
+	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
 	transition: width 1.5s ease-in-out;
 }
 </style>
+
+
+
+
 
 <script>
 	function hamburger_on(){

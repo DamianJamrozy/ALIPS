@@ -13,36 +13,31 @@
 	<div class="navigation-off" id="nav_tree">
 		<ul class="nav nav-pills">
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Index") {?>active<?php }?>" href="index.php">Home</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active" href="#">Home</a> <?php } else {?>" href="../index.php">Home</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active<?php }?>" href="games.php">Gry</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else {?>" href="templates/games.php">Gry</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active<?php }?>" href="videochat.php">Videochat</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else {?>" href="templates/videochat.php">Videochat</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "account") {?>active<?php }?>" href="account.php">Moje konto</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else {?>" href="templates/account.php">Moje konto</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "friends") {?>active<?php }?>" href="friends.php">Moi znajomi</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else {?>" href="templates/friends.php">Moi znajomi</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "config") {?>active<?php }?>" href="reconfig.php">Konfiguracja</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "login") {?>active<?php }?>" href="login.php">Zaloguj się</a>
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Login") {?>active" href="#">Zaloguj się</a> <?php } else {?>" href="templates/login.php">Zaloguj się</a> <?php } ?> 
 		</li>
 		</ul>
 	</div>
 	
 
 </div>
-
-
-
-
-
 
 
 <style>
@@ -72,7 +67,7 @@
 	font-weight:bold;
 	transition: visibility 2s ease-in-out;
 	transition: margin-right 3s ease-in-out;
-	margin-right:-50%;
+	margin-right:-40%;
 	visibility:hidden;
 }
 

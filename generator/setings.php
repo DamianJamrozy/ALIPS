@@ -14,32 +14,32 @@ echo '<script> var phpversion="'.phpversion().'"</script>';
 
 //THEME
 switch ($_SERVER["SCRIPT_NAME"]) {
-		case "/template/games.php":
+		case "/websites/ALIPS/templates/games.php":
 			$CURRENT_PAGE = "Games"; 
 			$PAGE_TITLE = "Games";
 			break;
-		case "/template/videochat.php":
+		case "../template/videochat.php":
 			$CURRENT_PAGE = "Videochat"; 
 			$PAGE_TITLE = "Videochat";
 			break;
-		case "/template/account.php":
+		case "../template/account.php":
 			$CURRENT_PAGE = "Account"; 
 			$PAGE_TITLE = "Account";
 			break;
-		case "/template/friends.php":
+		case "../template/friends.php":
 			$CURRENT_PAGE = "Friends"; 
 			$PAGE_TITLE = "Friends";
 			break;
-		case "/template/reconfig.php":
+		case "../template/reconfig.php":
 			$CURRENT_PAGE = "Reconfig"; 
 			$PAGE_TITLE = "Reconfig";
 			break;
-		case "/template/login.php":
+		case "../template/login.php":
 			$CURRENT_PAGE = "Login"; 
 			$PAGE_TITLE = "Login";
 			break;
 		default:
-			$CURRENT_PAGE = "Index";
+			$CURRENT_PAGE = "Home";
 			$PAGE_TITLE = "Home";
 	}
 ?>

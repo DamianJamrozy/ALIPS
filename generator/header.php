@@ -133,7 +133,6 @@
 	justify-self: end;
 	width: 50px;
 	height: 3px;
-	/* background: #339aaf; */
 	background: rgb(51,154,175);
 	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
@@ -144,7 +143,6 @@
 	justify-self: end;
 	width: 100%;
 	height: 3px;
-	/* background: #339aaf; */
 	background: rgb(51,154,175);
 	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
@@ -155,7 +153,6 @@
 	justify-self: baseline;
 	width: 50px;
 	height: 3px;
-	/* background: #339aaf; */
 	background: rgb(51,154,175);
 	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
@@ -170,8 +167,6 @@
 	justify-self: baseline;
 	width: 100%;
 	height: 3px;
-	/* background-image: linear-gradient(to right top, #339aaf, #043997);
-	background: #00D8EA; */
 	background: rgb(51,154,175);
 	background: linear-gradient(90deg, rgba(51,154,175,1) 35%, rgba(4,57,151,1) 100%);
 	display: block;
@@ -233,6 +228,8 @@
 
 				document.getElementById("nav_tree").classList.add('navigation-on');
 				document.getElementById("nav_tree").classList.remove('navigation-off');
+				
+				sessionStorage.setItem("hamburger_cookie", "1");
 			}
 			else{
 				document.getElementById("hamburger-line1").classList.add('line-1-on');
@@ -246,10 +243,25 @@
 
 				document.getElementById("hambuger").classList.add('menu-icon-on');
 				document.getElementById("hambuger").classList.remove('menu-icon-off');
-
+				
+				sessionStorage.setItem("hamburger_cookie", "0");
 			}
 		}
 		
+	}
+
+	if(sessionStorage.getItem("hamburger_cookie")==1){
+		document.getElementById("hamburger-line1").classList.remove('line-1-off');
+		document.getElementById("hamburger-line1").classList.add('line-1-off_done');
+
+		document.getElementById("hamburger-line2").classList.remove('line-2-off');
+		document.getElementById("hamburger-line2").classList.add('line-2-off_done');
+
+		document.getElementById("hamburger-line3").classList.remove('line-3-off');
+		document.getElementById("hamburger-line3").classList.add('line-3-off_done');
+
+		document.getElementById("nav_tree").classList.add('navigation-on');
+		document.getElementById("nav_tree").classList.remove('navigation-off');
 	}
 
 </script>

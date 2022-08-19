@@ -19,7 +19,7 @@
 			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else if($CURRENT_PAGE == "Home"){?>" href="templates/games.php">Gry</a> <?php } else {?>" href="games.php">Gry</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/videochat.php">Videochat</a> <?php } else {?>" href="videochat.php">videochat</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/videochat.php">Videochat</a> <?php } else {?>" href="videochat.php">Videochat</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
 			<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/account.php">Moje konto</a> <?php } else {?>" href="account.php">Moje konto</a> <?php } ?> 

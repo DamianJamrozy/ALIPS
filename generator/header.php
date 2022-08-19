@@ -16,22 +16,22 @@
 			<a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active" href="#">Home</a> <?php } else {?>" href="../index.php">Home</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else {?>" href="templates/games.php">Gry</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else if($CURRENT_PAGE == "Home"){?>" href="templates/games.php">Gry</a> <?php } else {?>" href="games.php">Gry</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else {?>" href="templates/videochat.php">Videochat</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/videochat.php">Videochat</a> <?php } else {?>" href="videochat.php">videochat</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else {?>" href="templates/account.php">Moje konto</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/account.php">Moje konto</a> <?php } else {?>" href="account.php">Moje konto</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else {?>" href="templates/friends.php">Moi znajomi</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/friends.php">Moi znajomi</a> <?php } else {?>" href="friends.php">Moi znajomi</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } else {?>" href="reconfig.php">Konfiguracja</a> <?php } ?> 
 		</li>
 		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Login") {?>active" href="#">Zaloguj się</a> <?php } else {?>" href="templates/login.php">Zaloguj się</a> <?php } ?> 
+			<a class="nav-link <?php if ($CURRENT_PAGE == "Login") {?>active" href="#">Zaloguj się</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/login.php">Zaloguj się</a> <?php } else {?>" href="login.php">Zaloguj się</a> <?php } ?> 
 		</li>
 		</ul>
 	</div>

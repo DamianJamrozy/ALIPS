@@ -18,23 +18,23 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$CURRENT_PAGE = "Games"; 
 			$PAGE_TITLE = "Games";
 			break;
-		case "../template/videochat.php":
+		case "/websites/ALIPS/templates/videochat.php":
 			$CURRENT_PAGE = "Videochat"; 
 			$PAGE_TITLE = "Videochat";
 			break;
-		case "../template/account.php":
+		case "/websites/ALIPS/templates/account.php":
 			$CURRENT_PAGE = "Account"; 
 			$PAGE_TITLE = "Account";
 			break;
-		case "../template/friends.php":
+		case "/websites/ALIPS/templates/friends.php":
 			$CURRENT_PAGE = "Friends"; 
 			$PAGE_TITLE = "Friends";
 			break;
-		case "../template/reconfig.php":
+		case "/websites/ALIPS/templates/reconfig.php":
 			$CURRENT_PAGE = "Reconfig"; 
 			$PAGE_TITLE = "Reconfig";
 			break;
-		case "../template/login.php":
+		case "/websites/ALIPS/templates/login.php":
 			$CURRENT_PAGE = "Login"; 
 			$PAGE_TITLE = "Login";
 			break;

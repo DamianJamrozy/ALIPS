@@ -37,7 +37,7 @@ a:link, a:visited, a:hover, a:active  {
     height:5%;
 }
 
-.left-side, .right-side{
+.left-sidei, .left-side, .center-side, .right-side{
     width:49%;
     height:70%;
     position:relative;
@@ -45,7 +45,34 @@ a:link, a:visited, a:hover, a:active  {
     text-align: center;
 }
 
+.center-side-3d{
+    width:40%;
+    height:70%;
+    position:relative;
+    float:left;
+    text-align: center;
+    margin-top:100px;
+}
+
+.left-side-3d, .right-side-3d{
+    width:30%;
+    height:70%;
+    position:relative;
+    float:left;
+    text-align: center;
+    margin-top:200px;
+}
+
+
 .left-side{
+    /* background-image: url('../files/img/primary/head.png');
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-size: cover; */
+    margin-left:-5%;
+}
+
+.left-sidei{
     background-image: url('../files/img/primary/head.png');
     background-repeat: no-repeat;
     background-position: right top;

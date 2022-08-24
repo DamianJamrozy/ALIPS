@@ -11,7 +11,7 @@
 <div id="parallax">
 <div class="container" id="main-content">
 
-	<div class="left-side">
+	<div class="left-sidei">
 	</div>
 	<div class="right-side">
 		

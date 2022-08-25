@@ -17,8 +17,8 @@
 }
 
 #camera--view{
-	height: 70%;
-    width: 27%;
+	height: 65%;
+    width: 35%;
 }
 
 #camera--trigger{
@@ -52,11 +52,14 @@
 
 <?php include("./../generator/header.php");?>
 <div id="parallax">
-<div class="container" id="main-content">
+<div id="main-content">
 
 	<div class="left-side-3d">
+		<h5>Zaloguj się</h5>
 		<form>
-			<input type='text'>
+			<input type='text' class='btn-login' placeholder='djamrozy'>
+			<br><br>
+			<input type='text' class='btn-login' placeholder='********'>
 		</form>
 	</div>
 	<div class="center-side-3d">
@@ -73,8 +76,11 @@
     </main>
 	</div>
 	<div class="right-side-3d">	
+		<h5>Zarejestruj się</h5>
 		<form>
-			<input type='text'>
+			<input type='text' class='btn-login' placeholder='djamrozy'>
+			<br><br>
+			<input type='text' class='btn-login' placeholder='********'>
 		</form>
 	</div>
 		

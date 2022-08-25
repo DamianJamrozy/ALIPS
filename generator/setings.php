@@ -65,7 +65,7 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 	//START GLOBAL SESSION WORK AND VARIABLE
 	session_start();
 
-	$_SESSION["hamburger"];
+	//$_SESSION["hamburger"];
 ?>
 
 

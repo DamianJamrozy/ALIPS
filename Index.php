@@ -68,24 +68,9 @@
 			</div>
 		</div>
 		<p>
-			<button class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
+			<button class="glow-on-hover btn-down" type="button" onclick="location.href = 'web/starting-page.php';">Zaczynajmy</button>
 		</p>
 	</div>
-
-	<!-- <center><img src="files\img\primary\logov2.png" width="25%">
-	<p class="blue">All Likes Impressive Personal Site</p> -->
-
-	<!-- <p style="margin-top:4em;">Poznaj świat naszymi oczami!</p>
-	
-	<p style="margin-top:4em;">
-		<button class="glow-on-hover" type="button">Zaczynajmy</button>
-	</p>
-
-	<p style="margin-top:4em;">
-		<button class="glow-on-hover" type="button">Pomiń</button>
-	</p>
-
-	</center> -->
 </div>
 </div>
 

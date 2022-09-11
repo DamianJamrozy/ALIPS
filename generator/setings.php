@@ -57,6 +57,10 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$CURRENT_PAGE = "Login"; 
 			$PAGE_TITLE = "Login";
 			break;
+		case "/websites/ALIPS/web/starting-page.php":
+			$CURRENT_PAGE = "Start"; 
+			$PAGE_TITLE = "Start";
+			break;
 		default:
 			$CURRENT_PAGE = "Home";
 			$PAGE_TITLE = "Home";

@@ -71,6 +71,3 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$PAGE_TITLE = "Home";
 	}
 ?>
-
-
-

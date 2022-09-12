@@ -45,6 +45,19 @@ input[type=text] {
     color: #ECF0F5;
 }
 
+input[type=email] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+}
+
 input[type=password] {
     background-color: transparent;
     border: none;
@@ -184,7 +197,8 @@ label {
                 </div>
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form method="POST" action="#">
+
+                        <form method="POST" action="">
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME/EMAIL</label>
                                 <input type="text" name="login" class="form-control">
@@ -243,7 +257,7 @@ label {
     }
 
     function show_reg(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">EMAIL</label>                                <input type="email" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
 
     function show_login(){
@@ -252,17 +266,46 @@ label {
 </script>
 
 <?php 
-    if(isset($POST['login-form'])){
+    //START LOGIN FORM ACTION
+    if(isset($_POST['login-form'])){
         $UserName = $_POST['login'];
         $Password = md5($_POST['password']);
 
         $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ");
-    }
+        $row = mysqli_fetch_array($CheckUsr);
 
-    if(isset($POST['reg-form'])){
+        if(is_array($row)){
+            $_SESSION["UserName"] = $row['login'];
+            echo '<script>alert("Poprawne dane logowania");</script>';
+        }
+        else{
+            echo '<script>alert("Błędne dane logowania");</script>';
+        }
+    }
+    //END LOGIN FORM ACTION
+
+    //START REGISTRATION FORM ACTION
+    if(isset($_POST['reg-form'])){
         $UserName = $_POST['login'];
-        $Password = $_POST['password'];
-    }
+        $Password = md5($_POST['password']);
 
+        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE email = '$UserName'");
+        $row = mysqli_fetch_array($CheckUsr);
 
+        if(is_array($row)){
+            echo '<script>alert("Konto o takim adresie email już istnieje!");</script>';
+        }
+        else{
+            $AddUsr = mysqli_query($dbconect, "INSERT INTO user (,'','$UserName,'$Password'')");
+
+            $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE email = '$UserName'");
+            $row = mysqli_fetch_array($CheckUsr);
+            $id = $row['id'];
+
+            $AddUsr2 = mysqli_query($dbconect, "UPDATE user SET login='$id' WHERE id='$id')");
+            echo '<script>alert("Konto zostało założone.");</script>';
+        }
+    }   
+  
+    //END REGISTRATION FORM ACTION
 ?>

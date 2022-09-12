@@ -1,3 +1,5 @@
+<?php include("../generator/setings.php");?>
+
 <style>
 /* START LOGIN BOX */
 .login-box {
@@ -167,15 +169,12 @@ label {
 <!-- <button id="myBtn">Open Modal</button> -->
 
 <div id="myModal" class="modal">
-
   <!-- Modal content -->
   <div class="modal-content">
     <span class="close">&times;</span>
 	<div class="container">
         <div class="row">
             <div class="col-lg-3 col-md-2"></div>
-
-
             <div class="col-lg-6 col-md-8 login-box" id="log-reg">
                 <div class="col-lg-12 login-key">
                     <i class="fa fa-key" aria-hidden="true"></i>
@@ -183,17 +182,16 @@ label {
                 <div class="col-lg-12 login-title">
                    LOGOWANIE
                 </div>
-
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
-                        <form>
+                        <form method="POST" action="#">
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME/EMAIL</label>
-                                <input type="text" class="form-control">
+                                <input type="text" name="login" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" class="form-control" i>
+                                <input type="password" name="password" class="form-control" i>
                             </div>
 
                             <div class="col-lg-12 loginbttm">
@@ -201,7 +199,7 @@ label {
                                     <!-- Error Message -->
                                 </div>
                                 <div class="col-lg-6 login-btm login-button">
-                                    <button type="submit" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>
+                                    <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>
                                 </div>
 								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestru się!</a></p>
                             </div>
@@ -212,7 +210,6 @@ label {
             </div>
         </div>
   </div>
-
 </div>
 
 
@@ -230,26 +227,42 @@ label {
 
     // When the user clicks the button, open the modal 
     btn.onclick = function() {
-    modal.style.display = "block";
+        modal.style.display = "block";
     }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
-    modal.style.display = "none";
+        modal.style.display = "none";
     }
 
     // When the user clicks anywhere outside of the modal, close it
     window.onclick = function(event) {
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
     function show_reg(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form>                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
 
     function show_login(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   LOGOWANIE                </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form>                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   LOGOWANIE                </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
 </script>
+
+<?php 
+    if(isset($POST['login-form'])){
+        $UserName = $_POST['login'];
+        $Password = md5($_POST['password']);
+
+        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ");
+    }
+
+    if(isset($POST['reg-form'])){
+        $UserName = $_POST['login'];
+        $Password = $_POST['password'];
+    }
+
+
+?>

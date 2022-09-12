@@ -1,10 +1,15 @@
 <?php
+
+//START GLOBAL SESSION WORK AND VARIABLE
+session_start();
+
 //DB CONNCECTION
 $host = "localhost";
 $user = "root";
 $password = "";
 $database = "alips";
 
+$dbconect = mysqli_connect($host,$user,$password,$database) or die ("Nie można połączyć z bazą danych! Połączenie przerwane.");
 
 $filename = $_SERVER["SCRIPT_NAME"];
 $without_extension = pathinfo($filename, PATHINFO_FILENAME);
@@ -65,11 +70,6 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$CURRENT_PAGE = "Home";
 			$PAGE_TITLE = "Home";
 	}
-
-	//START GLOBAL SESSION WORK AND VARIABLE
-	session_start();
-
-	//$_SESSION["hamburger"];
 ?>
 
 

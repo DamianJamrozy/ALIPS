@@ -1,127 +1,255 @@
-<?php include("./../generator/setings.php");?>
-<!DOCTYPE html>
-<html>
-<head>
-	<?php include("./../generator/head-info.php");?>
-
-	<style>
-#camera, #camera--view, #camera--sensor, #camera--output{
-    position: fixed;
-    /* height: 70%;
-    width: 33%; */
-    object-fit: cover;
-}
-#camera--view, #camera--sensor, #camera--output{
-    transform: scaleX(-1);
-    filter: FlipH;
-}
-
-#camera--view{
-	height: 65%;
-    width: 35%;
-}
-
-#camera--trigger{
-    width: 200px;
-    background-color: black;
-    color: white;
-    font-size: 16px;
-    border-radius: 30px;
-    border: none;
-    padding: 15px 20px;
+<style>
+/* START LOGIN BOX */
+.login-box {
+    margin-top: 75px;
+    height: auto;
     text-align: center;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    position: fixed;
-    bottom: 30px;
-    left: calc(50% - 100px);
 }
-.taken{
-    height: 100px!important;
-    width: 100px!important;
-    transition: all 0.5s ease-in;
-    border: solid 3px white;
-    box-shadow: 0 5px 10px 0 rgba(0,0,0,0.2);
-    top: 20px;
-    right: 20px;
-    z-index: 2;
+
+.login-key {
+    height: 100px;
+    font-size: 80px;
+    line-height: 100px;
+    background: -webkit-linear-gradient(#27EF9F, #0DB8DE);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
-		</style>
-</head>
 
-<body>
+.login-title {
+    margin-top: 15px;
+    text-align: center;
+    font-size: 30px;
+    letter-spacing: 2px;
+    margin-top: 15px;
+    font-weight: bold;
+    color: #ECF0F5;
+}
 
-<?php include("./../generator/header.php");?>
-<div id="parallax">
-<div id="main-content">
+.login-form {
+    margin-top: 25px;
+    text-align: left;
+}
 
-	<div class="left-side-3d">
-		<h5>Zaloguj się</h5>
-		<form>
-			<input type='text' class='btn-login' placeholder='djamrozy'>
-			<br><br>
-			<input type='text' class='btn-login' placeholder='********'>
-		</form>
-	</div>
-	<div class="center-side-3d">
-	<!-- Camera -->
-    <main id="camera">
-        <!-- Camera sensor -->
-        <canvas id="camera--sensor"></canvas>
-        <!-- Camera view -->
-        <video id="camera--view" autoplay playsinline></video>
-        <!-- Camera output -->
-        <img src="//:0" alt="" id="camera--output">
-        <!-- Camera trigger -->
-        <button id="camera--trigger">Take a picture</button>
-    </main>
-	</div>
-	<div class="right-side-3d">	
-		<h5>Zarejestruj się</h5>
-		<form>
-			<input type='text' class='btn-login' placeholder='djamrozy'>
-			<br><br>
-			<input type='text' class='btn-login' placeholder='********'>
-		</form>
-	</div>
-		
+input[type=text] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    margin-bottom: 20px;
+    padding-left: 0px;
+    color: #ECF0F5;
+}
+
+input[type=password] {
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0DB8DE;
+    border-top: 0px;
+    border-radius: 0px;
+    font-weight: bold;
+    outline: 0;
+    padding-left: 0px;
+    margin-bottom: 20px;
+    color: #ECF0F5;
+}
+
+.form-group {
+    margin-bottom: 40px;
+    outline: 0px;
+}
+
+.form-control:focus {
+    border-color: inherit;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border-bottom: 2px solid #0DB8DE;
+    outline: 0;
+    background-color: #1A2226;
+    color: #ECF0F5;
+}
+
+input:focus {
+    outline: none;
+    box-shadow: 0 0 0;
+}
+
+label {
+    margin-bottom: 0px;
+}
+
+.form-control-label {
+    font-size: 10px;
+    color: #6C6C6C;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+.btn-outline-primary {
+    border-color: #0DB8DE;
+    color: #0DB8DE;
+    border-radius: 0px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+}
+
+.btn-outline-primary:hover {
+    background-color: #0DB8DE;
+    right: 0px;
+}
+
+.login-btm {
+    float: left;
+}
+
+.login-button {
+    padding-right: 0px;
+    text-align: right;
+    margin-bottom: 25px;
+}
+
+.login-text {
+    text-align: left;
+    padding-left: 0px;
+    color: #A2A4A4;
+}
+
+.loginbttm {
+    padding: 0px;
+}
+
+/* The Modal (background) */
+.modal {
+	display: none; /* Hidden by default */
+	position: fixed; /* Stay in place */
+	z-index: 999999999; /* Sit on top */
+	padding-top: 100px; /* Location of the box */
+	left: 0;
+	top: 0;
+	width: 100%; /* Full width */
+	height: 100%; /* Full height */
+	overflow: auto; /* Enable scroll if needed */
+	background-color: rgb(0,0,0); /* Fallback color */
+	background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+	background-color: rgba(0, 0, 0, 0.877);
+	margin: auto;
+	padding: 20px;
+	border: 1px solid #0DB8DE;
+	width: 80%;
+  }
+  
+  /* The Close Button */
+  .close {
+	color: #aaaaaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+	color: #000;
+	text-decoration: none;
+	cursor: pointer;
+  }
+
+  /* END LOGIN BOX */
+</style>
+
+<!-- Trigger/Open The Modal -->
+<!-- <button id="myBtn">Open Modal</button> -->
+
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+	<div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-2"></div>
+
+
+            <div class="col-lg-6 col-md-8 login-box" id="log-reg">
+                <div class="col-lg-12 login-key">
+                    <i class="fa fa-key" aria-hidden="true"></i>
+                </div>
+                <div class="col-lg-12 login-title">
+                   LOGOWANIE
+                </div>
+
+                <div class="col-lg-12 login-form">
+                    <div class="col-lg-12 login-form">
+                        <form>
+                            <div class="form-group">
+                                <label class="form-control-label">USERNAME/EMAIL</label>
+                                <input type="text" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="form-control-label">PASSWORD</label>
+                                <input type="password" class="form-control" i>
+                            </div>
+
+                            <div class="col-lg-12 loginbttm">
+                                <div class="col-lg-6 login-btm login-text">
+                                    <!-- Error Message -->
+                                </div>
+                                <div class="col-lg-6 login-btm login-button">
+                                    <button type="submit" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>
+                                </div>
+								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestru się!</a></p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-2"></div>
+            </div>
+        </div>
+  </div>
+
 </div>
-</div>
 
-
-<script src="../js/index.js"></script>
-<?php include("../generator/footer.php");?>
 
 
 <script>
-// Set constraints for the video stream
-var constraints = { video: { facingMode: "user" }, audio: false };
-// Define constants
-const cameraView = document.querySelector("#camera--view"),
-    cameraOutput = document.querySelector("#camera--output"),
-    cameraSensor = document.querySelector("#camera--sensor"),
-    cameraTrigger = document.querySelector("#camera--trigger")
-// Access the device camera and stream to cameraView
-function cameraStart() {
-    navigator.mediaDevices
-        .getUserMedia(constraints)
-        .then(function(stream) {
-        track = stream.getTracks()[0];
-        cameraView.srcObject = stream;
-    })
-    .catch(function(error) {
-        console.error("Oops. Something is broken.", error);
-    });
-}
-// Take a picture when cameraTrigger is tapped
-cameraTrigger.onclick = function() {
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/webp");
-    cameraOutput.classList.add("taken");
-};
-// Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
-	</script>
-</body>
-</html>
+    // Get the modal
+    var modal = document.getElementById("myModal");
+
+    // Get the button that opens the modal
+    var btn = document.getElementById("myBtn");
+    
+
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+    modal.style.display = "block";
+    }
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function() {
+    modal.style.display = "none";
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+    }
+
+    function show_reg(){
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form>                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+    }
+
+    function show_login(){
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   LOGOWANIE                </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form>                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+    }
+</script>

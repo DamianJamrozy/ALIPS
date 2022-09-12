@@ -215,7 +215,7 @@ label {
                                 <div class="col-lg-6 login-btm login-button">
                                     <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>
                                 </div>
-								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestru się!</a></p>
+								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>
                             </div>
                         </form>
                     </div>
@@ -257,7 +257,7 @@ label {
     }
 
     function show_reg(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">EMAIL</label>                                <input type="email" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">EMAIL</label>                                <input type="email" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
 
     function show_login(){
@@ -271,14 +271,13 @@ label {
         $UserName = $_POST['login'];
         $Password = md5($_POST['password']);
 
-        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ");
-        $row = mysqli_fetch_array($CheckUsr);
+        $CheckUsr = "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ";
+        $result = mysqli_query($dbconect, $CheckUsr);
 
-        if(is_array($row)){
+        if (mysqli_num_rows($result) > 0) {
             $_SESSION["UserName"] = $row['login'];
             echo '<script>alert("Poprawne dane logowania");</script>';
-        }
-        else{
+        } else {
             echo '<script>alert("Błędne dane logowania");</script>';
         }
     }
@@ -289,21 +288,35 @@ label {
         $UserName = $_POST['login'];
         $Password = md5($_POST['password']);
 
-        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE email = '$UserName'");
+        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE 'email' = '$UserName'");
         $row = mysqli_fetch_array($CheckUsr);
 
         if(is_array($row)){
             echo '<script>alert("Konto o takim adresie email już istnieje!");</script>';
         }
         else{
-            $AddUsr = mysqli_query($dbconect, "INSERT INTO user (,'','$UserName,'$Password'')");
+            $AddUsr ="INSERT INTO user (login,email,password) VALUES ('','$UserName','$Password')";
+            if (mysqli_query($dbconect, $AddUsr)) {
 
-            $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE email = '$UserName'");
-            $row = mysqli_fetch_array($CheckUsr);
-            $id = $row['id'];
+                $CheckUsr = "SELECT * FROM user WHERE email = '$UserName'";
+                $result = mysqli_query($dbconect, $CheckUsr);
+                if (mysqli_num_rows($result) > 0) {
+                   while($row = mysqli_fetch_assoc($result)) {
+                        $id = $row["id"];
+                       }
+                } else {
+                    echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
+                }
 
-            $AddUsr2 = mysqli_query($dbconect, "UPDATE user SET login='$id' WHERE id='$id')");
-            echo '<script>alert("Konto zostało założone.");</script>';
+                $AddUsr2 = "UPDATE user SET login='$id' WHERE id='$id'";
+                if (mysqli_query($dbconect, $AddUsr2)) {
+                    echo '<script>alert("Konto zostało założone.");</script>';
+                  } else {
+                    echo "Error: " . $AddUsr2 . "<br>" . mysqli_error($dbconect);
+                  }
+              } else {
+                echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
+              }
         }
     }   
   

@@ -82,6 +82,15 @@ a:link, a:visited, a:hover, a:active  {
     background-size: cover;
     margin-left:-5%;
 }
+
+.central-container-side{
+    background-color: rgba(0, 0, 0, 0.384);
+    padding:20px;
+    border-radius: 5px;
+    width:100vw;
+    height:100%;
+    position:fixed;
+}
 /* END OF MAIN STYLE */
 
 /* PARALAX EFECT */

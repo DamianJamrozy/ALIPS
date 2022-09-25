@@ -266,17 +266,30 @@ label {
 </script>
 
 <?php 
+//session_start();
+date_default_timezone_set('Europe/Warsaw');
+
     //START LOGIN FORM ACTION
     if(isset($_POST['login-form'])){
         $UserName = $_POST['login'];
         $Password = md5($_POST['password']);
+        $date = date('Y-m-d H:i:s');
 
         $CheckUsr = "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ";
         $result = mysqli_query($dbconect, $CheckUsr);
 
         if (mysqli_num_rows($result) > 0) {
-            $_SESSION["UserName"] = $row['login'];
-            echo '<script>alert("Poprawne dane logowania");</script>';
+            while($row = mysqli_fetch_assoc($result)) {
+                $_SESSION["UserName"] = $row['login'];
+               }
+
+            $UpdateLogDate = "UPDATE user SET last_login_date='$date' WHERE (login = '$UserName' OR email = '$UserName')";
+                if (mysqli_query($dbconect, $UpdateLogDate)) {
+                    echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
+                    
+                }
+
+            
         } else {
             echo '<script>alert("Błędne dane logowania");</script>';
         }
@@ -287,6 +300,7 @@ label {
     if(isset($_POST['reg-form'])){
         $UserName = $_POST['login'];
         $Password = md5($_POST['password']);
+        $date = date('Y-m-d H:i:s');
 
         $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE 'email' = '$UserName'");
         $row = mysqli_fetch_array($CheckUsr);
@@ -308,9 +322,10 @@ label {
                     echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
                 }
 
-                $AddUsr2 = "UPDATE user SET login='$id' WHERE id='$id'";
+                $AddUsr2 = "UPDATE user SET login='$id', reg_date='$date' WHERE id='$id'";
                 if (mysqli_query($dbconect, $AddUsr2)) {
                     echo '<script>alert("Konto zostało założone.");</script>';
+                    //$_SESSION["UserName"] = $id;
                   } else {
                     echo "Error: " . $AddUsr2 . "<br>" . mysqli_error($dbconect);
                   }

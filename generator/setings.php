@@ -62,12 +62,21 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$CURRENT_PAGE = "Login"; 
 			$PAGE_TITLE = "Login";
 			break;
+		case "/websites/ALIPS/templates/logout.php":
+			$CURRENT_PAGE = "Logout"; 
+			$PAGE_TITLE = "Logout";
+			break;
 		case "/websites/ALIPS/web/starting-page.php":
 			$CURRENT_PAGE = "Start"; 
 			$PAGE_TITLE = "Start";
 			break;
+		case "/websites/ALIPS/templates/dashboard.php":
+			$CURRENT_PAGE = "Dashboard"; 
+			$PAGE_TITLE = "Dashboard";
+			break;
 		default:
-			$CURRENT_PAGE = "Home";
+			$CURRENT_PAGE = "Home"; 
 			$PAGE_TITLE = "Home";
+			break;
 	}
 ?>

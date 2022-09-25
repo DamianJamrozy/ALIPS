@@ -3,39 +3,53 @@
 		<!-- <a href="Index.php"><h1>ALIPS</h1></a> -->
 		<a <?php if ($CURRENT_PAGE == "Home") {?> href="#"><h1>ALIPS</h1></a> <?php } else {?>" href="../index.php"><h1>ALIPS</h1></a> <?php } ?> 
 	</div>
-	<div class="top-nav-right">
-	<div class="menu-icon-on line-on" id="hambuger" onclick="hamburger_on()">
-		<span class="line-1-on" id="hamburger-line1"></span>
-		<span class="line-2-on" id="hamburger-line2"></span>
-		<span class="line-3-on" id="hamburger-line3"></span>
-	</div>
-	</div>
+	
+	<?php
+	if(isset($_SESSION["UserName"])){	?>
 
-	<div class="navigation-off" id="nav_tree">
-		<ul class="nav nav-pills">
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active" href="#">Home</a> <?php } else {?>" href="../index.php">Home</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else if($CURRENT_PAGE == "Home"){?>" href="templates/games.php">Gry</a> <?php } else {?>" href="../templates/games.php">Gry</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/videochat.php">Videochat</a> <?php } else {?>" href="../templates/videochat.php">Videochat</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/account.php">Moje konto</a> <?php } else {?>" href="../templates/account.php">Moje konto</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/friends.php">Moi znajomi</a> <?php } else {?>" href="../templates/friends.php">Moi znajomi</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } else {?>" href="../templates/reconfig.php">Konfiguracja</a> <?php } ?> 
-		</li>
-		<li class="nav-item">
-			<a id="myBtn" class="nav-link" href="#">Zaloguj się</a>
-		</li>
-		</ul>
-	</div>
+
+		<div class="top-nav-right">
+		<div class="menu-icon-on line-on" id="hambuger" onclick="hamburger_on()">
+			<span class="line-1-on" id="hamburger-line1"></span>
+			<span class="line-2-on" id="hamburger-line2"></span>
+			<span class="line-3-on" id="hamburger-line3"></span>
+		</div>
+		</div>
+
+		<div class="navigation-off" id="nav_tree">
+			<ul class="nav nav-pills">
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Home") {?>active" href="#">Home</a> <?php } else {?>" href="../index.php">Home</a> <?php } ?> 
+			</li>
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Games") {?>active" href="#">Gry</a> <?php } else if($CURRENT_PAGE == "Home"){?>" href="templates/games.php">Gry</a> <?php } else {?>" href="../templates/games.php">Gry</a> <?php } ?> 
+			</li>
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Videochat") {?>active" href="#">Videochat</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/videochat.php">Videochat</a> <?php } else {?>" href="../templates/videochat.php">Videochat</a> <?php } ?> 
+			</li>
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/account.php">Moje konto</a> <?php } else {?>" href="../templates/account.php">Moje konto</a> <?php } ?> 
+			</li>
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/friends.php">Moi znajomi</a> <?php } else {?>" href="../templates/friends.php">Moi znajomi</a> <?php } ?> 
+			</li>
+			<li class="nav-item">
+				<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } else {?>" href="../templates/reconfig.php">Konfiguracja</a> <?php } ?> 
+			</li>
+			<?php
+			if(isset($_SESSION["UserName"])){	?>
+				<li class="nav-item">
+				<a class="nav-link" <?php if ($CURRENT_PAGE == "Home") { ?> href="templates/logout.php" <?php } else{ ?> href="../templates/logout.php"  <?php } ?>  >Wyloguj się</a>
+				</li>
+			<?php }else if($CURRENT_PAGE != "Home"){	?>
+				<li class="nav-item">
+					<a id="myBtn" class="nav-link" href="#">Zaloguj się</a>
+				</li>
+			<?php	}	?>
+			</ul>
+		</div>
+
+	<?php	}	?>
 	
 
 </div>

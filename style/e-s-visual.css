@@ -6,7 +6,7 @@ body{
 
 .central-container-side{
     display: grid;
-    grid-template-columns: auto auto auto auto auto;
+    grid-template-columns: auto auto auto auto auto auto auto auto auto auto;
     /* background-color: #2196F3; */
     padding: 10px;
 }
@@ -23,7 +23,28 @@ body{
     padding: 20px;
     font-size: 30px;
     text-align: center;
+    cursor: not-allowed;
  
+}
+
+.conactive{
+    background-color: rgb(196, 0, 0);
+    cursor: pointer;
+    content: 'KLIKNIJ MNIE!';
+}
+
+.conactivate2{
+    background-color: rgb(196, 150, 0);
+    cursor: not-allowed;
+    content: 'JESZCZE RAZ!';
+    
+}
+
+.condeactivate{
+    background-color: rgb(0, 196, 10);
+    cursor: not-allowed;
+    content: 'GOTOWE!';
+    
 }
 
 #con{

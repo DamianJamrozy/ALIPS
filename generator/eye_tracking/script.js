@@ -53,7 +53,7 @@ webgazer
   .begin()
 
 // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
-webgazer.showVideoPreview(true).showPredictionPoints(true)
+webgazer.showVideoPreview(false).showPredictionPoints(true)
 
 function getNewImage(next = false) {
   const img = document.createElement("img")

@@ -1,3 +1,4 @@
+
 <title><?php print $PAGE_TITLE;?> | ALIPS</title>
 <meta name="author" content="Damian Jamroży">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,4 +22,21 @@
 	<meta name="keywords" content="Damian Jamroży, Eye tracking, speech recognition, HTML, CSS, JavaScript">
 	<link rel="icon" type="image/x-icon" href="../files/img/primary/icon.ico">
 	<link rel="stylesheet" type="text/css" href="../style/style.css">
+
 <?php } ?>
+
+<!-- REDIRECT IF USER IS NOT LOGGED -->
+<?php if ($CURRENT_PAGE != "Home" && $CURRENT_PAGE != "Start") {
+	if(!isset($_SESSION['UserName'])){ ?>
+		<script>
+			window.location.href= '../Index.php'; // the redirect goes here 
+		</script>
+	<?php }
+	}else{
+		if(isset($_SESSION['UserName'])){ ?>
+			<script>
+				window.location.href= 'templates/dashboard.php'; // the redirect goes here 
+			</script>
+		<?php }
+	}
+?>

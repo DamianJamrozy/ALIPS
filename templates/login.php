@@ -198,14 +198,14 @@ label {
                 <div class="col-lg-12 login-form">
                     <div class="col-lg-12 login-form">
 
-                        <form method="POST" action="">
+                        <form onsubmit="return validateForm()" method="POST" >
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME/EMAIL</label>
-                                <input type="text" name="login" class="form-control">
+                                <input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" class="form-control" i>
+                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
                             </div>
 
                             <div class="col-lg-12 loginbttm">
@@ -239,30 +239,49 @@ label {
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
 
-    // When the user clicks the button, open the modal 
-    btn.onclick = function() {
-        modal.style.display = "block";
-    }
-
     // When the user clicks on <span> (x), close the modal
     span.onclick = function() {
         modal.style.display = "none";
     }
 
-    // When the user clicks anywhere outside of the modal, close it
-    window.onclick = function(event) {
+     // When the user clicks anywhere outside of the modal, close it
+     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
         }
     }
 
+    // When the user clicks the button, open the modal 
+    btn.onclick = function() {
+        modal.style.display = "block";
+    }
+
     function show_reg(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                           <div class="form-group">                                <label class="form-control-label">EMAIL</label>                                <input type="email" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   REJESTRACJA               </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form onsubmit="return validateForm()" method="POST" >                           <div class="form-group">                                <label class="form-control-label">EMAIL</label>                                <input type="email" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required>                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="reg-form" class="btn btn-outline-primary">ZAREJESTRUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_login()">Posiadasz konto? Zaloguj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
 
     function show_login(){
-        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   LOGOWANIE                </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form method="POST" action="#">                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" name="login" class="form-control">                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" i>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
+        document.getElementById('log-reg').innerHTML = ' <div class="col-lg-12 login-key">                    <i class="fa fa-key" aria-hidden="true"></i>                </div>                <div class="col-lg-12 login-title">                   LOGOWANIE                </div>                <div class="col-lg-12 login-form">                    <div class="col-lg-12 login-form">                        <form onsubmit="return validateForm()" method="POST" >                            <div class="form-group">                                <label class="form-control-label">USERNAME/EMAIL</label>                                <input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required>                            </div>                            <div class="form-group">                                <label class="form-control-label">PASSWORD</label>                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>                            </div>                            <div class="col-lg-12 loginbttm">                                <div class="col-lg-6 login-btm login-text">                                    <!-- Error Message -->                                </div>                                <div class="col-lg-6 login-btm login-button">                                    <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>                                </div>								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>                            </div>                        </form>                    </div>                </div>                <div class="col-lg-3 col-md-2"></div>'
     }
+
+    // Second Validate Form 
+    function validateForm(){
+        let v_login = document.getElementsByName("login")[0].value;
+        let v_password = document.getElementsByName("password")[0].value;
+        let t1 = '"';
+        let t2 = "'";
+
+
+        if(v_login.includes(t1) || v_login.includes(t2)){
+            console.log("Walidacja 2 wykryła błąd! Login zawiera niedozwolone znaki!"); 
+            return false;
+        }else{
+            console.log("Walidacja 2 przeszła poprawnie"); 
+            return true;
+        }
+    }
+
+    
 </script>
 
 <?php 

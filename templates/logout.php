@@ -1,4 +1,13 @@
 <?php include("../generator/setings.php");?>
+
+<?php
+    $UserName = $_SESSION["UserName"];
+    $date = date('Y-m-d H:i:s');
+
+    $UpdateLogDate = "UPDATE user SET last_logout_date='$date', idActive='0' WHERE (login = '$UserName' OR email = '$UserName')";
+    if (mysqli_query($dbconect, $UpdateLogDate)) {}
+?>
+
 <script>
     setTimeout(function () {
         window.location.href= '../Index.php'; // the redirect goes here

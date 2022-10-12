@@ -3,6 +3,19 @@
 <html>
 <head>
 	<?php include("./../generator/head-info.php");?>
+	<script src='https://meet.jit.si/external_api.js'></script>
+	<style>
+		.lef{
+			margin-top:4%;
+			margin-left:-20%;
+			width:25%;
+		}
+		.rig{
+			margin-top:4%;
+			margin-right:-20%;
+			width:110%;
+		}
+	</style>
 </head>
 
 <body>
@@ -11,80 +24,74 @@
 <div id="parallax">
 <div class="container" id="main-content">
 
-	<div class="left-side">
-	</div>
-	<div class="right-side">
+	<div class="right-side lef">
 		
-		<br><br><br><h4> Poznaj świat naszymi oczami! </h4><br>
+		Znajomi:<br>
+		<hr>
 
-		<div class="circle_box">
-			<div class="circle_container">
-				<div class="circle_main">
-					<div class="circle_text_container">
-						<div class = "circle_text">
-							1
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>
-		<div class="circle_text_box">
-			Logic games - Granie w gry logiczne nie tylko sprawia satysfakcję. Jest to złożona metoda wpływająca na wiele czynników, między innymi na zwiększenie poziomu skupienia, skrócenie czasu reakcji, a czasami nawet na aspekty moralne czy też światopoglądowe. Rozwój gier to rozwój ludzkości!
-		</div>
+		Contact 1
+		<hr>
+		Contact 2
+		<hr>
 
-		<div class="circle_box">
-			<div class="circle_container">
-				<div class="circle_main">
-					<div class="circle_text_container">
-						<div class = "circle_text">
-							2
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>
-		<div class="circle_text_box">
-			Eye tracking - Tam gdzie sięga Twoje oko, sięga też technologia ALIPS. W skrócie śledzimy położenie Twojego oka aby przełożyć jego działanie na oprogramowanie. Działamy w mrugnięciu oka.
-		</div>
+		<br><br>
+		Zaproszenia: <br>
+		<hr>
 
-		<div class="circle_box">
-			<div class="circle_container">
-				<div class="circle_main">
-					<div class="circle_text_container">
-						<div class = "circle_text">
-							3
-						</div>
-					</div>
-				</div>
-			</div>	
-		</div>
-		<div class="circle_text_box">
-			Speach recognition - Mówisz, masz!  Staramy się wspierać nie tylko rozwój technologii związanej ze wzrokiem ale także z mową. Chcesz porozmawiać z naszym mini botem? Wypowiedz magiczne słowo, a on postara się sprostać Twoim oczekiwaniom.
-		</div>
+	</div>
+	<div class="right-side rig" id="rig_vid">
+		
+		<br><h4> ZNAJOMI </h4><br>
+  <!-- <div id="jitsi-container"></div> -->
+  
+  
 
 		<p>
-			<button class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
+			<button id="start" class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
 		</p>
+
+
 	</div>
 
-	<!-- <center><img src="files\img\primary\logov2.png" width="25%">
-	<p class="blue">All Likes Impressive Personal Site</p> -->
-
-	<!-- <p style="margin-top:4em;">Poznaj świat naszymi oczami!</p>
-	
-	<p style="margin-top:4em;">
-		<button class="glow-on-hover" type="button">Zaczynajmy</button>
-	</p>
-
-	<p style="margin-top:4em;">
-		<button class="glow-on-hover" type="button">Pomiń</button>
-	</p>
-
-	</center> -->
 </div>
 </div>
 
+<script>
+		var button = document.querySelector('#start');
+		var container = document.querySelector('#jitsi-container');
+		var api = null;
 
+		button.addEventListener('click', () => {
+			var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+			var stringLength = 30;
+			button.style.display = "none";
+			
+
+			function pickRandom() {
+				return possible[Math.floor(Math.random() * possible.length)];
+			}
+			
+			var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
+
+			var roomname = "Wartości z PHP id_usera";
+
+			var domain = "meet.jit.si";
+			var options = {
+				"roomName": roomname,	//randomString,
+				"parentNode": container,
+				"width": 600,
+				"height": 600,
+			};
+			api = new JitsiMeetExternalAPI(domain, options);
+			
+			document.getElementsByClassName('jss14')[0].style.visibility = 'hidden';
+			
+			var end_call = document.getElementsByClassName('hangup-button')[0];
+		});
+
+		
+
+	</script>
 <script src="../js/index.js"></script>
 <?php include("../generator/footer.php");?>
 </body>

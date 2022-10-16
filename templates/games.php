@@ -44,6 +44,11 @@
 </div>
 </div>
 
+<script>
+    window.addEventListener('beforeunload', (event) => {
+        event.returnValue = `Are you sure you want to leave?`;
+    });
+</script>
 
 <script src="../js/index.js"></script>
 <?php include("../generator/footer.php");?>

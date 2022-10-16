@@ -261,7 +261,9 @@ a:link, a:visited, a:hover, a:active  {
 }
 /* END CIRCLE */
 
-
+#ads{
+    display: none;
+}
 
 
 

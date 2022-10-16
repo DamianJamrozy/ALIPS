@@ -79,4 +79,24 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$PAGE_TITLE = "Home";
 			break;
 	}
+
+// START SESSION EXPIRY
+if(isset($_SESSION['expiry'])){
+    if(time() > $_SESSION['expiry']){
+		$UserName = $_SESSION["UserName"];
+		$date = date('Y-m-d H:i:s');
+	
+		$UpdateLogDate = "UPDATE user SET last_logout_date='$date', idActive='0' WHERE (login = '$UserName' OR email = '$UserName')";
+		if (mysqli_query($dbconect, $UpdateLogDate)) {}
+
+        session_destroy();
+        header("Refresh:0");
+        die();
+    }else{
+		//set_time_limit(0); // make it run forever
+		$_SESSION['expiry'] = time()+900;
+	}
+}
+
+
 ?>

@@ -304,6 +304,7 @@ date_default_timezone_set('Europe/Warsaw');
 
             $UpdateLogDate = "UPDATE user SET last_login_date='$date', idActive='1' WHERE (login = '$UserName' OR email = '$UserName')";
                 if (mysqli_query($dbconect, $UpdateLogDate)) {
+                    $_SESSION['expiry'] = time()+20;
                     echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
                     
                 }

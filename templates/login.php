@@ -309,13 +309,27 @@ date_default_timezone_set('Europe/Warsaw');
                     $_SESSION['expiry'] = time()+20; 
                 }
 
-                $ran = rand(000001,999999);
-                $keyHostFullSet = 'https://meet.jit.si/';
+            $CheckModify = "SELECT keyModified FROM videochat WHERE idUser = '$UserId'";
+            $result2 = mysqli_query($dbconect, $CheckModify);
 
-            $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran.$UserId', keyHostFull='$keyHostFullSet$ran$UserId' WHERE idUser = '$UserId'";
-                if (mysqli_query($dbconect, $UpdateLogVideo)) {
+            if (mysqli_num_rows($result2) > 0) {
+                while($row = mysqli_fetch_assoc($result2)) {
+                    $modify = $row['keyModified'];
+                }
+
+                if($modify == 0){
+                    $ran = rand(100000,999999);
+                    $keyHostFullSet = 'https://meet.jit.si/';
+
+                    $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran$UserId', keyHostFull='$keyHostFullSet$ran$UserId' WHERE idUser = '$UserId'";
+                        if (mysqli_query($dbconect, $UpdateLogVideo)) {
+                            echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
+                        }
+                }else{
                     echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
                 }
+            }
+                
 
         } else {
             echo '<script>alert("Błędne dane logowania");</script>';

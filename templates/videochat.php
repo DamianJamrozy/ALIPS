@@ -58,15 +58,24 @@
 <div id="load_place">
 	<?php 
 	//session_start();
-	date_default_timezone_set('Europe/Warsaw');
+		$UserId = $_SESSION["UserId"];
+		date_default_timezone_set('Europe/Warsaw');
+		$HostKey = "SELECT keyHost FROM videochat WHERE idUser = '$UserId'";
+		$result = mysqli_query($dbconect, $HostKey);
+
+		if (mysqli_num_rows($result) > 0) {
+			while($row = mysqli_fetch_assoc($result)) {
+				$MyKey = $row['keyHost'];
+			}
+		}
+
+		echo('<script>var roomname = "'.$MyKey.'";</script>');
 
 		//START JOIN FORM ACTION
 		if(isset($_POST['video_connection'])){
 			$VideoKeyValue = $_POST['key'];
 			$date = date('Y-m-d H:i:s');
-			$UserId = $_SESSION["UserId"];
-
-
+			
 			$CheckUsr = "SELECT * FROM videochat WHERE (keyHost = '$VideoKeyValue' OR keyHostFull = '$VideoKeyValue')";
 			$result = mysqli_query($dbconect, $CheckUsr);
 
@@ -75,7 +84,17 @@
 					$_SESSION["keyHostFull"] = $row['keyHostFull'];
 					$_SESSION["keyHost"] = $row['keyHost'];
 				}
+
+				// INPUT VALUE IS FULL LINK?
 				$keyHost = $_SESSION["keyHost"];
+				$serv = 'https://meet.jit.si/';
+				if (str_contains($VideoKeyValue, $serv)) {
+					//echo 'tak';
+				}else{
+					//echo 'nie';
+					$VideoKeyValue = $serv.$VideoKeyValue;
+					}
+
 
 				$UpdateLogVideo = "UPDATE videochat SET lastVideo='$date', keyActive='$keyHost' WHERE idUser = '$UserId'";
 					if (mysqli_query($dbconect, $UpdateLogVideo)) {
@@ -198,7 +217,8 @@
 			
 			var randomString = Array.apply(null, Array(stringLength)).map(pickRandom).join('');
 
-			var roomname = "Wartości z PHP id_usera";
+			//var roomname = "Wartości z PHP id_usera";
+			//var roomname = '<?php $MyKey ?>';
 
 			var domain = "meet.jit.si";
 			var options = {
@@ -226,12 +246,7 @@
             return false;
         }else{
             console.log("Walidacja 2 przeszła poprawnie"); 
-
-			
-
-			place.innerHTML = `<iframe allow="camera; microphone; fullscreen; display-capture; autoplay" src="`+video_value+`" style="height: 84%; width: 100%; border: 0px;"></iframe>`;
-
-            return false;
+            return ture;
         }
     }
 

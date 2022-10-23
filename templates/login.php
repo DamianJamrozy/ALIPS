@@ -272,8 +272,8 @@ label {
         let t2 = "'";
 
 
-        if(v_login.includes(t1) || v_login.includes(t2)){
-            console.log("Walidacja 2 wykryła błąd! Login zawiera niedozwolone znaki!"); 
+        if(v_login.includes(t1) || v_login.includes(t2) || v_password.includes(t1) || v_password.includes(t2)){
+            console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
             return false;
         }else{
             console.log("Walidacja 2 przeszła poprawnie"); 
@@ -300,16 +300,23 @@ date_default_timezone_set('Europe/Warsaw');
         if (mysqli_num_rows($result) > 0) {
             while($row = mysqli_fetch_assoc($result)) {
                 $_SESSION["UserName"] = $row['login'];
+                $_SESSION["UserId"] = $row['id'];
                }
+               $UserId =  $_SESSION["UserId"];
 
             $UpdateLogDate = "UPDATE user SET last_login_date='$date', idActive='1' WHERE (login = '$UserName' OR email = '$UserName')";
                 if (mysqli_query($dbconect, $UpdateLogDate)) {
-                    $_SESSION['expiry'] = time()+20;
-                    echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
-                    
+                    $_SESSION['expiry'] = time()+20; 
                 }
 
-            
+                $ran = rand(000001,999999);
+                $keyHostFullSet = 'https://meet.jit.si/';
+
+            $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran.$UserId', keyHostFull='$keyHostFullSet$ran$UserId' WHERE idUser = '$UserId'";
+                if (mysqli_query($dbconect, $UpdateLogVideo)) {
+                    echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
+                }
+
         } else {
             echo '<script>alert("Błędne dane logowania");</script>';
         }

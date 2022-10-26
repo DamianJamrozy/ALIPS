@@ -52,6 +52,25 @@
 </div>
 
 
+<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script>
+<script>
+if (annyang) {
+  // Let's define a command.
+  const commands = {
+    'hello': () => { alert('Hello world!'); }
+  };
+
+  // Add our commands to annyang
+  annyang.addCommands(commands);
+
+  // Start listening.
+  annyang.start();
+}
+</script>
+
+
+
+
 <script src="../js/index.js"></script>
 <?php include("../generator/footer.php");?>
 </body>

@@ -9,6 +9,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- <link rel="stylesheet" type="text/css" href="style/style.css"> -->
 
+<?php
+error_reporting(0);
+ini_set('display_errors', 0);
+?>
+
 <?php if ($CURRENT_PAGE == "Home") { ?>
 	<meta name="description" content="ALIPS to aplikacja utworzona przez Damiana Jamroży w 2022 roku. Wykorzystuje ona potencjał drzemiący w językach weebowych, pozwalając tym samym na kontrolę aplikacji poprzez eye tracking oraz speech recognition.">
 	<meta name="keywords" content="Damian Jamroży, Eye tracking, speech recognition, HTML, CSS, JavaScript">

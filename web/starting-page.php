@@ -36,6 +36,6 @@
     modal.style.display = "block";
     }
 </script>
-
+<?php include("../templates/login.php");?>
 </body>
 </html>

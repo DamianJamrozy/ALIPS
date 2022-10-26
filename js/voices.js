@@ -7,6 +7,7 @@ annyang.setLanguage('pl-PL');
     'Strona home': sHome,
     'Strona gry': sGry,
     'Strona Wideoczat': sVideochat,
+    'Strona Video Chat': sVideochat,
     'Strona Moje Konto': sMyAccount,
     'Strona Moi Znajomi': sMyFriends,
     'Strona Konfiguracja': sConfig,

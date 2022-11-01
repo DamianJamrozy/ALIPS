@@ -359,6 +359,9 @@ date_default_timezone_set('Europe/Warsaw');
         else{
             $AddUsr ="INSERT INTO user (login,email,password) VALUES ('','$UserName','$Password')";
             if (mysqli_query($dbconect, $AddUsr)) {
+                
+
+                
 
                 $CheckUsr = "SELECT * FROM user WHERE email = '$UserName'";
                 $result = mysqli_query($dbconect, $CheckUsr);
@@ -369,6 +372,12 @@ date_default_timezone_set('Europe/Warsaw');
                 } else {
                     echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
                 }
+
+                $ran = rand(100000,999999);
+                $keyHostFullSet = 'https://meet.jit.si/';
+            
+                $AddVideo ="INSERT INTO videochat (id,idUser,keyHost,keyHostFull,keyActive,lastVideo,keyModified) VALUES ('','$id','$ran$UserId','$keyHostFullSet$ran$UserId', 'NULL', 'NULL', '0')";
+                if (mysqli_query($dbconect, $AddVideo)) {}else{echo '<script>alert("Błąd aktualizacji tabeli video.");</script>';}
 
                 $AddUsr2 = "UPDATE user SET login='$id', reg_date='$date' WHERE id='$id'";
                 if (mysqli_query($dbconect, $AddUsr2)) {

@@ -61,19 +61,19 @@
 					<img src="../files/img/primary/cyber1.png" style='width:150px; margin-top:50px;'>
 				</div>
 				<div class="right_section">
-					<form onsubmit="return validateForm()" method="POST" >
+					<form onsubmit="return validateForm1()" method="POST" >
 						<div class="form-group">
 							<label class="form-control-label">STARE HASŁO</label>
-							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " i required>
 						</div>
 						<div class="form-group">
 							<label class="form-control-label">NOWE HASŁO</label>
-							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+							<input type="password" name="password1n" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " i required>
 						</div>
 
 						<div class="form-group">
 							<label class="form-control-label">POWTÓRZ NOWE HASŁO</label>
-							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+							<input type="password" name="password2n" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " i required>
 						</div>
 
 						<div class="col-lg-12 loginbttm">
@@ -81,7 +81,7 @@
 								<!-- Error Message -->
 							</div>
 							<div class="col-lg-6 login-btm login-button">
-								<button type="submit" name="login-form" class="btn btn-outline-primary">ZMIEŃ HASŁO</button>
+								<button type="submit" name="password-form" class="btn btn-outline-primary">ZMIEŃ HASŁO</button>
 							</div>
 						</div>
 					</form>
@@ -107,17 +107,17 @@
 					Klucz: <?php echo ($_SESSION['keyHost'])?> <br>
 					Link: https://meet.jit.si/<?php echo ($_SESSION['keyHost'])?><br><br><br>
 
-					<form onsubmit="return validateForm()" method="POST" >
+					<form onsubmit="return validateForm2()" method="POST" >
 						<div class="form-group">
 							<label class="form-control-label">NOWY IDENTYFIKATOR</label>
-							<input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
+							<input type="text" name="idKey" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
 						</div>
 							<div class="col-lg-12 loginbttm">
 							<div class="col-lg-6 login-btm login-text">
 								<!-- Error Message -->
 							</div>
 							<div class="col-lg-6 login-btm login-button">
-								<button type="submit" name="login-form" class="btn btn-outline-primary">ZMIEŃ IDENTYFIKATOR</button>
+								<button type="submit" name="key-form" class="btn btn-outline-primary">ZMIEŃ IDENTYFIKATOR</button>
 							</div>
 						</div>
 					</form>
@@ -171,10 +171,75 @@
 			simcon.style.display = "none";
 		}
     }
+
+	// Second Validate Form 
+    function validateForm1(){
+        let v_password = document.getElementsByName("password")[0].value;
+		let v_password2 = document.getElementsByName("password1n")[0].value;
+		let v_password3 = document.getElementsByName("password2n")[0].value;
+		
+        let t1 = '"';
+        let t2 = "'";
+
+		if(v_password2 != v_password3){
+			alert("Nowe hasło zostało błędnie powtórzone!");
+			return false;
+		}
+        else if(v_password.includes(t1) || v_password.includes(t2) || v_password2.includes(t1) || v_password2.includes(t2) || v_password3.includes(t1) || v_password3.includes(t2)){
+            console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
+            return false;
+        }else{
+            console.log("Walidacja 2 przeszła poprawnie"); 
+            return true;
+        }
+    }
+
+	function validateForm2(){
+        let v_idKey = document.getElementsByName("idKey")[0].value;
+        let t1 = '"';
+        let t2 = "'";
+
+        if(v_idKey.includes(t1) || v_idKey.includes(t2)){
+            console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
+            return false;
+        }else{
+            console.log("Walidacja 2 przeszła poprawnie"); 
+            return true;
+        }
+    }
+
+
 </script>
 
 
 <script src="../js/index.js"></script>
 <?php include("../generator/footer.php");?>
+
+<?php
+//session_start();
+date_default_timezone_set('Europe/Warsaw');
+
+    //START LOGIN FORM ACTION
+    if(isset($_POST['password-form'])){
+        $OldPassword = md5($_POST['password']);
+		$NewPassword1 = md5($_POST['password1n']);
+		$NewPassword2 = md5($_POST['password2n']);
+		$idUser = $_SESSION["UserId"];
+
+        $CheckUsr = "SELECT * FROM user WHERE (id = '$idUser' AND password = '$OldPassword') ";
+        $result = mysqli_query($dbconect, $CheckUsr);
+
+        if (mysqli_num_rows($result) > 0) {
+            $Update = "UPDATE user SET password='$NewPassword1' WHERE id = '$idUser' ";
+                if (mysqli_query($dbconect, $Update)) {
+                    echo '<script>alert("Hasło zostało zmienione");</script>';
+                }
+        } else {
+            echo '<script>alert("Stare hasło nie pasuje do Twojego konta!");</script>';
+        }
+    }
+    //END LOGIN FORM ACTION
+?>
+
 </body>
 </html>

@@ -391,6 +391,5 @@ date_default_timezone_set('Europe/Warsaw');
               }
         }
     }   
-  
     //END REGISTRATION FORM ACTION
 ?>

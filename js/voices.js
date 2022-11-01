@@ -17,9 +17,10 @@ annyang.setLanguage('pl-PL');
     'A lips': sAlips,
     'Elips': sAlips,
     'Alice': sAlips,
-    'OLX': sAlips,
+    'OLX': sAlips
   };
 
+   // START Navigation functions
   function sHome() { location.href = "dashboard.php"; } //alert('Home');
 
   function sGry() { location.href = "games.php"; }
@@ -35,6 +36,11 @@ annyang.setLanguage('pl-PL');
   function sLogout() { location.href = "logout.php"; }
 
   function sAlips() { alert('Tak?');}
+  // END Navigation functions
+
+
+
+ 
 
   // Add our commands to annyang
   annyang.addCommands(commands);
@@ -44,12 +50,49 @@ annyang.setLanguage('pl-PL');
 
   // Show whats happend
   annyang.addCallback('result', function(phrases) {
+    phrases[0] = phrases[0].toLowerCase();
+
+    // Write text from voice
     document.getElementById("speak_text").innerHTML = phrases[0];
-    console.log("I think the user said: ", phrases[0]);
-    console.log("But then again, it could be any of the following: ", phrases);
+
+    // Voice - Fraze test
+    console.log("Wydaje mi się że powiedziałeś: ", phrases[0]);
+    console.log("Jednakże możliwe że to było również: ", phrases);
+
+
+    // ROZPOZNAJE SŁOWA ZAWARTE W CAŁYCH ZDANIACH... NIESTETY DRASTYCZNIE ZMNIEJSZA WYDAJNOŚĆ STRONY
+/*      // Add table include text and function to start - needed for while()
+  const voice_tab = [
+    ["strona home", "strona gry", "strona wideo czat", "strona video chat", "strona moje konto", "strona moi znajomi", "strona konfiguracja", "strona wyloguj się"],
+    ["sHome", "sGry", "sVideochat", "sVideochat", "sMyAccount", "sMyFriends", "sConfig", "sLogout"]
+  ]
+
+  var voice_tab_len = voice_tab[0].length;
+
+    for (let i=0; voice_tab_len>i; i++){
+      console.log("jestem ", i);
+       // Start functions when string cointains exact word
+      if(phrases[0].includes(voice_tab[0][i])){
+        console.log("Rozpoznano polecenie: ", voice_tab[0][i]);
+        console.log("Funkcja: ", voice_tab[1][i]);
+        window[voice_tab[1][i]]();
+      };
+    } */
+
+
   });
+
+  
+
+
+
+
   
 }
+
+
+
+//window["functionName"](arguments);
 
 // Aktywacja na kliknięcie
 /* <script src="//cdnjs.cloudflare.com/ajax/libs/SpeechKITT/1.0.0/speechkitt.min.js"></script>

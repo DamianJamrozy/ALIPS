@@ -5,6 +5,7 @@
 <head>
 	<?php include("../generator/head-info.php");?>
 	<link rel="stylesheet" href="../style/style_backside.css">
+	
 </head>
 
 <body>
@@ -16,40 +17,35 @@
 	<div class="right-side lef">
 		<br>
 		<b>Sprawdź inne moje projekty:</b> <br><br><br><br>
-		<a href="https://github.com/DamianJamrozy">	
+		<a href="https://github.com/DamianJamrozy/HTML-CSS-JS---Mini-Game-Milionaires-" title="Mini gra w milionerów napisana w większości w javascripcie">	
 			<div class="nav_link">
 				<hr>
-				<ul class="ulsmicon">
-				<li class="lismicon"><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li></ul>
-				Github
+				Milionerzy (Gra - JavaScript)
 				<hr>
 			</div>
 		</a>
-		<a href="https://drive.google.com/drive/u/0/folders/1iO_GKEyLnbx0YPPabxCht1a2is-1CmQK">
+		<a href="https://github.com/DamianJamrozy/Settler-The-Genesis" title="Gra komputerowa tworzona we współpracy z przyjacielem ze studiów">
 			<div class="nav_link">
 				<hr>
-				Google Drive
+				Settler The Genesis (Gra PC - C#)
 				<hr>
 			</div>
 		</a>
-		<a href="https://youtube.com/@djamrozy">
+		<a href="https://github.com/DamianJamrozy/HTML-CSS-JS-PHP---Mini-University-Shop-Project-PRZEGRYWY" title="Projekt sklepu internetowego wykonany w html, css, js oraz php">
 			<div class="nav_link_last">
 				<hr>
-				Youtube
+				Prze-gry.wy (Projekt Sklepu - PHP)
 				<hr>
 			</div>
 		</a>
-		<b>Kontakt:</b> <br><br>
-			<div class="nav_link">
+		<a href="https://github.com/DamianJamrozy/Graphic" title="Projekty graficzne w technologii 2D">
+			<div class="nav_link_last">
 				<hr>
-				Email
-				<hr>
-			</div>
-			<div class="nav_link">
-				<hr>
-				Facebook
+				Projekty graficzne
 				<hr>
 			</div>
+		</a>
+
 	</div>
 	<div class="right-side rig" id="rig_vid">
 		
@@ -127,6 +123,15 @@
 					</form>
 				</div>
 			</div>
+			<div class="simcon" id="simcon">
+				<ul class="ulsmicon">
+					<li class="lismicon"><a href="https://youtube.com/@djamrozy" title="YouTube"><i class="fa fa-youtube" aria-hidden="true"></i></a></li>
+					<li class="lismicon"><a href="https://github.com/DamianJamrozy" title="Github"><i class="fa fa-github" aria-hidden="true"></i></a></li>
+					<li class="lismicon"><a href="https://www.instagram.com/skrrr_dj/" title="Instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li class="lismicon"><a href="https://www.facebook.com/damian.jamrozy.xD" title="Facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li class="lismicon"><a href="https://drive.google.com/drive/u/0/folders/1iO_GKEyLnbx0YPPabxCht1a2is-1CmQK" title="Google Drive"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
 		</div>
 
 		
@@ -143,20 +148,27 @@
 	var inside1 = document.getElementById("changefirst");
 	var inside2 = document.getElementById("changesec");
 
+	var simcon = document.getElementById("simcon");
+	
+
 	btn1.onclick = function() {
 		if(inside1.style.display == "block"){
 			inside1.style.display = "none";
+			simcon.style.display = "block";
 		}else{
 			inside1.style.display = "block";
 			inside2.style.display = "none";
+			simcon.style.display = "none";
 		}
     }
 	btn2.onclick = function() {
 		if(inside2.style.display == "block"){
 			inside2.style.display = "none";
+			simcon.style.display = "block";
 		}else{
 			inside2.style.display = "block";
 			inside1.style.display = "none";
+			simcon.style.display = "none";
 		}
     }
 </script>

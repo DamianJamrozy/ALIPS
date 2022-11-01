@@ -215,13 +215,17 @@ cursor: pointer;
 }
 
 
+.simcon{
+    position:absolute;
+    bottom:10%;
+    left:50%;
+}
 
 
 
 
 
-
-ul
+.ulsmicon
 {
   position:absolute;
   top:50%;
@@ -231,32 +235,32 @@ ul
   padding:0;
   display:flex;
 }
-ul li
+.ulsmicon .lismicon
 {
   list-style:none;
   margin:0 40px;
 }
-ul li a .fa
+.ulsmicon .lismicon a .fa
 {
   font-size:40px;
   color:#262626;
   line-height:60px;
   transition:.5s;
 }
-ul li a 
+.ulsmicon .lismicon a 
 {
   position:relative;
   display:block;
   width:60px;
   height:60px;
-  background:#fff;
+  background:rgba(255, 255, 255, 0.699);
   text-align:center;
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(0,0);
   transition:.5s;
   transition-timing-function: linear;
   box-shadow:-20px 20px 10px rgba(0,0,0,.5);
 }
-ul li a:before
+.ulsmicon .lismicon a:before
 {
   content:'';
   position:absolute;
@@ -264,11 +268,11 @@ ul li a:before
   left:-20px;
   height:100%;
   width:20px;
-  background:#b1b1b1;
+  background:#b1b1b1a8;
   transition: .5s;
   transform: rotate(0deg) skewY(-45deg);
 }
-ul li a:after
+.ulsmicon .lismicon a:after
 {
   content:'';
   position:absolute;
@@ -276,127 +280,85 @@ ul li a:after
   left:-10px;
   height:20px;
   width:100%;
-  background:#b1b1b1;
+  background:#b1b1b1a1;
   transition: .85s;
   transform: rotate(0deg) skewX(-45deg);
 }
-ul li a:hover
+.ulsmicon .lismicon a:hover
 {
   transform: perspective(1000px) rotate(-30deg) skew(25deg) translate(20px,-20px);
   box-shadow:-50px 50px 50px rgba(0,0,0,.5);
 }
-ul li:hover .fa
+.ulsmicon .lismicon:hover .fa
 {
   color:#fff;
 }
 /* youtube */
-ul li:hover:nth-child(1) a
+.ulsmicon .lismicon:hover:nth-child(1) a
 {
   background: #cd201f;
 }
-ul li:hover:nth-child(1) a:before
+.ulsmicon .lismicon:hover:nth-child(1) a:before
 {
   background: #930504;
 }
-ul li:hover:nth-child(1) a:after
+.ulsmicon .lismicon:hover:nth-child(1) a:after
 {
   background: #e62c2a;
 }
 
-/* bitbucket */
-ul li:hover:nth-child(2) a
-{
-  background: #0084ff;
-}
-ul li:hover:nth-child(2) a:before
-{
-  background: #145dc6;
-}
-ul li:hover:nth-child(2) a:after
-{
-  background: #1170f9;
-}
-
-/* instagram */
-ul li:hover:nth-child(3) a
-{
-  background: #e4405f;
-}
-ul li:hover:nth-child(3) a:before
-{
-  background: #cb1d3d;
-}
-ul li:hover:nth-child(3) a:after
-{
-  background: #ad344a;
-}
-
-/* tumblr */
-ul li:hover:nth-child(4) a
-{
-  background: #34465d;
-}
-ul li:hover:nth-child(4) a:before
-{
-  background: #253244;
-}
-ul li:hover:nth-child(4) a:after
-{
-  background: #40536b;
-}
-
-/* skype */
-ul li:hover:nth-child(5) a
-{
-  background: #00AFF0;
-}
-ul li:hover:nth-child(5) a:before
-{
-  background: #166e9b;
-}
-ul li:hover:nth-child(5) a:after
-{
-  background: #3c8eb9;
-}
-
-/* facebook */
-ul li:hover:nth-child(6) a
-{
-  background: #3b5999;
-}
-ul li:hover:nth-child(6) a:before
-{
-  background: #2c3e64;
-}
-ul li:hover:nth-child(6) a:after
-{
-  background: #516aa5;
-}
-
 /* github */
-ul li:hover:nth-child(7) a
+.ulsmicon .lismicon:hover:nth-child(2) a
 {
   background: #4b4e58;
 }
-ul li:hover:nth-child(7) a:before
+.ulsmicon .lismicon:hover:nth-child(2) a:before
 {
   background: #28292a;
 }
-ul li:hover:nth-child(7) a:after
+.ulsmicon .lismicon:hover:nth-child(2) a:after
 {
   background: #5c5f6d;
 }
 
-/* pinterest */
-ul li:hover:nth-child(8) a
+/* instagram */
+.ulsmicon .lismicon:hover:nth-child(3) a
 {
-  background: #bd081c;
+  background: #e4405f;
 }
-ul li:hover:nth-child(8) a:before
+.ulsmicon .lismicon:hover:nth-child(3) a:before
 {
-  background: #930011;
+  background: #cb1d3d;
 }
-ul li:hover:nth-child(8) a:after
+.ulsmicon .lismicon:hover:nth-child(3) a:after
 {
-  background: #bb2a3a;
+  background: #ad344a;
+}
+
+/* facebook */
+.ulsmicon .lismicon:hover:nth-child(4) a
+{
+  background: #3b5999;
+}
+.ulsmicon .lismicon:hover:nth-child(4) a:before
+{
+  background: #2c3e64;
+}
+.ulsmicon .lismicon:hover:nth-child(4) a:after
+{
+  background: #516aa5;
+}
+
+/* google drive */
+.ulsmicon .lismicon:hover:nth-child(5) a
+{
+  background: #4688F4;
+}
+.ulsmicon .lismicon:hover:nth-child(5) a:before
+{
+  background: #1FA463;
+}
+.ulsmicon .lismicon:hover:nth-child(5) a:after
+{
+  background: #FFD04B;
 }

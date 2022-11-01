@@ -1,21 +1,10 @@
 <?php include("../generator/setings.php");?>
-<link rel="stylesheet" href="../style/modal.css">
+
 <!DOCTYPE html>
 <html>
 <head>
 	<?php include("../generator/head-info.php");?>
-	<style>
-		.lef{
-			margin-top:4%;
-			margin-left:-20%;
-			width:25%;
-		}
-		.rig{
-			margin-top:4%;
-			margin-right:-20%;
-			width:110%;
-		}
-	</style>
+	<link rel="stylesheet" href="../style/style_backside.css">
 </head>
 
 <body>
@@ -25,42 +14,119 @@
 <div class="container" id="main-content">
 
 	<div class="right-side lef">
-
-<br>
-	<b>Sprawdź inne moje projekty:</b> <br><br><br><br>
-		<hr>
-		Github
-		<hr>
-		Drive
-		<hr>
-		Youtube
-		<hr>
-		<br><br><br><br><br><br><br><br>
-	<b>Kontakt:</b> <br><br><br><br>
-		<hr>
-		Email
-		<hr>
-		Facebook
-		<hr>
-
+		<br>
+		<b>Sprawdź inne moje projekty:</b> <br><br><br><br>
+		<a href="https://github.com/DamianJamrozy">	
+			<div class="nav_link">
+				<hr>
+				<ul class="ulsmicon">
+				<li class="lismicon"><a href=""><i class="fa fa-github" aria-hidden="true"></i></a></li></ul>
+				Github
+				<hr>
+			</div>
+		</a>
+		<a href="https://drive.google.com/drive/u/0/folders/1iO_GKEyLnbx0YPPabxCht1a2is-1CmQK">
+			<div class="nav_link">
+				<hr>
+				Google Drive
+				<hr>
+			</div>
+		</a>
+		<a href="https://youtube.com/@djamrozy">
+			<div class="nav_link_last">
+				<hr>
+				Youtube
+				<hr>
+			</div>
+		</a>
+		<b>Kontakt:</b> <br><br>
+			<div class="nav_link">
+				<hr>
+				Email
+				<hr>
+			</div>
+			<div class="nav_link">
+				<hr>
+				Facebook
+				<hr>
+			</div>
 	</div>
 	<div class="right-side rig" id="rig_vid">
 		
 		<br><h4> MOJE KONTO </h4><br>
-		<div id="change_pass_div">
+		<div class="changeone" id="changeone">
 			<hr>
-			<large>Zmień hasło: </large>
+			Zmień hasło 
 			<hr>
-			<br>
-			Chcesz zmienić hasło? Pamiętaj, że po wprowadzeniu zmian, Twoje stare hasło przestanie działać, a co za tym idzie nie będziesz posiadać możliwości zalogowania się na nie w przypadku utraty nowego hasła. 
-			
 		</div>
-		<br><br><br>
-		<div id="change_id_div">
+			<div id="changefirst">
+				<div class="left_section">
+					<br>Chcesz zmienić hasło? <br>Pamiętaj, że po wprowadzeniu zmian, Twoje stare hasło przestanie działać. <br>
+					<img src="../files/img/primary/cyber1.png" style='width:150px; margin-top:50px;'>
+				</div>
+				<div class="right_section">
+					<form onsubmit="return validateForm()" method="POST" >
+						<div class="form-group">
+							<label class="form-control-label">STARE HASŁO</label>
+							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+						</div>
+						<div class="form-group">
+							<label class="form-control-label">NOWE HASŁO</label>
+							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+						</div>
+
+						<div class="form-group">
+							<label class="form-control-label">POWTÓRZ NOWE HASŁO</label>
+							<input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+						</div>
+
+						<div class="col-lg-12 loginbttm">
+							<div class="col-lg-6 login-btm login-text">
+								<!-- Error Message -->
+							</div>
+							<div class="col-lg-6 login-btm login-button">
+								<button type="submit" name="login-form" class="btn btn-outline-primary">ZMIEŃ HASŁO</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		<!-- </div> -->
+	<br>
+		<div class="changetwo" id="changetwo">
 			<hr>
-			Zmień identyfikator: <br>
+			Zmień identyfikator
 			<hr>
-			Twój aktualny identyfikator rozmowy to <?php echo ($_SESSION['keyHost'])?>? Pamiętaj, że po wprowadzeniu zmian, Twoje stare hasło przestanie działać, a co za tym idzie nie będziesz posiadać możliwości zalogowania się na nie w przypadku utraty nowego hasła. 
+		</div>
+			<div id="changesec">
+				<div class="left_section">
+					
+
+					<br>
+					Identyfikator służy do łączenia się z videoczatem wybranego użytkownika. <br> Może występować w dwóch formach. Skróconej oraz pełnej.<br>
+					<img src="../files/img/primary/cyber2.png" style='width:150px; margin-top:30px;'>
+				</div>
+				<div class="right_section">
+					Twój aktualny identyfikator rozmowy to: <br>
+					Klucz: <?php echo ($_SESSION['keyHost'])?> <br>
+					Link: https://meet.jit.si/<?php echo ($_SESSION['keyHost'])?><br><br><br>
+
+					<form onsubmit="return validateForm()" method="POST" >
+						<div class="form-group">
+							<label class="form-control-label">NOWY IDENTYFIKATOR</label>
+							<input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
+						</div>
+							<div class="col-lg-12 loginbttm">
+							<div class="col-lg-6 login-btm login-text">
+								<!-- Error Message -->
+							</div>
+							<div class="col-lg-6 login-btm login-button">
+								<button type="submit" name="login-form" class="btn btn-outline-primary">ZMIEŃ IDENTYFIKATOR</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
 
 		
@@ -69,58 +135,31 @@
 </div>
 
 
+<script>
+	var btn1 = document.getElementById("changeone");
+	var btn2 = document.getElementById("changetwo");
 
 
-<div id="myModal" class="modal">
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span class="close">&times;</span>
-	<div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-md-2"></div>
-            <div class="col-lg-6 col-md-8 login-box" id="log-reg">
-                <div class="col-lg-12 login-key">
-                    <i class="fa fa-key" aria-hidden="true"></i>
-                </div>
-                <div class="col-lg-12 login-title">
-                   LOGOWANIE
-                </div>
-                <div class="col-lg-12 login-form">
-                    <div class="col-lg-12 login-form">
+	var inside1 = document.getElementById("changefirst");
+	var inside2 = document.getElementById("changesec");
 
-                        <form onsubmit="return validateForm()" method="POST" >
-                            <div class="form-group">
-                                <label class="form-control-label">USERNAME/EMAIL</label>
-                                <input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
-                            </div>
-                            <div class="form-group">
-                                <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
-                            </div>
-
-                            <div class="col-lg-12 loginbttm">
-                                <div class="col-lg-6 login-btm login-text">
-                                    <!-- Error Message -->
-                                </div>
-                                <div class="col-lg-6 login-btm login-button">
-                                    <button type="submit" name="login-form" class="btn btn-outline-primary">ZALOGUJ SIĘ</button>
-                                </div>
-								<br><br><br><p> <a href="#" onclick="show_reg()">Nie posiadasz konta? Zarejestruj się!</a></p>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-3 col-md-2"></div>
-            </div>
-        </div>
-  </div>
-</div>
-
-
-
-
-
-
+	btn1.onclick = function() {
+		if(inside1.style.display == "block"){
+			inside1.style.display = "none";
+		}else{
+			inside1.style.display = "block";
+			inside2.style.display = "none";
+		}
+    }
+	btn2.onclick = function() {
+		if(inside2.style.display == "block"){
+			inside2.style.display = "none";
+		}else{
+			inside2.style.display = "block";
+			inside1.style.display = "none";
+		}
+    }
+</script>
 
 
 <script src="../js/index.js"></script>

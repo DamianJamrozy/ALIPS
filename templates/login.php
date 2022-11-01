@@ -343,12 +343,21 @@ date_default_timezone_set('Europe/Warsaw');
         $Password = md5($_POST['password']);
         $date = date('Y-m-d H:i:s');
 
-        $CheckUsr = mysqli_query($dbconect, "SELECT * FROM user WHERE 'email' = '$UserName'");
-        $row = mysqli_fetch_array($CheckUsr);
+        $CheckUsr = "SELECT * FROM user WHERE login = '$UserName' OR email = '$UserName'";
+        $result = mysqli_query($dbconect, $CheckUsr);
 
-        if(is_array($row)){
-            echo '<script>alert("Konto o takim adresie email już istnieje!");</script>';
+        if (mysqli_num_rows($result) > 0) {
+            //while($row = mysqli_fetch_assoc($result)) {
+                echo '<script>alert("Konto o takim adresie email już istnieje!");</script>';
         }
+
+
+
+
+
+
+
+
         else{
             $AddUsr ="INSERT INTO user (login,email,password) VALUES ('','$UserName','$Password')";
             if (mysqli_query($dbconect, $AddUsr)) {

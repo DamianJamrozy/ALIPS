@@ -309,23 +309,29 @@ date_default_timezone_set('Europe/Warsaw');
                     $_SESSION['expiry'] = time()+20; 
                 }
 
-            $CheckModify = "SELECT keyModified FROM videochat WHERE idUser = '$UserId'";
+            $CheckModify = "SELECT * FROM videochat WHERE idUser = '$UserId'";
             $result2 = mysqli_query($dbconect, $CheckModify);
 
             if (mysqli_num_rows($result2) > 0) {
                 while($row = mysqli_fetch_assoc($result2)) {
                     $modify = $row['keyModified'];
+                    $keyHost = $row['keyHost'];
                 }
+               
 
                 if($modify == 0){
                     $ran = rand(100000,999999);
                     $keyHostFullSet = 'https://meet.jit.si/';
+
+
+                    $_SESSION['keyHost'] = $ran.$UserId;
 
                     $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran$UserId', keyHostFull='$keyHostFullSet$ran$UserId' WHERE idUser = '$UserId'";
                         if (mysqli_query($dbconect, $UpdateLogVideo)) {
                             echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
                         }
                 }else{
+                    $_SESSION['keyHost'] = $keyHost;
                     echo '<script>alert("Poprawne dane logowania"); window.location.href= "../templates/dashboard.php";</script>';
                 }
             }
@@ -350,14 +356,6 @@ date_default_timezone_set('Europe/Warsaw');
             //while($row = mysqli_fetch_assoc($result)) {
                 echo '<script>alert("Konto o takim adresie email już istnieje!");</script>';
         }
-
-
-
-
-
-
-
-
         else{
             $AddUsr ="INSERT INTO user (login,email,password) VALUES ('','$UserName','$Password')";
             if (mysqli_query($dbconect, $AddUsr)) {

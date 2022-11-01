@@ -60,7 +60,7 @@
 			<hr>
 			Zmień identyfikator: <br>
 			<hr>
-			Twój aktualny identyfikator rozmowy to <?php echo($_SESSION['KeyHost'])?>? Pamiętaj, że po wprowadzeniu zmian, Twoje stare hasło przestanie działać, a co za tym idzie nie będziesz posiadać możliwości zalogowania się na nie w przypadku utraty nowego hasła. 
+			Twój aktualny identyfikator rozmowy to <?php echo ($_SESSION['keyHost'])?>? Pamiętaj, że po wprowadzeniu zmian, Twoje stare hasło przestanie działać, a co za tym idzie nie będziesz posiadać możliwości zalogowania się na nie w przypadku utraty nowego hasła. 
 		</div>
 
 		

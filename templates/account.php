@@ -5,7 +5,6 @@
 <head>
 	<?php include("../generator/head-info.php");?>
 	<link rel="stylesheet" href="../style/style_backside.css">
-	
 </head>
 
 <body>
@@ -96,8 +95,6 @@
 		</div>
 			<div id="changesec">
 				<div class="left_section">
-					
-
 					<br>
 					Identyfikator służy do łączenia się z videoczatem wybranego użytkownika. <br> Może występować w dwóch formach. Skróconej oraz pełnej.<br>
 					<img src="../files/img/primary/cyber2.png" style='width:150px; margin-top:30px;'>
@@ -110,7 +107,7 @@
 					<form onsubmit="return validateForm2()" method="POST" >
 						<div class="form-group">
 							<label class="form-control-label">NOWY IDENTYFIKATOR</label>
-							<input type="text" name="idKey" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
+							<input type="text" name="idKey" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " required >
 						</div>
 							<div class="col-lg-12 loginbttm">
 							<div class="col-lg-6 login-btm login-text">
@@ -118,6 +115,11 @@
 							</div>
 							<div class="col-lg-6 login-btm login-button">
 								<button type="submit" name="key-form" class="btn btn-outline-primary">ZMIEŃ IDENTYFIKATOR</button>
+							</div>
+					</form>
+					<form onsubmit="return validateForm3()" method="POST" >
+							<div class="col-lg-6 login-btm login-button">
+								<button type="submit" name="key-form-reset" class="btn btn-outline-primary">RESETUJ IDENTYFIKATOR</button>
 							</div>
 						</div>
 					</form>
@@ -133,9 +135,6 @@
 				</ul>
 			</div>
 		</div>
-
-		
-
 	</div>
 </div>
 
@@ -144,13 +143,11 @@
 	var btn1 = document.getElementById("changeone");
 	var btn2 = document.getElementById("changetwo");
 
-
 	var inside1 = document.getElementById("changefirst");
 	var inside2 = document.getElementById("changesec");
 
 	var simcon = document.getElementById("simcon");
 	
-
 	btn1.onclick = function() {
 		if(inside1.style.display == "block"){
 			inside1.style.display = "none";
@@ -207,10 +204,7 @@
             return true;
         }
     }
-
-
 </script>
-
 
 <script src="../js/index.js"></script>
 <?php include("../generator/footer.php");?>
@@ -219,7 +213,7 @@
 //session_start();
 date_default_timezone_set('Europe/Warsaw');
 
-    //START LOGIN FORM ACTION
+    //START PASSWORD FORM ACTION
     if(isset($_POST['password-form'])){
         $OldPassword = md5($_POST['password']);
 		$NewPassword1 = md5($_POST['password1n']);
@@ -238,7 +232,68 @@ date_default_timezone_set('Europe/Warsaw');
             echo '<script>alert("Stare hasło nie pasuje do Twojego konta!");</script>';
         }
     }
-    //END LOGIN FORM ACTION
+    //END PASSWORD FORM ACTION
+
+	 //START KEY CUSTOM FORM ACTION
+	 if(isset($_POST['key-form'])){
+        $keyId = $_POST['idKey'];
+		$idUser = $_SESSION["UserId"];
+		$keyHostFullSet = 'https://meet.jit.si/';
+
+		$CheckUsr1 = "SELECT * FROM videochat WHERE keyHost = '$keyId' ";
+        $result1 = mysqli_query($dbconect, $CheckUsr1);
+		if (mysqli_num_rows($result1) > 0) {
+			if($_SESSION['keyHost-change'] == True){
+				$_SESSION['keyHost-change'] = False;
+				exit;
+			}
+            echo '<script>alert("Ten klucz jest już zajęty!");</script>';
+        } else {
+			$CheckUsr = "SELECT * FROM videochat WHERE idUser = '$idUser' ";
+			$result = mysqli_query($dbconect, $CheckUsr);
+	
+			if (mysqli_num_rows($result) > 0) {
+				$Update = "UPDATE videochat SET keyHost='$keyId', keyHostFull='$keyHostFullSet$keyId', keyModified = '1' WHERE idUser = '$idUser' ";
+					if (mysqli_query($dbconect, $Update)) {
+						$_SESSION['keyHost'] = $keyId;
+						echo '<script>alert("Klucz użytkownika został zmieniony");</script>';
+						$_SESSION['keyHost-change'] = True;
+						echo '<script>window.location.reload();</script>';
+						exit;
+					}
+			} else {
+				echo '<script>alert("Wystąpił błąd! Skontaktuj się z administratorem w celu weryfikacji zgłoszenia.");</script>';
+			}
+        }
+
+
+        
+    }
+    //END KEY CUSTOM FORM ACTION
+
+	//START KEY CUSTOM FORM ACTION
+	if(isset($_POST['key-form-reset'])){
+		$idUser = $_SESSION["UserId"];
+
+		$ran = rand(100000,999999);
+		$keyHostFullSet = 'https://meet.jit.si/';
+
+		
+
+        $CheckUsr = "SELECT * FROM videochat WHERE idUser = '$idUser' ";
+        $result = mysqli_query($dbconect, $CheckUsr);
+
+       $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran$idUser', keyHostFull='$keyHostFullSet$ran$idUser', keyModified = '0' WHERE idUser = '$idUser'";
+		if (mysqli_query($dbconect, $UpdateLogVideo)) {
+			$_SESSION['keyHost'] = $ran.$idUser;
+			echo '<script>alert("Poprawnie zresetowano identyfikator");</script>';
+			header("Refresh:0");
+		}
+		else{
+			echo '<script>alert("Wystąpił błąd podczas przetwarzania danych. Proszę zalogować się ponownie i spróbować jeszcze raz.");</script>';
+		}
+    }
+    //END KEY CUSTOM FORM ACTION
 ?>
 
 

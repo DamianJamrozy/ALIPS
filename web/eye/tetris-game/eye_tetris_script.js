@@ -1,12 +1,6 @@
-
-
-
-
-
-// https://tetris.fandom.com/wiki/Tetris_Guideline
+var points = 0;
 
 // get a random integer between the range of [min,max]
-// @see https://stackoverflow.com/a/1527820/2124254
 function getRandomInt(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -15,7 +9,6 @@ function getRandomInt(min, max) {
 }
 
 // generate a new tetromino sequence
-// @see https://tetris.fandom.com/wiki/Random_Generator
 function generateSequence() {
   const sequence = ['I', 'J', 'L', 'O', 'S', 'T', 'Z'];
 
@@ -50,7 +43,6 @@ function getNextTetromino() {
 }
 
 // rotate an NxN matrix 90deg
-// @see https://codereview.stackexchange.com/a/186834
 function rotate(matrix) {
   const N = matrix.length - 1;
   const result = matrix.map((row, i) =>
@@ -99,11 +91,14 @@ function placeTetromino() {
   // check for line clears starting from the bottom and working our way up
   for (let row = playfield.length - 1; row >= 0; ) {
     if (playfield[row].every(cell => !!cell)) {
-
+      points++;
+      document.getElementById("points_value").innerHTML = points;
+      console.log(points);
       // drop every row above this one
       for (let r = row; r >= 0; r--) {
         for (let c = 0; c < playfield[r].length; c++) {
           playfield[r][c] = playfield[r-1][c];
+          
         }
       }
     }
@@ -151,7 +146,6 @@ for (let row = -2; row < 20; row++) {
 }
 
 // how to draw each tetromino
-// @see https://tetris.fandom.com/wiki/SRS
 const tetrominos = {
   'I': [
     [0,0,0,0],
@@ -295,35 +289,70 @@ document.addEventListener('keydown', function(e) {
 rAF = requestAnimationFrame(loop);
 
 
+
+
+
+
+var i = 0;
+var j = 0;
 webgazer.setGazeListener(function(data, elapsedTime) {
   if (data == null) {
       return;
   }
   var xprediction = data.x; //these x coordinates are relative to the viewport
   var yprediction = data.y; //these y coordinates are relative to the viewport
-  console.log(elapsedTime); //elapsed time is based on time since begin was called
+  //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
-  if(xprediction < 75){
-    const col = tetromino.col - 1;
+  i++;
+  j++;
+
+  if(i==10){
+    i=0;
+
+    // LEFT
+    if(xprediction < 75){
+      const col = tetromino.col - 1;
+      if (isValidMove(tetromino.matrix, tetromino.row, col)) {
+        tetromino.col = col;
+      }
+    }
+    
+    // RIGHT
+    if(xprediction > (window.innerWidth - 75)){
+      const col = tetromino.col + 1;
+      if (isValidMove(tetromino.matrix, tetromino.row, col)) {
+        tetromino.col = col;
+      }
+    }
+
+    // ROTATE
+    if(j==20){
+      j=0;
+      if(yprediction < 30){
+        const matrix = rotate(tetromino.matrix);
+        if (isValidMove(matrix, tetromino.row, tetromino.col)) {
+          tetromino.matrix = matrix;
+        }
+      }
       
-    if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-      tetromino.col = col;
+
+      //DROP
+      /* if(yprediction > (window.innerHeight - 75)){
+        const row = tetromino.row + 1;
+        if (!isValidMove(tetromino.matrix, row, tetromino.col)) {
+          tetromino.row = row - 1;
+          placeTetromino();
+          return;
+        }
+        tetromino.row = row;
+      } */
     }
   }
-  
-  if(xprediction > (window.innerWidth - 75)){
-    const col = tetromino.col + 1;
-      
-    if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-      tetromino.col = col;
-    }
-  }
-
 }).begin();
 
-
-
-
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 
 // Zmiana na false sprawi ukrycie kamery i punktów na twarzy

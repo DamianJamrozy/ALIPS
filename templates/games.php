@@ -34,6 +34,8 @@
 	<div class="right-side rig" id="rig_vid">
 		
 		<br><h4> DJ-Games </h4><br>
+
+		<iframe src="../web/eye/tetris-game/index.php" title="Games" width="100%" height="100%"></iframe>
 		<!-- <p>
 			<button id="start" class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
 		</p> -->

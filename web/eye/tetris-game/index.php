@@ -36,11 +36,27 @@
     canvas {
      border: 1px solid white;
     }
+    #points{
+      width:300px;
+      height:100px;
+      /* background-color:red; */
+      position:fixed;
+      align:right;
+      right:100px;
+      margin-right:0;
+      top:0;
+      color:white;
+      font-size:1.5rem;
+    }
+    #points_text, #points_value{
+      position:relative;
+    }
   </style>
 </head>
 <body>
   
 <canvas width="320" height="640" id="game"></canvas>
 
+<div id="points"><div id="points_text">Zdobyte punkty:</div> <div id="points_value">0</div></div>
 </body>
 </html>

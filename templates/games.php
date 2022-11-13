@@ -25,9 +25,7 @@
 
 	<div class="right-side lef">
 
-		Game 1
-		<hr>
-		Game 2
+		Instrukcja obsługi
 		<hr>
 
 	</div>
@@ -35,10 +33,8 @@
 		
 		<br><h4> DJ-Games </h4><br>
 
-		<iframe src="../web/eye/jump-game/index.php" title="Games" width="100%" height="100%"></iframe>
-		<!-- <p>
-			<button id="start" class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
-		</p> -->
+		<iframe src="../web/gamesHub.php" title="Games" width="100%" height="100%"></iframe>
+		<!-- <iframe src="../web/eye/tetris-game/index.php" title="Games" width="100%" height="100%"></iframe> -->
 
 
 	</div>

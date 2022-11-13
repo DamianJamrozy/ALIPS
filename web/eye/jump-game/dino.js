@@ -93,52 +93,23 @@ webgazer.setGazeListener(function(data, elapsedTime) {
 
   if(i==19){
     i=0;
-
-    /* // LEFT
-    if(xprediction < 75){
-      const col = tetromino.col - 1;
-      if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-        tetromino.col = col;
-      }
+    if(yprediction < 70){
+      yVelocity = JUMP_SPEED
+      isJumping = true
     }
-    
-    // RIGHT
-    if(xprediction > (window.innerWidth - 75)){
-      const col = tetromino.col + 1;
-      if (isValidMove(tetromino.matrix, tetromino.row, col)) {
-        tetromino.col = col;
-      }
-    } */
 
-    // ROTATE
-    //if(j==20){
-      //j=0;
-      if(yprediction < 30){
-        yVelocity = JUMP_SPEED
-        isJumping = true
-      }
-
-      if(yprediction > (window.innerHeight - 75)){
-        yVelocity = JUMP_SPEED
-        isJumping = true
-      }
+    if(yprediction > (window.innerHeight - 75)){
+      yVelocity = JUMP_SPEED
+      isJumping = true
+    }
 
    // }
   }
-
-
-
-  if (this.isBlink()) {
-    console.log("I blinked")
-      eyesObj.left.blink = true;
-      eyesObj.right.blink = true;
-  }
-
-
-
-
   
 }).begin();
+
+
+
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));

@@ -107,7 +107,7 @@
 					<form onsubmit="return validateForm2()" method="POST" >
 						<div class="form-group">
 							<label class="form-control-label">NOWY IDENTYFIKATOR</label>
-							<input type="text" name="idKey" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " required >
+							<input type="text" name="idKey" class="form-control" pattern="[^&#39;&#34;&#783;&#757;&#96;&#x60;=()/><\][\\\x22,;:|]+" title="Pole nie może zawierać symboli &#39;  &#34; ` " required >
 						</div>
 							<div class="col-lg-12 loginbttm">
 							<div class="col-lg-6 login-btm login-text">
@@ -177,12 +177,13 @@
 		
         let t1 = '"';
         let t2 = "'";
+		let t3 = "`";
 
 		if(v_password2 != v_password3){
 			alert("Nowe hasło zostało błędnie powtórzone!");
 			return false;
 		}
-        else if(v_password.includes(t1) || v_password.includes(t2) || v_password2.includes(t1) || v_password2.includes(t2) || v_password3.includes(t1) || v_password3.includes(t2)){
+        else if(v_password.includes(t1) || v_password.includes(t2) || v_password.includes(t3) || v_password2.includes(t1) || v_password2.includes(t2) || v_password2.includes(t3) || v_password3.includes(t1) || v_password3.includes(t2) || v_password3.includes(t3)){
             console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
             return false;
         }else{
@@ -195,8 +196,9 @@
         let v_idKey = document.getElementsByName("idKey")[0].value;
         let t1 = '"';
         let t2 = "'";
+		let t3 = "`";
 
-        if(v_idKey.includes(t1) || v_idKey.includes(t2)){
+        if(v_idKey.includes(t1) || v_idKey.includes(t2) || v_idKey.includes(t3)){
             console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
             return false;
         }else{

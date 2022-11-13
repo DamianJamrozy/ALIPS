@@ -201,11 +201,11 @@ label {
                         <form onsubmit="return validateForm()" method="POST" >
                             <div class="form-group">
                                 <label class="form-control-label">USERNAME/EMAIL</label>
-                                <input type="text" name="login" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" required >
+                                <input type="text" name="login" class="form-control" pattern="[^&#39;&#34;&#783;&#757;&#96;&#x60;=()/><\][\\\x22,;:|]+" required >
                             </div>
                             <div class="form-group">
                                 <label class="form-control-label">PASSWORD</label>
-                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;=()/><\][\\\x22,;:|]+" i required>
+                                <input type="password" name="password" class="form-control" pattern="[^&#39;&#34;&#783;&#757;&#96;&#x60;=()/><\][\\\x22,;:|]+" i required>
                             </div>
 
                             <div class="col-lg-12 loginbttm">
@@ -270,9 +270,10 @@ label {
         let v_password = document.getElementsByName("password")[0].value;
         let t1 = '"';
         let t2 = "'";
+        let t3 = "`";
 
 
-        if(v_login.includes(t1) || v_login.includes(t2) || v_password.includes(t1) || v_password.includes(t2)){
+        if(v_login.includes(t1) || v_login.includes(t2) || v_login.includes(t3) || v_password.includes(t1) || v_password.includes(t2) || v_password.includes(t3)){
             console.log("Walidacja 2 wykryła błąd! Login lub hasło zawiera niedozwolone znaki!"); 
             return false;
         }else{

@@ -1,5 +1,5 @@
 <?php
-$conn = mysqli_connect("localhost", "root", "", "data");
+$conn = mysqli_connect("localhost", "root", "", "alips");
 $rows = mysqli_query($conn, "SELECT * FROM tb_data");
 ?>
 <table border = 1 cellpadding = 10>

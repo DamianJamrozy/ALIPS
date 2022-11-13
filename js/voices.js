@@ -4,20 +4,21 @@ annyang.setLanguage('pl-PL');
   // Let's define a command.
   const commands = {
     // Navigation
-    'Strona home': sHome,
-    'Strona gry': sGry,
-    'Strona Wideoczat': sVideochat,
-    'Strona Video Chat': sVideochat,
-    'Strona Moje Konto': sMyAccount,
-    'Strona Moi Znajomi': sMyFriends,
-    'Strona Konfiguracja': sConfig,
-    'Strona Wyloguj się': sLogout,
+    'strona home.': sHome,
+    'stronach um.': sHome,
+    'strona gry.': sGry,
+    'strona wideoczat.': sVideochat,
+    'strona video chat.': sVideochat,
+    'strona moje konto.': sMyAccount,
+    'strona moi znajomi.': sMyFriends,
+    'strona konfiguracja.': sConfig,
+    'strona wyloguj się.': sLogout,
     
     // Help command
-    'A lips': sAlips,
-    'Elips': sAlips,
-    'Alice': sAlips,
-    'OLX': sAlips
+    'a lips.': sAlips,
+    'elips.': sAlips,
+    'alice.': sAlips,
+    'OLX.': sAlips
   };
 
    // START Navigation functions

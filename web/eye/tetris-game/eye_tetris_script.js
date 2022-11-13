@@ -125,6 +125,7 @@ function showGameOver() {
   context.textAlign = 'center';
   context.textBaseline = 'middle';
   context.fillText('GAME OVER!', canvas.width / 2, canvas.height / 2);
+  
 }
 
 const canvas = document.getElementById('game');

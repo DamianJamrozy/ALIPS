@@ -1,5 +1,5 @@
 <!-- REDIRECT IF USER IS NOT LOGGED -->
-<?php if ($CURRENT_PAGE != "Home" && $CURRENT_PAGE != "Start") { ?>
+<?php if ($CURRENT_PAGE != "Home" && $CURRENT_PAGE != "Start" && $CURRENT_PAGE != "Videochat" && $CURRENT_PAGE != "Games" ) { ?>
     <div class="speak_text">
         <div class="speak_icon">
             <img src="../files/img/primary/mic.png" width='25px'>
@@ -9,6 +9,7 @@
     </div>
 
     <!-- VOICE CONTROLL -->
+
 <script src="../js/voiceController.js"></script>
 <script src="../js/voices.js"></script>
 	<?php } ?>

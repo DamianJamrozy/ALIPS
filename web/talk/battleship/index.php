@@ -11,16 +11,16 @@
 		<div class="formShips">
 			<center>
 				Dołącz do gry:
-			<form method="POST" onsubmit="return validateShips()" action="battleship.php">
+			<form method="POST" onsubmit="return validateShips()" action="set_ship.php">
 				<input name="keyToHostGame" type="text" placeholder="Klucz rozgrywki" class="outShip" pattern="[^&#39;&#34;&#783;&#757;&#96;&#x60;=()/><\][\\\x22,;:|]+"  onclick=validateForm() required ><br>
-				<input type="submit" class="inShip" value="Dołącz"><br>
+				<input type="submit" class="inShip" name="joinGame" value="Dołącz"><br>
 			</form>
 			<br><br>
 				Utwórz grę
 				<br>
-				Kod rozgrywki: <div id="keyGameHost"> <?php echo ($_SESSION['keyHost'])?></div>
-			<form method="POST" action="battleship.php">
-				<input type="submit" value="Utwórz grę" class="inShip">
+				
+			<form method="POST" action="set_ship.php">
+				<input type="submit" name="setGame" value="Utwórz grę" class="inShip">
 			</form>
 				<!-- <input type="submit" value="Wygeneruj nowy kod" class="inShip"> -->
 			</center>

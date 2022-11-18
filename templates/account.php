@@ -277,11 +277,27 @@ date_default_timezone_set('Europe/Warsaw');
 	if(isset($_POST['key-form-reset'])){
 		$idUser = $_SESSION["UserId"];
 
-		$ran = rand(100000,999999);
 		$keyHostFullSet = 'https://meet.jit.si/';
 
-		
 
+		$v = 0;
+
+		// VERIFY IS KEY USED
+		while($v==0){
+			$ran = rand(100000,999999);
+			
+			$keyVerify =  $ran.$UserId;
+			$_SESSION['keyHost'] = $keyVerify;
+
+			$CheckExist = "SELECT * FROM videochat WHERE keyHost = '$keyVerify'";
+			$result3 = mysqli_query($dbconect, $CheckExist);
+			if (mysqli_num_rows($result3) < 1) {
+				// KEY IS FREE - GO TO NEXT STEP
+				$v = 1;
+			} 
+			// IF KEY IS USED - TRY AGAIN
+		}
+		
         $CheckUsr = "SELECT * FROM videochat WHERE idUser = '$idUser' ";
         $result = mysqli_query($dbconect, $CheckUsr);
 

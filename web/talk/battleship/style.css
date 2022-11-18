@@ -13,6 +13,10 @@ body {
 	font-size: 25px;
 }
 
+/* #btnhid{
+  visibility: hidden;
+} */
+
 .inShip{
   margin-top: 10px;
   margin-bottom: 10px;

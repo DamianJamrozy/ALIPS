@@ -321,11 +321,25 @@ date_default_timezone_set('Europe/Warsaw');
                
 
                 if($modify == 0){
-                    $ran = rand(100000,999999);
                     $keyHostFullSet = 'https://meet.jit.si/';
+                    
+                    $v = 0;
 
-
-                    $_SESSION['keyHost'] = $ran.$UserId;
+                    // VERIFY IS KEY USED
+                    while($v==0){
+                        $ran = rand(100000,999999);
+                        
+                        $keyVerify =  $ran.$UserId;
+                        $_SESSION['keyHost'] = $keyVerify;
+    
+                        $CheckExist = "SELECT * FROM videochat WHERE keyHost = '$keyVerify'";
+                        $result3 = mysqli_query($dbconect, $CheckExist);
+                        if (mysqli_num_rows($result3) < 1) {
+                            // KEY IS FREE - GO TO NEXT STEP
+                            $v = 1;
+                        } 
+                        // IF KEY IS USED - TRY AGAIN
+                    }
 
                     $UpdateLogVideo = "UPDATE videochat SET keyHost='$ran$UserId', keyHostFull='$keyHostFullSet$ran$UserId' WHERE idUser = '$UserId'";
                         if (mysqli_query($dbconect, $UpdateLogVideo)) {
@@ -373,9 +387,26 @@ date_default_timezone_set('Europe/Warsaw');
                 } else {
                     echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
                 }
-
-                $ran = rand(100000,999999);
                 $keyHostFullSet = 'https://meet.jit.si/';
+
+                $v = 0;
+
+                // VERIFY IS KEY USED
+                while($v==0){
+                    $ran = rand(100000,999999);
+                    
+                    $keyVerify =  $ran.$UserId;
+                    $_SESSION['keyHost'] = $keyVerify;
+
+                    $CheckExist = "SELECT * FROM videochat WHERE keyHost = '$keyVerify'";
+                    $result3 = mysqli_query($dbconect, $CheckExist);
+                    if (mysqli_num_rows($result3) < 1) {
+                        // KEY IS FREE - GO TO NEXT STEP
+                        $v = 1;
+                    } 
+                    // IF KEY IS USED - TRY AGAIN
+                }
+
             
                 $AddVideo ="INSERT INTO videochat (id,idUser,keyHost,keyHostFull,keyActive,lastVideo,keyModified) VALUES ('','$id','$ran$UserId','$keyHostFullSet$ran$UserId', 'NULL', 'NULL', '0')";
                 if (mysqli_query($dbconect, $AddVideo)) {}else{echo '<script>alert("Błąd aktualizacji tabeli video.");</script>';}

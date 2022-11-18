@@ -4,6 +4,25 @@ annyang.setLanguage('pl-PL');
   // Let's define a command.
   const commands = {
     // Navigation
+    // Chrome
+    'strona home': sHome,
+    'strona gry': sGry,
+    'strona wideoczat': sVideochat,
+    'strona video chat': sVideochat,
+    'strona moje konto': sMyAccount,
+    'strona moi znajomi': sMyFriends,
+    'strona konfiguracja': sConfig,
+    'strona wyloguj się': sLogout,
+
+    // Help command
+    'a lips': sAlips,
+    'elips': sAlips,
+    'alice': sAlips,
+    'OLX': sAlips,
+
+
+
+    // Microsoft Edge
     'strona home.': sHome,
     'stronach um.': sHome,
     'strona gry.': sGry,

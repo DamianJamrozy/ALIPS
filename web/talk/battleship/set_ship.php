@@ -12,7 +12,41 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 
 <?php
 
-	$keyVerify = $_SESSION['keyHostGame'];
+	if(isset($_SESSION['keyHostGame'])){
+		$playerId = $_SESSION["UserId"];
+		$keyVerify = $_SESSION['keyHostGame'];
+		$CheckExist = "SELECT * FROM game_talk_ships WHERE game_key = '$keyVerify' AND gameDate = CURDATE() AND (idHost = '$playerId' OR idGuest = '$playerId')" ;
+		$result3 = mysqli_query($dbconect, $CheckExist);
+		if (mysqli_num_rows($result3) > 0) {
+			while($row = mysqli_fetch_assoc($result3)) {
+				$id = $row["id"];
+				$idHost = $row["idHost"];
+				$idGuest = $row["idGuest"];
+				$hostRedy = $row["hostRedy"];
+				$guestRedy = $row["guestRedy"];
+			}
+			if(($playerId == $idHost && $hostRedy == 1) || ($playerId == $idGuest && $guestRedy == 1) ){
+				echo '<script> window.location.href = "battleship.php";</script>';
+			}
+		}
+	}
+
+	if(isset($_POST['startGame'])){
+		//$hostId = $_SESSION['keyHost'];
+		//$playerId = $_SESSION["UserId"];
+		$keyVerify = $_SESSION['keyHostGame']; 
+		$tabShip = $_POST['location'];
+
+		if($idHost == $playerId){
+			$joinGameLobby ="UPDATE game_talk_ships SET hostDashboard = '$tabShip', hostRedy = 1 WHERE id = '$id'";
+			if (mysqli_query($dbconect, $joinGameLobby)) {}	
+		}
+		else if($idGuest == $playerId){
+			$joinGameLobby ="UPDATE game_talk_ships SET guestDashboard = '$tabShip', guestRedy = 1 WHERE id = '$id'";
+			if (mysqli_query($dbconect, $joinGameLobby)) {}	
+		}		
+	}
+
 
 	 if(isset($_POST['setGame'])){
 		//$hostId = $_SESSION['keyHost'];
@@ -49,6 +83,7 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 		$playerId = $_SESSION["UserId"];
 		$keyJoin = $_POST['keyToHostGame'];
 		$keyVerify = $keyJoin;
+		$_SESSION['keyHostGame'] = $keyVerify;
 
 		$CheckExist = "SELECT * FROM game_talk_ships WHERE game_key = '$keyJoin' AND gameDate = CURDATE() AND idHost != '$playerId' AND (idGuest IS NULL OR idGuest = '$playerId')" ;
 		$result3 = mysqli_query($dbconect, $CheckExist);
@@ -60,7 +95,7 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 			}
 
 			if($guestRedy == 1){
-				echo '<script> window.location.href = "index.php";</script>';
+				echo '<script> window.location.href = "battleship.php";</script>';
 			}else{
 				$joinGameLobby ="UPDATE game_talk_ships SET idGuest = '$playerId' WHERE id = '$id'";
            		if (mysqli_query($dbconect, $joinGameLobby)) {}	
@@ -69,6 +104,9 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 			echo '<script>alert("Rozgrywka zakończyła się lub klucz rozgrywki jest błędny."); window.location.href= "index.php";</script>';
 		}
 	} 
+
+
+	
 		
 
 ?>
@@ -162,6 +200,12 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 			</tr>
 		</table>
 		<center>
+			<form method="POST" >
+				<input class="inShip" name="startGame" id="startGame" type="submit" value="Rozpocznij"> <br>
+				<input id="btnhid" name="location" type="text" > 
+			</form>
+			<input id="resetShip" type="button" value="Resetuj ustawienie" onclick=resetShip()> 
+			
 		<br><div>Powiedziałeś</div><div id="speak_text"></div>
 	</div></center>
 	<script src="../../../js/voiceController.js"></script>

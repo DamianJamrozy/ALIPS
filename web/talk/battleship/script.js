@@ -85,6 +85,10 @@ function reply_click(idShip)
 		document.getElementById("messageArea").innerHTML = "Okręt gotowy!";
 		document.getElementById(idShip).setAttribute("class","hit");
 		document.getElementById("messageArea").innerHTML = "Pozostało: " + i;
+		if(i == 0){
+			document.getElementById("btnhid").value = tabShip;
+		}
+		
 	}
 	else if (tabShip[setShipY][setShipX] == 1){
 		document.getElementById("messageArea").innerHTML = "Kapitanie, nasz okręt już stacjonuje w wybranym miejscu.";

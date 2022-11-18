@@ -64,6 +64,7 @@ annyang.setLanguage('pl-PL');
 
 
 /* START SHIP CONFIGURATION */
+
 var tabShip = [
 	[0,0,0,0,0,0,0],
 	[0,0,0,0,0,0,0],
@@ -98,35 +99,6 @@ function reply_click(idShip)
 	}
 }
 /* END SHIP CONFIGURATION */
-
-
-/* START RESET SHIP LOCATION */
-function resetShip(){
-	
-	for (let k = 0; k != 7; k++){
-		for(let j = 0; j != 7; j++){
-			if(tabShip[j][k] == 1){
-				let z = k+''+j;
-				document.getElementById(z).removeAttribute("class","hit");
-			}
-		}
-	}
-	
-	tabShip = [
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0],
-		[0,0,0,0,0,0,0]
-	];
-
-	i = 9;
-
-	document.getElementById("messageArea").innerHTML = "Pozostało: " + i;
-}
-/* END RESET SHIP LOCATION */
 
 /* START GAME BATTLESHIP */
 function validateShips(){

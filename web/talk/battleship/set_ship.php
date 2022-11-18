@@ -1,6 +1,3 @@
-<!-- It's a simple battleship game. This is the second version (my own) of game I wrote during learning with book "Head First - JavaScript programming" by Freeman, Robson. I changed by myself the way of playing. Instead of writing the location, you have to click on chosen cell.
-The graphic design is mine. I styled this game with my own ideas and my own HTML and CSS code. -->
-
 <!DOCTYPE html>
 <html lang="pl-PL">
 <?php include("../../../generator/setings.php");?>
@@ -208,7 +205,7 @@ The graphic design is mine. I styled this game with my own ideas and my own HTML
 			
 		<br><div>Powiedziałeś</div><div id="speak_text"></div>
 	</div></center>
-	<script src="../../../js/voiceController.js"></script>
-	<script src="script.js"></script>
+	<!-- <script src="../../../js/voiceController.js"></script> -->
+	<script src="set_script.js"></script>
 </body>
 </html>

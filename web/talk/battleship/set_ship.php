@@ -70,7 +70,7 @@
 
 		$dateGame = date("Y-m-d");
 
-		$setNewGameLobby ="INSERT INTO game_talk_ships (id,idHost,hostDashboard,idGuest,guestDashboard,game_key,Public,idWinPlayer,gameDate,hostRedy,guestRedy) VALUES ('','$hostId',NULL,NULL,NULL,'$keyVerify',NULL,NULL,'$dateGame','0','0')";
+		$setNewGameLobby ="INSERT INTO game_talk_ships (id,idHost,hostDashboard,idGuest,guestDashboard,game_key,idWinPlayer,gameDate,hostRedy,guestRedy) VALUES ('','$hostId',NULL,NULL,NULL,'$keyVerify',NULL,'$dateGame','0','0')";
             if (mysqli_query($dbconect, $setNewGameLobby)) {}		
 	}	
 	
@@ -198,8 +198,8 @@
 		</table>
 		<center>
 			<form method="POST" >
-				<input class="inShip" name="startGame" id="startGame" type="submit" value="Rozpocznij"> <br>
-				<input id="btnhid" name="location" type="text" > 
+				<input class="inShip" name="startGame" id="startGame" type="submit" value="Rozpocznij" > <br>
+				<input id="btnhid" name="location" type="text" style="visibility: hidden;"> 
 			</form>
 			<input id="resetShip" type="button" value="Resetuj ustawienie" onclick=resetShip()> 
 			

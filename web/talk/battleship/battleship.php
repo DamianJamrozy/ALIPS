@@ -25,6 +25,8 @@
             $guestDashboard = $row["guestDashboard"];
 			$destroyGuest = $row["destroyGuest"];
 			$destroyHost = $row["destroyHost"];
+			$playerGuestMove = $row["playerGuestMove"];
+			$playerHostMove = $row["playerHostMove"];
         }
     }
 
@@ -35,11 +37,14 @@
 		//$lastShoot = $_POST['lastShoot'];
 
 		if($idHost == $playerId){
-			$joinGameLobby ="UPDATE game_talk_ships SET guestDashboard = '$tabShip', playerMove = 1, destroyGuest = '$destroy' WHERE id = '$id'";
+			$playerHostMove++;
+
+			$joinGameLobby ="UPDATE game_talk_ships SET guestDashboard = '$tabShip', destroyGuest = '$destroy', playerHostMove = '$playerHostMove' WHERE id = '$id'";
 			if (mysqli_query($dbconect, $joinGameLobby)) {}	
 		}
 		else if($idGuest == $playerId){
-			$joinGameLobby ="UPDATE game_talk_ships SET hostDashboard = '$tabShip', playerMove = 0, destroyHost = '$destroy' WHERE id = '$id'";
+			$playerGuestMove++;
+			$joinGameLobby ="UPDATE game_talk_ships SET hostDashboard = '$tabShip', destroyHost = '$destroy', playerGuestMove = '$playerGuestMove' WHERE id = '$id'";
 			if (mysqli_query($dbconect, $joinGameLobby)) {}	
 		}		
 	}
@@ -59,6 +64,8 @@
             $guestDashboard = $row["guestDashboard"];
 			$destroyGuest = $row["destroyGuest"];
 			$destroyHost = $row["destroyHost"];
+			$playerGuestMove = $row["playerGuestMove"];
+			$playerHostMove = $row["playerHostMove"];
         }
     }
 
@@ -184,16 +191,49 @@
 	</div></center>
 	
 	<form method="POST" name="sendRocket">
-		<input type="text" name="location" id="location">
-		<input type="text" name="destroy" id="destroy">
+		<input type="text" name="location" id="location" style="visibility: hidden;">
+		<input type="text" name="destroy" id="destroy" style="visibility: hidden;">
 		<!-- <input type="text" name="lastShoot" id="lastShoot"> -->
-		<input type="submit" id="sendRocket" name="fire">
+		<input type="submit" id="sendRocket" name="fire" style="visibility: hidden;">
 	</form>
 	<script src="../../../js/voiceController.js"></script>
 	<!-- <script src="script.js"></script> -->
 
 
+<?php
 
+// START END OF GAME
+if($destroyGuest == 9 && $destroyHost == 9){
+	// IF HOST WIN
+	if($playerGuestMove > $playerHostMove){
+		$joinGameLobby ="UPDATE game_talk_ships SET idWinPlayer = '$idHost' WHERE id = '$id'";
+		if (mysqli_query($dbconect, $joinGameLobby)) {}	
+		if($playerId == $idHost){
+			echo('<script>document.getElementById("messageArea").innerHTML = "Kapitanie Wygraliśmy bitwę! Wszystkie okręty wroga zostały zatopione.";</script>');
+		}else{
+			echo('<script>document.getElementById("messageArea").innerHTML = "Niestety ale polegliśmy. Nasze statki zatonęły.";</script>');
+		}
+	}
+	// IF GUEST WIN
+	else if ($playerGuestMove < $playerHostMove){
+		$joinGameLobby ="UPDATE game_talk_ships SET idWinPlayer = '$idGuest' WHERE id = '$id'";
+		if (mysqli_query($dbconect, $joinGameLobby)) {}	
+		if($playerId == $idGuest){
+			echo('<script>document.getElementById("messageArea").innerHTML = "Kapitanie Wygraliśmy bitwę! Wszystkie okręty wroga zostały zatopione.";</script>');
+		}else{
+			echo('<script>document.getElementById("messageArea").innerHTML = "Niestety ale polegliśmy. Nasze statki zatonęły.";</script>');
+		}
+	}
+	// IF DRAW
+	else{
+		$joinGameLobby ="UPDATE game_talk_ships SET idWinPlayer = '0' WHERE id = '$id'";
+		if (mysqli_query($dbconect, $joinGameLobby)) {}	
+		echo('<script>document.getElementById("messageArea").innerHTML = "Bitwa zakończona ale nikt nie wygrał...";</script>');
+	}
+}
+// END OF GAME
+
+?>
 
 
 
@@ -240,18 +280,6 @@
 			}
 			console.log(locationY + ' ' + locationX);
 		}
-		// LAST SHOOT
-		/* locationLastX = sessionStorage.getItem("lastShootX");
-		locationLastY = sessionStorage.getItem("lastShootY");
-		if(tabShip[locationLastY][locationLastX]==2){
-			console.log(locationLastY+''+locationLastX);
-			document.getElementById(locationLastX+''+locationLastY).setAttribute("class","hit");
-			console.log("Trafiony.");
-		}
-		else if (tabShip[locationLastY][locationLastX]==8){
-			document.getElementById(locationLastX+''+locationLastY).setAttribute("class","miss");
-			console.log("Pudło.");
-		} */
 
 		console.log(tabShip);
 
@@ -262,7 +290,7 @@
 
 		if(i == 0){
 			//document.getElementById("btnhid").value = tabShip;
-			document.getElementById("messageArea").innerHTML = "Kapitanie Wygraliśmy bitwę! Wszystkie okręty wroga zostały zatopione.";
+			//document.getElementById("messageArea").innerHTML = "Kapitanie Wygraliśmy bitwę! Wszystkie okręty wroga zostały zatopione.";
 			wait = 1;
 		}
 

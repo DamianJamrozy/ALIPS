@@ -29,18 +29,36 @@
 	}
 
 	if(isset($_POST['startGame'])){
-		//$hostId = $_SESSION['keyHost'];
-		//$playerId = $_SESSION["UserId"];
+		$playerId = $_SESSION["UserId"];
 		$keyVerify = $_SESSION['keyHostGame']; 
 		$tabShip = $_POST['location'];
 
 		if($idHost == $playerId){
 			$joinGameLobby ="UPDATE game_talk_ships SET hostDashboard = '$tabShip', hostRedy = 1 WHERE id = '$id'";
-			if (mysqli_query($dbconect, $joinGameLobby)) {}	
+			if (mysqli_query($dbconect, $joinGameLobby)) {
+				// IF GUEST IS REDY -> START GAME / ELSE RETURN TO START PAGE
+				$CheckRedy = "SELECT * FROM game_talk_ships WHERE game_key = '$keyVerify' AND gameDate = CURDATE() AND idHost = '$playerId' AND guestRedy = '1'" ;
+				$result = mysqli_query($dbconect, $CheckRedy);
+				if (mysqli_num_rows($result) > 0) {
+					echo '<script> window.location.href = "battleship.php";</script>';
+				}else{
+					echo '<script> alert("Gość nie jest gotowy, spróbuj ponownie później."); window.location.href = "index.php";</script>';
+				}
+			}	
 		}
 		else if($idGuest == $playerId){
 			$joinGameLobby ="UPDATE game_talk_ships SET guestDashboard = '$tabShip', guestRedy = 1 WHERE id = '$id'";
-			if (mysqli_query($dbconect, $joinGameLobby)) {}	
+			if (mysqli_query($dbconect, $joinGameLobby)) {
+				// IF HOST IS REDY -> START GAME / ELSE RETURN TO START PAGE
+				$CheckRedy = "SELECT * FROM game_talk_ships WHERE game_key = '$keyVerify' AND gameDate = CURDATE() AND idGuest = '$playerId' AND hostRedy = '1'" ;
+				$result = mysqli_query($dbconect, $CheckRedy);
+				if (mysqli_num_rows($result) > 0) {
+					echo '<script> window.location.href = "battleship.php";</script>';
+				}else{
+					echo '<script> alert("Host nie jest gotowy, spróbuj ponownie później."); window.location.href = "index.php";</script>';
+				}
+			}
+				
 		}		
 	}
 
@@ -76,7 +94,6 @@
 	
 
 	if(isset($_POST['joinGame'])){
-		//$hostId = $_SESSION['keyHost'];
 		$playerId = $_SESSION["UserId"];
 		$keyJoin = $_POST['keyToHostGame'];
 		$keyVerify = $keyJoin;

@@ -1,0 +1,6 @@
+﻿Autorem mini gry jest: Damian Jamroży.
+Wszelkie prawa zastrzeżone.
+Zastrzega się prawo do ingerencji w kod źródłowy (edycji) oraz rozpowszechniania jej w celach komercyjnych.
+Aplikację można rozpowszechniać w celach niekomercyjnych z zachowaniem jawnie widocznych informacji dotyczących jej twórców.
+Każdorazowe udostępnienie ww. aplikacji w celach niekomercyjnych należy zgłosić autorom za pośrednictwem maila (damianjamrozy99@gmail.com), przesyłając jednocześnie lokalizację do udostępnionego pliku.
+Autor zastrzega sobie prawo do odmowy możliwości udostępnienia aplikacji. Po odmowie, osoba publikująca ma obowiązek usunąć publikację do 3 dni roboczych od momentu otrzymania wiadomości.

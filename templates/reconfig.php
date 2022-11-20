@@ -27,7 +27,7 @@
 
 
 <script src="../js/index.js"></script>
-<script src="../generator/eye_tracking/webgazer.js"></script>
+
 
 <?php include("../generator/footer.php");?>
 </body>
@@ -36,7 +36,7 @@
 <script>
 	//Reconfig
 	function clear_config(){
-		window.saveDataAcrossSessions = false;
+		//window.saveDataAcrossSessions = false;
 		localStorage.clear();
 		sessionStorage.clear();
 		window.location.reload();
@@ -125,7 +125,7 @@
 	}
 </script>
 
-
+<script src="../generator/eye_tracking/webgazer.js"></script>
 
 <!-- <div class="central-container-side">
 		<div class="grid conactive" id='con1'>1a</div>	<div class="grid">2a</div>	<div class="grid">3a</div>	<div class="grid">4a</div>	<div class="grid" id='con2'>5a</div>

@@ -1,0 +1,209 @@
+﻿body{
+	margin:0;
+	padding:0;
+	background-image:url(../img/Tlo.png);
+	background-repeat:no-repeat;
+}
+
+#header{
+	width:100%;
+	height:15%;
+	text-align:right;
+	position:relative;
+	float:left;
+}
+
+#content_left{
+	width:80%;
+	height:85%;
+	position:relative;
+	float:left;
+	
+}
+
+#content_question{
+	width:100%;
+	height:70%;
+	position:relative;
+	float:left;
+	color:Cornsilk;
+	font-family:Sans-serif;
+	font-size:200%;
+	text-align: center;
+	line-height: 150%;
+}
+
+#content_options{
+	width:100%;
+	height:30%;
+	position:relative;
+	float:left;
+	border-width: medium; 
+	border-style: solid; 
+	border-color: gold;
+	color:Cornsilk;
+	font-size:250%;
+	font-family:Sans-serif;
+
+}
+
+#content_right{
+	width:20%;
+	height:85%;
+	position:relative;
+	float:left;
+	font-size:130%;
+	
+}
+
+#nr{
+	margin-top:20%;
+	width:20%;
+	position:relative;
+	float:left;
+	text-align:left;
+	font-weight:bold;
+	font-family:Sans-serif;
+	color:GoldenRod;
+	margin-left:5%;
+}
+
+#score{
+	margin-top:23%;
+	width:10%;
+	position:relative;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	font-family:Sans-serif;
+	font-size:51%;
+}
+
+#money{
+	margin-top:20%;
+	width:60%;
+	position:relative;
+	float:right;
+	text-align:right;
+	font-weight:bold;
+	font-family:Sans-serif;
+	color:GoldenRod;
+	margin-right:5%;
+}
+
+#foter{
+	width:100%;
+	height:10%;
+	position:relative;
+	float:left;
+}
+
+#50-50-off, #phone_off, #people-off{
+	display:hidden;
+}
+
+#50-50-on, #phone_on, #people-on{
+	display:block;
+}
+
+#fif_fif_on, #phone_on, #people_on, #fif_fif_off, #phone_off, #people_off{
+	position:relative;
+	float:left;
+	height:100%;
+	width:10%;
+	display:block;
+}
+#napis{
+	margin-left:10%;
+	width:50%;
+	position:relative;
+	float:left;
+}
+
+.coins{
+	font-size:30%;
+	height:2%;
+	border-radius: 50px;
+	border-color:white;
+}
+
+.coins_gain{
+	box-shadow: 0 0 20px 10px white;
+	font-size:30%;
+	height:2%;
+	border-radius: 50px;
+	border-color:white;
+}
+
+#play_btn{
+	width:100%;
+	height:100%;
+	background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+	font-size:300%;
+	opacity: 0.5;
+	transition: all .2s ease-in-out;
+	color:Cornsilk;
+}
+#play_btn:hover{
+	transform: scale(1.1);
+	opacity: 1;
+}
+
+.answer_btn{
+	width:50%;
+	height:50%;
+	font-size:50%;
+	overflow: hidden;
+	font-size:50%;
+	background-color: black;
+	color:white;
+	background: rgba(0, 20.8, 84.3, 0.1);
+}
+
+.answer_btn:hover{
+	background: rgba(0, 20.8, 84.3, 0.3);
+}
+
+
+img:hover{transform: scale(1.1);}
+img{transition: all .2s ease-in-out;}
+
+#instruction:hover{transform: scale(1.1);}
+#instruction{
+	transition: all .2s ease-in-out;
+	font-size:50%; 
+	color:white;
+}
+
+
+@media all and (min-width:1920px) and (max-width:3840px) {
+	.coins{
+	font-size:10%;
+	height:2%;
+	border-radius: 50px;
+	border-color:white;
+}
+	
+  .coins_gain{
+	box-shadow: 0 0 20px 10px white;
+	font-size:10%;
+	height:2%;
+	border-radius: 50px;
+	border-color:white;
+	}
+	
+	#score{
+	margin-top:23%;
+	width:10%;
+	position:relative;
+	float:left;
+	text-align:center;
+	font-weight:bold;
+	font-family:Sans-serif;
+	font-size:55%;
+	}
+}

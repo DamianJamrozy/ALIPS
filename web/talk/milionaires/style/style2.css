@@ -1,0 +1,17 @@
+﻿body{
+	margin:0;
+	padding:0;
+	background-image:url(../img/Tlo.png);
+	background-repeat:no-repeat;
+	color:Cornsilk;
+	font-family:Sans-serif;
+	font-size:250%;
+	text-align: center;
+}
+
+#ring{
+	width:35%;
+}
+.ringing1{transform: scale(1.1);}
+.ringing1{transition: all .2s ease-in-out;}
+.ringing2{transition: all .2s ease-in-out;}

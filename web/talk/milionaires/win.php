@@ -10,6 +10,28 @@
 <?php include("../../../generator/setings.php");?>
 </head>
 
+
+<?php
+	if(isset($_POST['cash'])){
+		$playerId = $_SESSION["UserId"];
+		$countCash = $_POST['countCash'];
+		$dateGame = date("Y-m-d");
+		$tab = [0,500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000];
+		$i = 0;
+		$lvl = 0;
+		while($countCash!=$tab[$i]){
+			$i++;
+			if($countCash == $tab[$i]){
+				$lvl = $i;
+			}
+		}
+		if($lvl > 0){
+			$setNewGameLobby ="INSERT INTO game_talk_milionaires (id,idPlayer,question,money,date) VALUES ('','$playerId','$lvl','$countCash','$dateGame')";
+            if (mysqli_query($dbconect, $setNewGameLobby)) {}	
+		}
+	}
+?>
+
 <body>
 <div id="header">
 	<div id="napis"> <img src="img/napis.png" width="100%"></div>
@@ -25,18 +47,12 @@
 
 
 	<div id="content_question">
-		<br>
-		Witam Cię w grze Milionerzy!<br> 
-		Sądzisz, że możesz wygrać milion?<br> 
-		Mam nadzieję, że tak! <br> 
-		Jeżeli chcesz zagrać - powiedz GRAJ. <br> 
-		Powodzenia!<br> 
-		<a href="INSTRUCTION.pdf" id="instruction">Instrukcja Obsługi</a>
+		<br><br> Gratulacje! Wygrałeś/aś <br> <?php echo($countCash); ?> złotych.<br>
 	</div>
 	<div id="sure" name="sure"></div>
 
 	<div id="content_options">
-		<button id="play_btn" name="play" onclick="play_v1()">GRAJ</button>
+		<a href="index.php"><button id="play_btn" name="backPlay">POWRÓT</button></a>
 	</div>
 
 </div>

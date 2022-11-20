@@ -13,6 +13,14 @@
 	float:left;
 }
 
+.say{
+	color:white;
+	text-align: center;
+	float:left;
+	right:0;
+	padding-left:10px;
+}
+
 #content_left{
 	width:80%;
 	height:85%;
@@ -21,9 +29,25 @@
 	
 }
 
+.hiddenInput{
+	visibility: hidden;
+	/* display: none; */
+}
+
+#sure{
+	width:100%;
+	height:10%;
+	position:relative;
+	float:left;
+	color:Cornsilk;
+	font-family:Sans-serif;
+	font-size:160%;
+	text-align: center;
+}
+
 #content_question{
 	width:100%;
-	height:70%;
+	height:59%;
 	position:relative;
 	float:left;
 	color:Cornsilk;
@@ -206,4 +230,8 @@ img{transition: all .2s ease-in-out;}
 	font-family:Sans-serif;
 	font-size:55%;
 	}
+}
+
+#foter{
+	display:none;
 }

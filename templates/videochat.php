@@ -46,7 +46,8 @@
 
 	<div class="right-side lef">
 		<!-- <iframe src="../web/talk/battleship/index.php" title="Games" width="100%" height="100%"></iframe> --> 
-		<iframe src="../web/talk/milionaires/index.php" title="Games" width="100%" height="100%"></iframe>
+		<!-- <iframe src="../web/talk/milionaires/index.php" title="Games" width="100%" height="100%"></iframe> -->
+		<iframe src="../web/gamesHub.php" title="Games" width="100%" height="100%"></iframe>
 	</div>
 	<div class="right-side rig" id="rig_vid">
 		

@@ -24,9 +24,21 @@
 <div class="container" id="main-content">
 
 	<div class="right-side lef">
+		
+		Porady
+		<hr>
+
+		Każda gra używa innej konfiguracji poleceń.<br><br>
+		Przed rozpoczęciem gry w trybie eye trackingu, przejdź do zakładki "konfiguracja" i dokonaj wstępnej konfiguracji wzroku.<br><br><br><br><br><br>
 
 		Instrukcja obsługi
 		<hr>
+		<a href="../files/pdf/Battleship.pdf">Battleship</a><br><br>
+		<a href="../files/pdf/Milionerzy.pdf">Milionerzy</a><br><br>
+		<a href="../files/pdf/Tetris.pdf">Tetris</a><br><br>
+		
+		<a href="../files/pdf/BadanieRynku.pdf">Badanie rynku</a><br><br>
+
 
 	</div>
 	<div class="right-side rig" id="rig_vid">

@@ -11,11 +11,13 @@
 <div id="parallax">
 <div id="main-content">
 
-	<div class="left-sidei">
-	</div>
-	<div class="right-side">
+
+	<div class="right-side" style="width:90%; margin-left:5%; margin-right:5%; margin-top:2%;">
 		
-		<br><br><br><h4> Poznaj świat naszymi oczami! </h4><br>
+		<br><br><br><h4> Uuuuupsss... </h4><br>
+        Szefie... tej strony chyba nie uda mi się namierzyć.
+        <br>
+        <img src="files/img/primary/404.png">
 
 		
 	</div>

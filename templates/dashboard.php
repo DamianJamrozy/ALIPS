@@ -25,25 +25,25 @@
 
 	<div class="right-side lef">
 		
-		Znajomi:<br>
+		DASHBOARD<br>
+		<hr>
+		<br><br><br>
+
+		POMOC<br>
 		<hr>
 
-		Contact 1
+		Komendy głosowe
 		<hr>
-		Contact 2
+		Śledzenie wzroku
 		<hr>
 
-		<br><br>
-		Zaproszenia: <br>
-		<hr>
+	
 
 	</div>
 	<div class="right-side rig" id="rig_vid">
-		
-		<br><h4> DASHBOARD </h4><br>
-		<p>
-			<button id="start" class="glow-on-hover btn-down" type="button">Zaczynajmy</button>
-		</p>
+		<div id="dashboard">
+			<br><h4> DASHBOARD </h4><br>
+		</div>
 
 
 	</div>

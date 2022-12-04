@@ -1,7 +1,7 @@
 <div class="navi" id="navi">
 	<div class="top-nav-left">
 		<!-- <a href="Index.php"><h1>ALIPS</h1></a> -->
-		<a <?php if ($CURRENT_PAGE == "Home") {?> href="#"><h1>ALIPS</h1></a> <?php } else {?>" href="../index.php"><h1>ALIPS</h1></a> <?php } ?> 
+		<a <?php if ($CURRENT_PAGE == "Home") {?> href="#"><h1>ALIPS</h1></a> <?php } else if($CURRENT_PAGE == "ERROR"){?>" href="index.php"><h1>ALIPS</h1></a> <?php } else {?>" href="../index.php"><h1>ALIPS</h1></a> <?php } ?> 
 	</div>
 	
 	<?php

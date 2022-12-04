@@ -21,6 +21,14 @@ ini_set('display_errors', 0);
 	<link rel="stylesheet" type="text/css" href="style/style.css">
 	
 <?php } 
+	else if ($CURRENT_PAGE == "ERROR") { 
+	?>
+		<meta name="description" content="ALIPS to aplikacja utworzona przez Damiana Jamroży w 2022 roku. Wykorzystuje ona potencjał drzemiący w językach weebowych, pozwalając tym samym na kontrolę aplikacji poprzez eye tracking oraz speech recognition.">
+		<meta name="keywords" content="Damian Jamroży, Eye tracking, speech recognition, HTML, CSS, JavaScript">
+		<link rel="icon" type="image/x-icon" href="files/img/primary/icon.ico">
+		<link rel="stylesheet" type="text/css" href="style/style.css">
+	
+	<?php }
  //elseif ($CURRENT_PAGE == "Games") { 
 	else {?>
 	<meta name="description" content="ALIPS to aplikacja utworzona przez Damiana Jamroży w 2022 roku. Wykorzystuje ona potencjał drzemiący w językach weebowych, pozwalając tym samym na kontrolę aplikacji poprzez eye tracking oraz speech recognition.">
@@ -31,13 +39,13 @@ ini_set('display_errors', 0);
 <?php } ?>
 
 <!-- REDIRECT IF USER IS NOT LOGGED -->
-<?php if ($CURRENT_PAGE != "Home" && $CURRENT_PAGE != "Start") {
+<?php if ($CURRENT_PAGE != "Home" && $CURRENT_PAGE != "Start" && $CURRENT_PAGE != "ERROR") {
 	if(!isset($_SESSION['UserName'])){ ?>
 		<script>
 			window.location.href= '../Index.php'; // the redirect goes here 
 		</script>
 	<?php }
-	}else{
+	} else{
 		if(isset($_SESSION['UserName'])){ ?>
 			<script>
 				window.location.href= 'templates/dashboard.php'; // the redirect goes here 

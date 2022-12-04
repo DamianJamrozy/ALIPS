@@ -3,6 +3,8 @@
 <html>
 <head>
 	<?php include("./generator/head-info.php");?>
+	<link rel="icon" type="image/x-icon" href="files/img/primary/icon.ico">
+	<link rel="stylesheet" type="text/css" href="style/style.css">
 </head>
 
 <body>
@@ -25,7 +27,6 @@
 </div>
 
 
-<script src="./js/index.js"></script>
-<?php include("./generator/footer.php");?>
+
 </body>
 </html>

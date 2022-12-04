@@ -43,9 +43,9 @@
 	</div>
 	<div class="right-side rig" id="rig_vid">
 		
-		<br><h4> DJ-Games </h4>
+		
 
-		<iframe src="../web/gamesHub.php" title="Games" width="100%" height="90%"></iframe>
+		<iframe src="../web/gamesHub.php" title="Games" width="100%" height="100%"></iframe>
 		<!-- <iframe src="../web/eye/tetris-game/index.php" title="Games" width="100%" height="100%"></iframe> -->
 
 

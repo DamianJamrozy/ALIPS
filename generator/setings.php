@@ -74,6 +74,11 @@ switch ($_SERVER["SCRIPT_NAME"]) {
 			$CURRENT_PAGE = "Dashboard"; 
 			$PAGE_TITLE = "Dashboard";
 			break;
+		case "/websites/ALIPS/404.php":
+			$CURRENT_PAGE = "ERROR"; 
+			$PAGE_TITLE = "ERROR";
+			//header('Location: http://localhost/websites/ALIPS/404.php');
+			break;
 		default:
 			$CURRENT_PAGE = "Home"; 
 			$PAGE_TITLE = "Home";

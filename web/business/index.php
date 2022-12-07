@@ -65,10 +65,10 @@
         NOWE SMAKI - RZESZÓW
     </div>
 </div></a>
-<hr>RESTAURACJE<hr>
-<a href="restaurant/index.php"><div class="hub restaurant">
+<hr>WYBÓR LOGOTYPU<hr>
+<a href="logo/index.php"><div class="hub restaurant">
     <div class="tekst">
-        NOWA RESTAURACJA - RZESZÓW
+        NATURALNE NAPOJE
     </div>
 </div></a>
 

@@ -194,8 +194,8 @@
 
 <script>
     var tab_food = [
-    ['Kuchnia Brazylijska', 'Kuchnia Bułgarska','Kuchnia Chińska','Kuchnia Chorwacka','Kuchnia Francuska','Kuchnia Grecka','Kuchnia Hiszpańska','Kuchnia Indonezyjska','Kuchnia Indyjska','Kuchnia Japońska','Kuchnia Meksykańska','Kuchnia Polska','Kuchnia Portugalska','Kuchnia Rumuńska','Kuchnia USA','Kuchnia Włoska'],
-    ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacja.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
+    ['Niebiesko-białe', 'Szaro-białe','Morsko-białe','Morska zieleń-białe','Zielono-białe','Pomarańczowo-białe','Łososiowo-białe','Fioletowo-białe','Niebiesko-czarne', 'Szaro-czarne','Morsko-czarne','Morska zieleń-czarne','Zielono-czarne','Pomarańczowo-czarne','Łososiowo-czarne','Fioletowo-czarne'],
+    ['1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png']
     ];
 
     

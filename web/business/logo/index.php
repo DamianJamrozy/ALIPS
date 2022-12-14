@@ -4,6 +4,7 @@
  $playerId = $_SESSION["UserId"];
 
  if(isset($_POST['send'])){
+    $date = date('Y-m-d');
     $fir = (int)$_POST['fir'];
     $sec = (int)$_POST['sec'];
     $thr = (int)$_POST['thr'];
@@ -12,12 +13,11 @@
     $tPointssec = (int)$_POST['tPointsSec'];
     $tPointsthr = (int)$_POST['tPointsThr'];
 
-    $date = date('Y-m-d');
-    $first ="INSERT INTO business_color_user (idUser,idColor,points,lookTimePoints,date) VALUES ('$playerId','$fir','3', '$tPointsfir', '$date' )";
+    $first ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$fir','3', '$tPointsfir', '$date' )";
     if (mysqli_query($dbconect, $first)) {}	
-    $second ="INSERT INTO business_color_user (idUser,idColor,points,lookTimePoints,date) VALUES ('$playerId','$sec','2', '$tPointssec', '$date' )";
+    $second ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$sec','2', '$tPointssec', '$date' )";
     if (mysqli_query($dbconect, $second)) {}	
-    $thrird ="INSERT INTO business_color_user (idUser,idColor,points,lookTimePoints,date) VALUES ('$playerId','$thr','1', '$tPointsthr', '$date' )";
+    $thrird ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$thr','1', '$tPointsthr', '$date' )";
     if (mysqli_query($dbconect, $thrird)) {}
 
     echo("<script>document.getElementById('dashboard').innerHTML = ``;</script>");
@@ -194,14 +194,56 @@
 </div>
 
 
-
+<script src="https://webgazer.cs.brown.edu/webgazer.js?"></script>
 <script src="../../../js/voiceController.js"></script>
-<script src="../../../generator/eye_tracking/webgazer.js"></script>
+<!-- <script src="../../../generator/eye_tracking/webgazer.js"></script> -->
 
 
 
 
 <script>
+
+    
+        var iter=0;
+        var i = 0;
+        var j = 0;
+
+        webgazer.setGazeListener(function(data, elapsedTime) {
+        if (data == null) {
+            return;
+        }
+        var xprediction = data.x; //these x coordinates are relative to the viewport
+        var yprediction = data.y; //these y coordinates are relative to the viewport
+        //console.log(elapsedTime); //elapsed time is based on time since begin was called
+
+        iter++;
+        /* j++; */
+
+        if(iter==5){
+            iter=0;
+
+            // LEFT
+            if(xprediction < 75){
+                lookLeft++;
+            }
+            
+            // RIGHT
+            if(xprediction > (window.innerWidth - 75)){
+                lookRight++;
+            }
+
+        }
+        }).begin();
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+        // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
+        webgazer.showVideoPreview(true).showPredictionPoints(true);
+
+
     var tab_food = [
     ['Niebiesko-białe', 'Szaro-białe','Morsko-białe','Morska zieleń-białe','Zielono-białe','Pomarańczowo-białe','Łososiowo-białe','Fioletowo-białe','Niebiesko-czarne', 'Szaro-czarne','Morsko-czarne','Morska zieleń-czarne','Zielono-czarne','Pomarańczowo-czarne','Łososiowo-czarne','Fioletowo-czarne'],
     ['1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png']
@@ -492,48 +534,15 @@
 			phrases[0] = phrases[0].toLowerCase();
 		});
 		}
-
-  
-
-        var i = 0;
-        var j = 0;
-
-        webgazer.setGazeListener(function(data, elapsedTime) {
-        if (data == null) {
-            return;
+        
+    document.addEventListener('keydown', function(e) {
+        // left and right arrow keys (move)
+        if (e.which === 37) {
+            leftCommand();
+        }else if(e.which === 39){
+            rightCommand();
         }
-        var xprediction = data.x; //these x coordinates are relative to the viewport
-        var yprediction = data.y; //these y coordinates are relative to the viewport
-        //console.log(elapsedTime); //elapsed time is based on time since begin was called
-
-        iter++;
-        /* j++; */
-
-        if(iter==10){
-            iter=0;
-
-            // LEFT
-            if(xprediction < 75){
-                lookLeft++;
-            }
-            
-            // RIGHT
-            if(xprediction > (window.innerWidth - 75)){
-                lookRight++;
-            }
-
-        }
-        }).begin();
-
-        function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-        }
-
-
-        // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
-        webgazer.showVideoPreview(true).showPredictionPoints(true);
-
-
+    });
 </script>
 
 

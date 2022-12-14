@@ -16,19 +16,20 @@
 		$playerId = $_SESSION["UserId"];
 		$countCash = $_POST['countCash'];
 		$dateGame = date("Y-m-d");
-		$tab = [0,500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000];
-		$i = 0;
-		$lvl = 0;
+		$lvl = $_POST['lvl'];
+		/* $tab = [0,500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000];
+		$i = 0; */
+		/* $lvl = 0;
 		while($countCash!=$tab[$i]){
 			$i++;
 			if($countCash == $tab[$i]){
 				$lvl = $i;
 			}
 		}
-		if($lvl > 0){
+		if($lvl > 0){ */
 			$setNewGameLobby ="INSERT INTO game_talk_milionaires (id,idPlayer,question,money,date) VALUES ('','$playerId','$lvl','$countCash','$dateGame')";
             if (mysqli_query($dbconect, $setNewGameLobby)) {}	
-		}
+		/* } */
 	}
 ?>
 

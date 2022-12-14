@@ -545,73 +545,73 @@ function check_me_correct(){
 	if(q===1){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v2()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v2()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="1"></form>';
 		document.getElementById('btn_12').classList.add("coins_gain");
 	}
 	if(q===2){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś gwarantowane: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v3()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v3()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="2"></form>';
 		document.getElementById('btn_11').classList.add("coins_gain");
 	}
 	if(q===3){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v4()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v4()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="3"></form>';
 		document.getElementById('btn_10').classList.add("coins_gain");
 	}
 	if(q===4){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v5()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v5()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="4"></form>';
 		document.getElementById('btn_9').classList.add("coins_gain");
 	}
 	if(q===5){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v6()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v6()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="5"></form>';
 		document.getElementById('btn_8').classList.add("coins_gain");
 	}
 	if(q===6){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v7()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v7()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="6"></form>';
 		document.getElementById('btn_7').classList.add("coins_gain");
 	}
 	if(q===7){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś gwarantowane: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v8()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v8()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="7"></form>';
 		document.getElementById('btn_6').classList.add("coins_gain");
 	}
 	if(q===8){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v9()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v9()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="8"></form>';
 		document.getElementById('btn_5').classList.add("coins_gain");
 	}
 	if(q===9){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v10()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v10()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="9"></form>';
 		document.getElementById('btn_4').classList.add("coins_gain");
 	}
 	if(q===10){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz dalej?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v11()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v11()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="10"></form>';
 		document.getElementById('btn_3').classList.add("coins_gain");
 	}
 	if(q===11){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź<br>Wygrałeś/aś: '+tab[i]+'<br>Grasz o milion?';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v12()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"></form>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><button class="answer_btn id="next" name="next" onclick="play_v12()"">Graj Dalej</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="11"></form>';
 		document.getElementById('btn_2').classList.add("coins_gain");
 	}
 	if(q===12){
 		i++;
 		document.getElementById("content_question").innerHTML='<br><br>Brawo! <br>To była dobra odpowiedź!<br>Wygrałeś/aś: '+tab[i]+'<br>Gratulacje!';
-		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash"><input type="number" class="hiddenInput" name="lvl" value="12"></form>';
 		document.getElementById('btn_1').classList.add("coins_gain");
 	}
 	return i;
@@ -625,32 +625,32 @@ function check_me_incorrect(){
 	
 	if(q==1){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Wygrałeś/aś okrągłe: '+tab[0]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="0"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 	if(q==2){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Prawie dotarliśmy do gwarantowanego tysiąca złotych...<br>Wygrałeś/aś: '+tab[0]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="0"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 	if(q===3||q===4||q===5||q===6){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Wygrałeś/aś gwarantowane: '+tab[1]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="1000"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 
 	if(q===7){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Było blisko do gwarantowanego 40 000zł.<br>Może następnym razem się uda?<br>Wygrałeś/aś gwarantowane: '+tab[1]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="1000"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 	if(q==8||q===9||q==10){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Wygrałeś/aś gwarantowane: '+tab[2]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="40000"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 	if(q===11){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Brakowało 2 poprawnych odpowiedzi do miliona...<br> No cóż szkoda 250 000 zł... <br>Wygrałeś/aś gwarantowane: '+tab[2]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="40000"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 	if(q==12){
 		document.getElementById("content_question").innerHTML='<br><br>Przykro mi... <br>To była zła odpowiedź<br>Tylko jednego pytania zabrakło do miliona...<br> No cóż powodzenia następnym razem<br>Wygrałeś/aś gwarantowane: '+tab[2]+'<br>';
-		document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1(), end_bad()">Zagraj ponownie</button>';
+		document.getElementById("content_options").innerHTML='<form onsubmit="return endGame()" method="POST" action="win.php"><button type="submit" name="cash" class="answer_btn" id="end" name="end_game" >Odbierz nagrodę</button><input type="number" class="hiddenInput" name="countCash" value="40000"><input type="number" class="hiddenInput" name="lvl"></form>';
 	}
 }
 
@@ -660,7 +660,13 @@ function endGame(){
 	var z=12;
 	var tab = [0,500,1000,2000,5000,10000,20000,40000,75000,125000,250000,500000,1000000];
 	document.getElementById("content_question").innerHTML='<br><br> Gratulacje! Wygrałeś/aś <br>'+tab[i]+' złotych.';
-	document.getElementsByName("countCash")[0].value = tab[i];
+	var moneyHoney = document.getElementsByName("countCash")[0].value;
+	if(moneyHoney != "0" && moneyHoney != "1000" && moneyHoney != "40000"){
+		document.getElementsByName("countCash")[0].value = tab[i];
+	}
+
+	document.getElementsByName("lvl")[0].value = i;
+
 	//document.getElementById("content_options").innerHTML='<button class="answer_btn" id="new_game" name="new_game" onclick="play_v1()">Zagraj ponownie</button>';
 	while(z!=0){
 		x = 'btn_'+z;

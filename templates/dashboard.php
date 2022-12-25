@@ -19,14 +19,28 @@
 
 <?php
 	$UserId = $_SESSION["UserName"];
+	$date = date("Y-m-d");
 
-	$CheckModify = "SELECT * FROM game_talk_milionaires WHERE idPlayer = '$UserId' ORDER BY date DESC LIMIT 5;";
-	$result2 = mysqli_query($dbconect, $CheckModify);
+	$last5Milionaires = "SELECT * FROM game_talk_milionaires WHERE idPlayer = '$UserId' ORDER BY money DESC LIMIT 5;";
+	$result_last5Milionaires = mysqli_query($dbconect, $last5Milionaires);
 
-	if (mysqli_num_rows($result2) > 0) {
-		while($row = mysqli_fetch_assoc($result2)) {
-			$modify = $row['keyModified'];
-			$keyHost = $row['keyHost'];
+	if (mysqli_num_rows($result_last5Milionaires) > 0) {
+		while($row = mysqli_fetch_assoc($result_last5Milionaires)) {
+			$question[] = $row['question'];
+			$money[] = $row['money'];
+			$gameDate[] = date("Y-m-d", strtotime($row["gameDate"]));
+			/* $gameDate[] = date("Y-m-d H:i:s", strtotime($row["gameDate"])); */
+		}
+	}
+	
+	echo("<script>console.log('".$gameDate[1]."');</script>");
+
+	$last5Milionaires = "SELECT gameDate FROM game_talk_milionaires WHERE id = '10'";
+	$result_last5Milionaires = mysqli_query($dbconect, $last5Milionaires);
+
+	if (mysqli_num_rows($result_last5Milionaires) > 0) {
+		while($row = mysqli_fetch_assoc($result_last5Milionaires)) {
+			echo("<script>console.log(".$game.");</script>");
 		}
 	}
 ?>
@@ -54,14 +68,16 @@
 	
 
 	</div>
-	<div class="right-side rig" id="rig_vid">
+	<div class="right-side rig" id="rig_vid" style="overflow-y: visible;">
 		<div id="dashboard">
 			<br><h4> DASHBOARD </h4><br>
 		</div>
-
-		<div style="width:25%;">
-			<canvas id="milionaires"></canvas>
-		</div>
+		Dziękujemy za wybranie naszej aplikacji! <br><br>
+		Alips jest to aplikacja, która powstała w celach zaprezentowania możliwości jakie dają języki webowe.<br>
+		Użytkownik może wchodzić w interakcję z komputerem pomimo braku specjalistycznego sprzętu eye trackingowego. <br><br>
+		Rozwiązanie to znacznie obniża koszt np. leczenia, bądź ćwiczeń z pacjentami, które wymagają kontaktu wzrokowego. <br>
+		Oprogramowanie można rozwinąć w kierunku zwiększonej interaakcji z użytkownikami np. dodając badania sprawdzające czas reakcji lub poprawność wymowy.<br>
+		
 
 	</div>
 </div>
@@ -75,10 +91,21 @@
 	new Chart(ctx, {
 		type: 'bar',
 		data: {
-		labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+		labels: [
+				<?php 
+					for($i=0; $i<5;$i++){
+						echo("'".$gameDate[$i]."',");
+					};
+				?>],
 		datasets: [{
-			label: '# of Votes',
-			data: [12, 19, 3, 5, 2, 3],
+			label: 'Najwyższe wygrane',
+			data: [
+				<?php 
+					for($i=0; $i<5;$i++){
+						echo($money[$i].",");
+						
+					};
+				?>],
 			borderWidth: 1
 		}]
 		},

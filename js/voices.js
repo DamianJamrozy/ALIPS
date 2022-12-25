@@ -10,7 +10,6 @@ annyang.setLanguage('pl-PL');
     'strona wideoczat': sVideochat,
     'strona video chat': sVideochat,
     'strona moje konto': sMyAccount,
-    'strona moi znajomi': sMyFriends,
     'strona konfiguracja': sConfig,
     'strona wyloguj się': sLogout,
 
@@ -29,7 +28,6 @@ annyang.setLanguage('pl-PL');
     'strona wideoczat.': sVideochat,
     'strona video chat.': sVideochat,
     'strona moje konto.': sMyAccount,
-    'strona moi znajomi.': sMyFriends,
     'strona konfiguracja.': sConfig,
     'strona wyloguj się.': sLogout,
     
@@ -48,8 +46,6 @@ annyang.setLanguage('pl-PL');
   function sVideochat() { location.href = "videochat.php"; }
 
   function sMyAccount() { location.href = "account.php"; }
-
-  function sMyFriends() { location.href = "friends.php"; }
 
   function sConfig() { location.href = "reconfig.php"; }
 

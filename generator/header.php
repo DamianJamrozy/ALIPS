@@ -31,9 +31,6 @@
 				<a class="nav-link <?php if ($CURRENT_PAGE == "Account") {?>active" href="#">Moje konto</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/account.php">Moje konto</a> <?php } else {?>" href="../templates/account.php">Moje konto</a> <?php } ?> 
 			</li>
 			<li class="nav-item">
-				<a class="nav-link <?php if ($CURRENT_PAGE == "Friends") {?>active" href="#">Moi znajomi</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/friends.php">Moi znajomi</a> <?php } else {?>" href="../templates/friends.php">Moi znajomi</a> <?php } ?> 
-			</li>
-			<li class="nav-item">
 				<a class="nav-link <?php if ($CURRENT_PAGE == "Reconfig") {?>active" href="#">Konfiguracja</a> <?php } else if($CURRENT_PAGE == "Home") {?>" href="templates/reconfig.php">Konfiguracja</a> <?php } else {?>" href="../templates/reconfig.php">Konfiguracja</a> <?php } ?> 
 			</li>
 			<?php

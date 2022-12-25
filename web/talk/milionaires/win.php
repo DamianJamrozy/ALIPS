@@ -27,7 +27,7 @@
 			}
 		}
 		if($lvl > 0){ */
-			$setNewGameLobby ="INSERT INTO game_talk_milionaires (id,idPlayer,question,money,date) VALUES ('','$playerId','$lvl','$countCash','$dateGame')";
+			$setNewGameLobby ="INSERT INTO game_talk_milionaires (id,idPlayer,question,money,gameDate) VALUES ('','$playerId','$lvl','$countCash','$dateGame')";
             if (mysqli_query($dbconect, $setNewGameLobby)) {}	
 		/* } */
 	}

@@ -295,7 +295,17 @@ date_default_timezone_set('Europe/Warsaw');
         $Password = md5($_POST['password']);
         $date = date('Y-m-d H:i:s');
 
-        $CheckUsr = "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ";
+        $findme1   = '"';
+        $findme2   = "'";
+        $findme3   = '`';
+        $pos1 = strpos($UserName, $findme1);
+        $pos2 = strpos($UserName, $findme2);
+        $pos3 = strpos($UserName, $findme3);
+
+        // Note our use of ===.  Simply == would not work as expected
+        // because the position of 'a' was the 0th (first) character.
+        if ($pos1 === false && $pos2 === false && $pos3 === false) {
+            $CheckUsr = "SELECT * FROM user WHERE ((login = '$UserName' OR email = '$UserName') AND password = '$Password') ";
         $result = mysqli_query($dbconect, $CheckUsr);
 
         if (mysqli_num_rows($result) > 0) {
@@ -355,6 +365,11 @@ date_default_timezone_set('Europe/Warsaw');
         } else {
             echo '<script>alert("Błędne dane logowania");</script>';
         }
+        } else {
+            echo "<script>console.log('Serwer zablokował nieautoryzowaną próbę wszczepienia kodu.'); </script>";
+        }
+
+        
     }
     //END LOGIN FORM ACTION
 
@@ -364,6 +379,17 @@ date_default_timezone_set('Europe/Warsaw');
         $Password = md5($_POST['password']);
         $date = date('Y-m-d H:i:s');
 
+        $findme1   = '"';
+        $findme2   = "'";
+        $findme3   = '`';
+        $pos1 = strpos($UserName, $findme1);
+        $pos2 = strpos($UserName, $findme2);
+        $pos3 = strpos($UserName, $findme3);
+
+        // Note our use of ===.  Simply == would not work as expected
+        // because the position of 'a' was the 0th (first) character.
+        if ($pos1 === false && $pos2 === false && $pos3 === false) {
+            
         $CheckUsr = "SELECT * FROM user WHERE login = '$UserName' OR email = '$UserName'";
         $result = mysqli_query($dbconect, $CheckUsr);
 
@@ -422,6 +448,10 @@ date_default_timezone_set('Europe/Warsaw');
                 echo "Error: " . $AddUsr . "<br>" . mysqli_error($dbconect);
               }
         }
+        } else {
+            echo "<script>console.log('Serwer zablokował nieautoryzowaną próbę wszczepienia kodu.'); </script>";
+        }
+
     }   
     //END REGISTRATION FORM ACTION
 ?>

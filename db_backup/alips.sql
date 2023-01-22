@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 05 Gru 2022, 00:28
+-- Czas generowania: 22 Sty 2023, 14:19
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -80,47 +80,6 @@ INSERT INTO `business_food_user` (`id`, `idUser`, `idFood`, `points`, `date`) VA
 -- --------------------------------------------------------
 
 --
--- Struktura tabeli dla tabeli `friends`
---
-
-CREATE TABLE `friends` (
-  `idFriends` int(11) NOT NULL,
-  `idUser1` int(11) NOT NULL,
-  `idUser2` int(11) NOT NULL,
-  `status` int(11) DEFAULT NULL,
-  `statusDate` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Zrzut danych tabeli `friends`
---
-
-INSERT INTO `friends` (`idFriends`, `idUser1`, `idUser2`, `status`, `statusDate`) VALUES
-(1, 0, 1, 1, '2022-10-12 20:47:03'),
-(2, 0, 4, 2, '2022-10-12 20:47:39');
-
--- --------------------------------------------------------
-
---
--- Struktura tabeli dla tabeli `friends_status`
---
-
-CREATE TABLE `friends_status` (
-  `idFStatus` int(11) NOT NULL,
-  `statusName` varchar(50) COLLATE utf8mb4_polish_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
-
---
--- Zrzut danych tabeli `friends_status`
---
-
-INSERT INTO `friends_status` (`idFStatus`, `statusName`) VALUES
-(1, 'Oczekujący'),
-(2, 'Znajomy');
-
--- --------------------------------------------------------
-
---
 -- Struktura tabeli dla tabeli `game_eye_tetris`
 --
 
@@ -128,10 +87,15 @@ CREATE TABLE `game_eye_tetris` (
   `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `points` int(11) DEFAULT NULL,
-  `time` int(11) DEFAULT NULL,
-  `last_game` datetime DEFAULT NULL,
-  `gameCount` int(11) DEFAULT NULL
+  `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `game_eye_tetris`
+--
+
+INSERT INTO `game_eye_tetris` (`id`, `id_user`, `points`, `date`) VALUES
+(1, 0, 4, '2023-01-22');
 
 -- --------------------------------------------------------
 
@@ -144,15 +108,17 @@ CREATE TABLE `game_talk_milionaires` (
   `idPlayer` int(11) NOT NULL,
   `question` int(11) NOT NULL,
   `money` int(11) NOT NULL,
-  `date` date NOT NULL
+  `gameDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 --
 -- Zrzut danych tabeli `game_talk_milionaires`
 --
 
-INSERT INTO `game_talk_milionaires` (`id`, `idPlayer`, `question`, `money`, `date`) VALUES
-(1, 1, 1, 500, '2022-11-21');
+INSERT INTO `game_talk_milionaires` (`id`, `idPlayer`, `question`, `money`, `gameDate`) VALUES
+(1, 1, 1, 500, '2022-11-21'),
+(2, 0, 0, 0, '2023-01-22'),
+(3, 0, 1, 0, '2023-01-22');
 
 -- --------------------------------------------------------
 
@@ -200,11 +166,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `reg_date`, `last_login_date`, `lastActive`, `last_logout_date`, `idActive`) VALUES
-(0, '0', 'djamrozy@ur.edu.pl', '7c4f910f7e5510a57262a57e35c57839', '2022-09-01 12:54:31', NULL, 1665962552, '2022-10-17 02:08:04', 0),
-(1, '1', 'test@test.pl', 'cc03e747a6afbbcbf8be7668acfebee5', NULL, '2022-12-04 11:47:39', 1670196330, '2022-12-04 11:46:05', 1),
-(4, '4', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0),
-(14, '14', 'haslo@haslo.pl', '15aeccf46e5f5db8fd9d28cfb7d2c68d', '2022-11-01 21:22:04', '2022-11-01 21:22:25', 1667335626, '2022-11-01 21:47:46', 0),
-(15, '15', 'user1@poczta.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-11-18 13:47:12', '2022-11-20 14:06:22', 1668952605, '2022-11-19 01:18:11', 1);
+(0, '0', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-22 13:25:23', 1674393488, '2022-10-17 02:08:04', 1),
+(1, '1', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2022-12-04 11:47:39', 1670196330, '2022-12-04 11:46:05', 1),
+(4, '4', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -246,11 +210,9 @@ CREATE TABLE `videochat` (
 --
 
 INSERT INTO `videochat` (`id`, `idUser`, `keyHost`, `keyHostFull`, `keyActive`, `lastVideo`, `keyModified`) VALUES
-(1, 0, '1', '', '1', NULL, 0),
+(1, 0, '8922730', 'https://meet.jit.si/8922730', '1', NULL, 0),
 (2, 1, 'xd', 'https://meet.jit.si/xd', 'xd', '2022-11-21 16:03:23', 1),
-(3, 4, '3', '', '3', NULL, 0),
-(4, 14, '21908614', 'https://meet.jit.si/21908614', '0', '0000-00-00 00:00:00', 0),
-(5, 15, '81285515', 'https://meet.jit.si/81285515', 'NULL', '0000-00-00 00:00:00', 0);
+(3, 4, '3', '', '3', NULL, 0);
 
 --
 -- Indeksy dla zrzutów tabel
@@ -269,21 +231,6 @@ ALTER TABLE `business_food_user`
   ADD PRIMARY KEY (`id`),
   ADD KEY `idUser` (`idUser`,`idFood`),
   ADD KEY `idFood` (`idFood`);
-
---
--- Indeksy dla tabeli `friends`
---
-ALTER TABLE `friends`
-  ADD PRIMARY KEY (`idFriends`),
-  ADD KEY `idUser1` (`idUser1`,`idUser2`,`status`),
-  ADD KEY `idUser2` (`idUser2`),
-  ADD KEY `status` (`status`);
-
---
--- Indeksy dla tabeli `friends_status`
---
-ALTER TABLE `friends_status`
-  ADD PRIMARY KEY (`idFStatus`);
 
 --
 -- Indeksy dla tabeli `game_eye_tetris`
@@ -344,28 +291,16 @@ ALTER TABLE `business_food_user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
--- AUTO_INCREMENT dla tabeli `friends`
---
-ALTER TABLE `friends`
-  MODIFY `idFriends` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT dla tabeli `friends_status`
---
-ALTER TABLE `friends_status`
-  MODIFY `idFStatus` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT dla tabeli `game_eye_tetris`
 --
 ALTER TABLE `game_eye_tetris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT dla tabeli `game_talk_milionaires`
 --
 ALTER TABLE `game_talk_milionaires`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `game_talk_ships`
@@ -403,14 +338,6 @@ ALTER TABLE `business_food_user`
   ADD CONSTRAINT `business_food_user_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 --
--- Ograniczenia dla tabeli `friends`
---
-ALTER TABLE `friends`
-  ADD CONSTRAINT `friends_ibfk_1` FOREIGN KEY (`idUser1`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `friends_ibfk_2` FOREIGN KEY (`idUser2`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `friends_ibfk_3` FOREIGN KEY (`status`) REFERENCES `friends_status` (`idFStatus`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Ograniczenia dla tabeli `game_talk_milionaires`
 --
 ALTER TABLE `game_talk_milionaires`
@@ -433,7 +360,7 @@ ALTER TABLE `user`
 -- Ograniczenia dla tabeli `videochat`
 --
 ALTER TABLE `videochat`
-  ADD CONSTRAINT `videochat_ibfk_1` FOREIGN KEY (`IdUser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `videochat_ibfk_1` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `videochat_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
 
 DELIMITER $$
@@ -442,12 +369,7 @@ DELIMITER $$
 --
 CREATE DEFINER=`root`@`localhost` EVENT `StatusAktywnosci` ON SCHEDULE EVERY 15 MINUTE STARTS '2022-10-17 00:59:04' ON COMPLETION PRESERVE ENABLE COMMENT 'Zmiana statusu online' DO UPDATE user SET idActive = 0, last_logout_date = NOW() WHERE (lastActive+900)<UNIX_TIMESTAMP() AND idActive = 1
 
--- CHANGE ACCOUNT TO OFFLINE WHEN NONE ACTION SEEN BY 15 MIN ON CLIENT SITE$$
-
-CREATE DEFINER=`root`@`localhost` EVENT `StatusRozmowy` ON SCHEDULE EVERY 10 MINUTE STARTS '2022-10-23 20:39:33' ON COMPLETION PRESERVE DISABLE DO UPDATE videochat AS vi 
-INNER JOIN user AS u ON u.id = vi.idUser 
-SET vi.keyHost = NULL, vi.keyActive = NULL 
-WHERE (u.lastActive+900)<UNIX_TIMESTAMP() AND u.idActive = 1$$
+-- END CHANGE ACCOUNT TO OFFLINE WHEN NONE ACTION SEEN BY 15 MIN ON CLIENT SITE$$
 
 DELIMITER ;
 COMMIT;

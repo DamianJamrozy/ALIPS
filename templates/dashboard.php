@@ -246,28 +246,55 @@
 	}
 
 
-	// $last5Milionaires = "SELECT * FROM game_talk_milionaires WHERE idPlayer = '$UserId' ORDER BY money DESC LIMIT 5;";
-	// $result_last5Milionaires = mysqli_query($dbconect, $last5Milionaires);
+	// Research
+	$ResearchColorSelected = "SELECT BCU.idColor, SUM(BCU.points) AS SumSP, SUM(BCU.lookTimePoints) AS SumLP, BC.Name FROM business_color_user AS BCU INNER JOIN business_color AS BC ON BC.id = BCU.idColor GROUP BY BCU.idColor ORDER BY SumSP DESC;";
+	$result_ResearchColorSelected = mysqli_query($dbconect, $ResearchColorSelected);
 
-	// if (mysqli_num_rows($result_last5Milionaires) > 0) {
-	// 	while($row = mysqli_fetch_assoc($result_last5Milionaires)) {
-	// 		$question[] = $row['question'];
-	// 		$money[] = $row['money'];
-	// 		$gameDate[] = date("Y-m-d", strtotime($row["gameDate"]));
-	// 		/* $gameDate[] = date("Y-m-d H:i:s", strtotime($row["gameDate"])); */
-	// 	}
-	// }
+	if (mysqli_num_rows($result_ResearchColorSelected) > 0) {
+		while($row = mysqli_fetch_assoc($result_ResearchColorSelected)) {
+			$R1idColorS[] = $row['idColor'];
+			$R1PointsS[] = $row['SumSP'];
+			$R1TimeS[] = $row['SumLP'];
+			$R1NameS[] = $row['Name'];
+		}
+	}
+
+	$ResearchColorLook = "SELECT BCU.idColor, SUM(BCU.points) AS SumSP, SUM(BCU.lookTimePoints) AS SumLP, BC.Name FROM business_color_user AS BCU INNER JOIN business_color AS BC ON BC.id = BCU.idColor GROUP BY BCU.idColor ORDER BY SumLP DESC;";
+	$result_ResearchColorLook = mysqli_query($dbconect, $ResearchColorLook);
+
+	if (mysqli_num_rows($result_ResearchColorLook) > 0) {
+		while($row = mysqli_fetch_assoc($result_ResearchColorLook)) {
+			$R1idColorL[] = $row['idColor'];
+			$R1PointsL[] = $row['SumSP'];
+			$R1TimeL[] = $row['SumLP'];
+			$R1NameL[] = $row['Name'];
+		}
+	}
+
+	$ResearchFoodSelected = "SELECT BCU.idFood, SUM(BCU.points) AS SumSP, SUM(BCU.lookTimePoints) AS SumLP, BC.Name FROM business_food_user AS BCU INNER JOIN business_food AS BC ON BC.id = BCU.idFood GROUP BY BCU.idFood ORDER BY SumSP DESC;";
+	$result_ResearchFoodSelected = mysqli_query($dbconect, $ResearchFoodSelected);
+
+	if (mysqli_num_rows($result_ResearchFoodSelected) > 0) {
+		while($row = mysqli_fetch_assoc($result_ResearchFoodSelected)) {
+			$R2idFoodS[] = $row['idFood'];
+			$R2PointsS[] = $row['SumSP'];
+			$R2TimeS[] = $row['SumLP'];
+			$R2NameS[] = $row['Name'];
+		}
+	}
+
+	$ResearchFoodLook = "SELECT BCU.idFood, SUM(BCU.points) AS SumSP, SUM(BCU.lookTimePoints) AS SumLP, BC.Name FROM business_food_user AS BCU INNER JOIN business_food AS BC ON BC.id = BCU.idFood GROUP BY BCU.idFood ORDER BY SumLP DESC;";
+	$result_ResearchFoodLook = mysqli_query($dbconect, $ResearchFoodLook);
+
+	if (mysqli_num_rows($result_ResearchFoodLook) > 0) {
+		while($row = mysqli_fetch_assoc($result_ResearchFoodLook)) {
+			$R2idFoodL[] = $row['idFood'];
+			$R2PointsL[] = $row['SumSP'];
+			$R2TimeL[] = $row['SumLP'];
+			$R2NameL[] = $row['Name'];
+		}
+	}
 	
-	// echo("<script>console.log('".$gameDate[1]."');</script>");
-
-	// $last5Milionaires = "SELECT gameDate FROM game_talk_milionaires WHERE id = '10'";
-	// $result_last5Milionaires = mysqli_query($dbconect, $last5Milionaires);
-
-	// if (mysqli_num_rows($result_last5Milionaires) > 0) {
-	// 	while($row = mysqli_fetch_assoc($result_last5Milionaires)) {
-	// 		echo("<script>console.log(".$game.");</script>");
-	// 	}
-	// }
 ?>
 
 <body>
@@ -422,6 +449,50 @@
 
 			<div class="down-side-statistic">
 				<h5> BADANIE RYNKU </h5>
+				<br>
+				<b>Logotyp:</b> <br>
+				Top 5 wybranych przez użytkowników<br><br>
+				
+				<table>
+					<tr><th>TOP 1</th><th>TOP 2</th><th>TOP 3</th><th>TOP 4</th><th>TOP 5</th></tr>
+					<tr><td><img src="../web/business/logo/img/<?php echo($R1idColorS[0]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorS[1]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorS[2]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorS[3]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorS[4]+1)?>.png" width="60%"></td></tr>
+					<tr><td><?php echo($R1NameS[0])?></td><td><?php echo($R1NameS[1])?></td><td><?php echo($R1NameS[2])?></td><td><?php echo($R1NameS[3])?></td><td><?php echo($R1NameS[4])?></td></tr>
+					<tr><td><?php echo($R1PointsS[0])?></td><td><?php echo($R1PointsS[1])?></td><td><?php echo($R1PointsS[2])?></td><td><?php echo($R1PointsS[3])?></td><td><?php echo($R1PointsS[4])?></td></tr>
+				</table>
+				<hr>
+				<br>
+				Top 5 najdłuższego skupienia wzroku<br><br>
+				
+				<table>
+					<tr><th>TOP 1</th><th>TOP 2</th><th>TOP 3</th><th>TOP 4</th><th>TOP 5</th></tr>
+					<tr><td><img src="../web/business/logo/img/<?php echo($R1idColorL[0]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorL[1]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorL[2]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorL[3]+1)?>.png" width="60%"></td><td><img src="../web/business/logo/img/<?php echo($R1idColorL[4]+1)?>.png" width="60%"></td></tr>
+					<tr><td><?php echo($R1NameL[0])?></td><td><?php echo($R1NameL[1])?></td><td><?php echo($R1NameL[2])?></td><td><?php echo($R1NameL[3])?></td><td><?php echo($R1NameL[4])?></td></tr>
+					<tr><td><?php echo($R1TimeL[0])?></td><td><?php echo($R1TimeL[1])?></td><td><?php echo($R1TimeL[2])?></td><td><?php echo($R1TimeL[3])?></td><td><?php echo($R1TimeL[4])?></td></tr>
+				</table>
+				<hr>
+				<br><br>
+				<b>Kuchnie świata:</b> <br>
+				Top 5 wybranych przez użytkowników<br><br>
+				
+				<table>
+					<tr><th>TOP 1</th><th>TOP 2</th><th>TOP 3</th><th>TOP 4</th><th>TOP 5</th></tr>
+					<tr><td><img src="../web/business/food/img/<?php echo($R2NameS[0])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameS[1])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameS[2])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameS[3])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameS[4])?>.jpg" width="60%"></td></tr>
+					<tr><td><?php echo($R2NameS[0])?></td><td><?php echo($R2NameS[1])?></td><td><?php echo($R2NameS[2])?></td><td><?php echo($R2NameS[3])?></td><td><?php echo($R2NameS[4])?></td></tr>
+					<tr><td><?php echo($R2PointsS[0])?></td><td><?php echo($R2PointsS[1])?></td><td><?php echo($R2PointsS[2])?></td><td><?php echo($R2PointsS[3])?></td><td><?php echo($R2PointsS[4])?></td></tr>
+				</table>
+					<hr>
+				<br>
+				Top 5 najdłuższego skupienia wzroku<br><br>
+				
+				<table>
+					<tr><th>TOP 1</th><th>TOP 2</th><th>TOP 3</th><th>TOP 4</th><th>TOP 5</th></tr>
+					<tr><td><img src="../web/business/food/img/<?php echo($R2NameL[0])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameL[1])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameL[2])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameL[3])?>.jpg" width="60%"></td><td><img src="../web/business/food/img/<?php echo($R2NameL[4])?>.jpg" width="60%"></td></tr>
+					<tr><td><?php echo($R2NameL[0])?></td><td><?php echo($R2NameL[1])?></td><td><?php echo($R2NameL[2])?></td><td><?php echo($R2NameL[3])?></td><td><?php echo($R2NameL[4])?></td></tr>
+					<tr><td><?php echo($R2TimeL[0])?></td><td><?php echo($R2TimeL[1])?></td><td><?php echo($R2TimeL[2])?></td><td><?php echo($R2TimeL[3])?></td><td><?php echo($R2TimeL[4])?></td></tr>
+				</table>
+				
+				<br><br>
+
 			</div>
 		</div>
 	</div>
@@ -431,42 +502,10 @@
 <?php include("../generator/footer.php");?>
 
 <script>
-	// const ctx = document.getElementById('milionaires');
-
-	// new Chart(ctx, {
-	// 	type: 'bar',
-	// 	data: {
-	// 	labels: [
-	// 			<?php 
-	// 				for($i=0; $i<5;$i++){
-	// 					echo("'".$gameDate[$i]."',");
-	// 				};
-	// 			?>],
-	// 	datasets: [{
-	// 		label: 'Najwyższe wygrane',
-	// 		data: [
-	// 			<?php 
-	// 				for($i=0; $i<5;$i++){
-	// 					echo($money[$i].",");
-						
-	// 				};
-	// 			?>],
-	// 		borderWidth: 1
-	// 	}]
-	// 	},
-	// 	options: {
-	// 	scales: {
-	// 		y: {
-	// 		beginAtZero: true
-	// 		}
-	// 	}
-	// 	}
-	// });
 
 	function showStats(){
 		document.getElementById("start").style.display = "none";
 		document.getElementById("statistic-games").style.display = "block";
-		// document.getElementById("myDIV").style.display = "none";
 	}
 	function showStart(){
 		document.getElementById("statistic-games").style.display = "none";

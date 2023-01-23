@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Sty 2023, 17:04
+-- Czas generowania: 23 Sty 2023, 18:13
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -107,22 +107,22 @@ CREATE TABLE `business_food` (
 --
 
 INSERT INTO `business_food` (`id`, `Name`) VALUES
-(0, 'Kuchnia Brazylijska'),
-(1, 'Kuchnia Bułgarska'),
-(2, 'Kuchnia Chińska'),
-(3, 'Kuchnia Chorwacka'),
-(4, 'Kuchnia Francuska'),
-(5, 'Kuchnia Grecka'),
-(6, 'Kuchnia Hiszpańska'),
-(7, 'Kuchnia Indonezyjska'),
-(8, 'Kuchnia Indyjska'),
-(9, 'Kuchnia Japońska'),
-(10, 'Kuchnia Meksykańska'),
-(11, 'Kuchnia Polska'),
-(12, 'Kuchnia Portugalska'),
-(13, 'Kuchnia Rumuńska'),
-(14, 'Kuchnia USA'),
-(15, 'Kuchnia Włoska');
+(0, 'Brazylijska'),
+(1, 'Bułgarska'),
+(2, 'Chińska'),
+(3, 'Chorwacka'),
+(4, 'Francuska'),
+(5, 'Grecka'),
+(6, 'Hiszpańska'),
+(7, 'Indonezyjska'),
+(8, 'Indyjska'),
+(9, 'Japońska'),
+(10, 'Meksykańska'),
+(11, 'Polska'),
+(12, 'Portugalska'),
+(13, 'Rumuńska'),
+(14, 'USA'),
+(15, 'Włoska');
 
 -- --------------------------------------------------------
 
@@ -263,7 +263,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `reg_date`, `last_login_date`, `lastActive`, `last_logout_date`, `idActive`) VALUES
-(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-23 14:45:57', 1674489788, '2023-01-22 15:17:56', 1),
+(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-23 14:45:57', 1674493932, '2023-01-22 15:17:56', 1),
 (1, 'test', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2023-01-22 21:36:31', 1674419800, '2022-12-04 11:46:05', 1),
 (4, 'test2', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
 
@@ -391,7 +391,7 @@ ALTER TABLE `videochat`
 -- AUTO_INCREMENT dla tabeli `business_color_user`
 --
 ALTER TABLE `business_color_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT dla tabeli `business_food`

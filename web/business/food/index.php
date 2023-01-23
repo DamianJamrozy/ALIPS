@@ -235,7 +235,7 @@
 
     var tab_food = [
     ['Kuchnia Brazylijska', 'Kuchnia Bułgarska','Kuchnia Chińska','Kuchnia Chorwacka','Kuchnia Francuska','Kuchnia Grecka','Kuchnia Hiszpańska','Kuchnia Indonezyjska','Kuchnia Indyjska','Kuchnia Japońska','Kuchnia Meksykańska','Kuchnia Polska','Kuchnia Portugalska','Kuchnia Rumuńska','Kuchnia USA','Kuchnia Włoska'],
-    ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacja.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
+    ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacka.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
     ];
 
     

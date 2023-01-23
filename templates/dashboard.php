@@ -111,7 +111,7 @@
 </head>
 
 <?php
-	$UserId = $_SESSION["UserName"];
+	$UserId = $_SESSION["UserId"];
 	$date = date("Y-m-d");
 	
 
@@ -330,12 +330,14 @@
 			<div id="dashboard">
 				<br><h4> DASHBOARD </h4><br>
 			</div>
+			<img src="../files/img/primary/Logov3.png" width="20%"><br>
 			Dziękujemy za wybranie naszej aplikacji! <br><br>
 			Alips jest to aplikacja, która powstała w celach zaprezentowania możliwości jakie dają języki webowe.<br>
 			Użytkownik może wchodzić w interakcję z komputerem pomimo braku specjalistycznego sprzętu eye trackingowego. <br><br>
 			Rozwiązanie to znacznie obniża koszt np. leczenia, bądź ćwiczeń z pacjentami, które wymagają kontaktu wzrokowego. <br>
 			Oprogramowanie można rozwinąć w kierunku zwiększonej interaakcji z użytkownikami np. dodając badania sprawdzające czas reakcji lub poprawność wymowy.<br>
 		
+			
 		</div>
 		<div id="statistic-games">
 			<h4> STATYSTYKI KONTA </h4>

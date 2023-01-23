@@ -35,7 +35,11 @@ annyang.setLanguage('pl-PL');
     'a lips.': sAlips,
     'elips.': sAlips,
     'alice.': sAlips,
-    'OLX.': sAlips
+    'OLX.': sAlips,
+
+    // Additional
+    'statystyki.': showStats,
+    'dashboard.': showStart
   };
 
    // START Navigation functions
@@ -55,7 +59,14 @@ annyang.setLanguage('pl-PL');
   // END Navigation functions
 
 
-
+  function showStats(){
+		document.getElementById("start").style.display = "none";
+		document.getElementById("statistic-games").style.display = "block";
+	}
+	function showStart(){
+		document.getElementById("statistic-games").style.display = "none";
+		document.getElementById("start").style.display = "block";
+	}
  
 
   // Add our commands to annyang

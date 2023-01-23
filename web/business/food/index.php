@@ -7,6 +7,10 @@
     $fir = (int)$_POST['fir'];
     $sec = (int)$_POST['sec'];
     $thr = (int)$_POST['thr'];
+
+    $t1 = $_POST['t1'];
+    $t2 = $_POST['t2'];
+
     $date = date('Y-m-d');
     $first ="INSERT INTO business_food_user (idUser,idFood,points,date) VALUES ('$playerId','$fir','3', '$date' )";
     if (mysqli_query($dbconect, $first)) {}	
@@ -169,9 +173,28 @@
     <center>
     <div id="vsBack">
         <form method="POST" name="sendSubmit">
+            <!-- <input type="number" name="fir" id="fir" style="visibility: hidden;">
+            <input type="number" name="sec" id="sec" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+
             <input type="number" name="fir" id="fir" style="visibility: hidden;">
             <input type="number" name="sec" id="sec" style="visibility: hidden;">
             <input type="number" name="thr" id="thr" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+
+            <input type="number" name="fir" id="fir" style="visibility: hidden;">
+            <input type="number" name="sec" id="sec" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+
+            <input type="number" name="fir" id="fir" style="visibility: hidden;">
+            <input type="number" name="sec" id="sec" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;">
+            <input type="number" name="thr" id="thr" style="visibility: hidden;"> -->
+
+            <input type="text" name="t1" id="t1">
+            <input type="text" name="t2" id="t2">
             <input type="submit" id="send" name="send" style="visibility: hidden;">
         </form>
     </div>
@@ -187,18 +210,61 @@
 
 
 <script src="../../../js/voiceController.js"></script>
-<script src="../../../generator/eye_tracking/webgazer.js"></script>
+<script src="https://webgazer.cs.brown.edu/webgazer.js?"></script>
 
 
 
 
-<script>
+<script async>
+    var lookLeft = 0;
+    var lookRight = 0;
+    var iter=0;
+    var i = 0;
+    var j = 0;
+    var lookValue = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+
+        webgazer.setGazeListener(function(data, elapsedTime) {
+        if (data == null) {
+            return;
+        }
+        var xprediction = data.x; //these x coordinates are relative to the viewport
+        var yprediction = data.y; //these y coordinates are relative to the viewport
+        //console.log(elapsedTime); //elapsed time is based on time since begin was called
+
+        iter++;
+        /* j++; */
+
+        if(iter==5){
+            iter=0;
+
+            // LEFT
+            if(xprediction < 510){
+                lookLeft++;
+            }
+            
+            // RIGHT
+            if(xprediction > (window.innerWidth - 510)){
+                lookRight++;
+            }
+
+        }
+        }).begin();
+
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+
+
+        // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
+        webgazer.showVideoPreview(true).showPredictionPoints(true);
+
     var tab_food = [
     ['Kuchnia Brazylijska', 'Kuchnia Bułgarska','Kuchnia Chińska','Kuchnia Chorwacka','Kuchnia Francuska','Kuchnia Grecka','Kuchnia Hiszpańska','Kuchnia Indonezyjska','Kuchnia Indyjska','Kuchnia Japońska','Kuchnia Meksykańska','Kuchnia Polska','Kuchnia Portugalska','Kuchnia Rumuńska','Kuchnia USA','Kuchnia Włoska'],
     ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacja.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
     ];
 
     
+
     var tab1_16 = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
     var tab1_8 = [];
     var tab1_4 = [];
@@ -207,6 +273,8 @@
     var topOne, topSec, topThird, k;
     var used;
     var length = tab1_16.length;
+
+    var pointsValue = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
     var left = document.getElementById('left');
     var left_txt = document.getElementById('left_txt');
@@ -314,8 +382,18 @@
 		// START Speak Shoot functions
 		function leftCommand() { 
             if (j == 16){
+                // TimePoints
+                lookValue[tab1_16[i-1]] = lookValue[tab1_16[i-1]] + lookLeft;
+                lookValue[tab1_16[i]] = lookValue[tab1_16[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_16[i-1]] = pointsValue[tab1_16[i-1]] + 1;
+                pointsValue[tab1_16[i]] = pointsValue[tab1_16[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_8.push(tab1_16[i-1]);
-                console.log(tab1_8);
+                //console.log(tab1_8);
                 if (k == length){
                     j = 8;
                     shuffle(tab1_8);
@@ -323,8 +401,20 @@
                     i = -1;
                     console.log(tab1_8);
                 }
+                lookLeft = 0;
+                lookRight = 0;
                 showNew();
             }else if (j == 8){
+                // TimePoints
+                lookValue[tab1_8[i-1]] = lookValue[tab1_8[i-1]] + lookLeft;
+                lookValue[tab1_8[i]] = lookValue[tab1_8[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_8[i-1]] = pointsValue[tab1_8[i-1]] + 1;
+                pointsValue[tab1_8[i]] = pointsValue[tab1_8[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_4.push(tab1_8[i-1]);
                 console.log(tab1_4);
                 if (k == length){
@@ -336,6 +426,16 @@
                 }
                 showNew();
             }else if (j == 4){
+                 // TimePoints
+                lookValue[tab1_4[i-1]] = lookValue[tab1_4[i-1]] + lookLeft;
+                lookValue[tab1_4[i]] = lookValue[tab1_4[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_4[i-1]] = pointsValue[tab1_4[i-1]] + 1;
+                pointsValue[tab1_4[i]] = pointsValue[tab1_4[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_2.push(tab1_4[i-1]);
                 tab1_ThirdPlace.push(tab1_4[i]);
                 console.log(tab1_ThirdPlace);
@@ -349,18 +449,41 @@
                 }
                 showNew();
             }else if (j == 2){
+                // TimePoints
+                lookValue[tab1_ThirdPlace[i-1]] = lookValue[tab1_ThirdPlace[i-1]] + lookLeft;
+                lookValue[tab1_ThirdPlace[i]] = lookValue[tab1_ThirdPlace[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_ThirdPlace[i-1]] = pointsValue[tab1_ThirdPlace[i-1]] + 1;
+                pointsValue[tab1_ThirdPlace[i]] = pointsValue[tab1_ThirdPlace[i]] + 0;
+                console.log(pointsValue);
+
                 topThird = tab1_ThirdPlace[i-1];
                 i = -1;
                 console.log(tab1_2);
                 j = 0;
                 showNew();
             }else{
+                // TimePoints
+                lookValue[tab1_2[i-1]] = lookValue[tab1_2[i-1]] + lookLeft;
+                lookValue[tab1_2[i]] = lookValue[tab1_2[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_2[i-1]] = pointsValue[tab1_2[i-1]] + 2;
+                pointsValue[tab1_2[i]] = pointsValue[tab1_2[i]] + 1;
+                console.log(pointsValue);
+
                 topOne = tab1_2[i-1]; 
                 topSec = tab1_2[i];
 
-                document.getElementById("fir").value = topOne;
-                document.getElementById("sec").value = topSec;
-                document.getElementById("thr").value = topThird;
+                // document.getElementById("fir").value = topOne;
+                // document.getElementById("sec").value = topSec;
+                // document.getElementById("thr").value = topThird;
+
+                document.getElementById("t1").value = lookValue;
+                document.getElementById("t2").value = pointsValue;
 
                 console.log(tab_food[0][topOne]);
                 console.log(tab_food[0][topSec]);
@@ -372,6 +495,16 @@
 
 		function rightCommand() {   
             if (j == 16){
+                // TimePoints
+                lookValue[tab1_16[i-1]] = lookValue[tab1_16[i-1]] + lookLeft;
+                lookValue[tab1_16[i]] = lookValue[tab1_16[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_16[i-1]] = pointsValue[tab1_16[i-1]] + 0;
+                pointsValue[tab1_16[i]] = pointsValue[tab1_16[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_8.push(tab1_16[i]);
                 console.log(tab1_8);
                 if (k == length){
@@ -383,6 +516,16 @@
                 }
                 showNew();
             }else if (j == 8){
+                // TimePoints
+                lookValue[tab1_8[i-1]] = lookValue[tab1_8[i-1]] + lookLeft;
+                lookValue[tab1_8[i]] = lookValue[tab1_8[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_8[i-1]] = pointsValue[tab1_8[i-1]] + 0;
+                pointsValue[tab1_8[i]] = pointsValue[tab1_8[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_4.push(tab1_8[i]);
                 console.log(tab1_4);
                 if (k == length){
@@ -394,6 +537,16 @@
                 }
                 showNew();
             }else if (j == 4){
+                 // TimePoints
+                 lookValue[tab1_4[i-1]] = lookValue[tab1_4[i-1]] + lookLeft;
+                lookValue[tab1_4[i]] = lookValue[tab1_4[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_4[i-1]] = pointsValue[tab1_4[i-1]] + 0;
+                pointsValue[tab1_4[i]] = pointsValue[tab1_4[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_2.push(tab1_4[i]);
                 tab1_ThirdPlace.push(tab1_4[i-1]);
                 console.log(tab1_ThirdPlace);
@@ -407,18 +560,41 @@
                 }
                 showNew();
             }else if (j == 2){
+                 // TimePoints
+                 lookValue[tab1_ThirdPlace[i-1]] = lookValue[tab1_ThirdPlace[i-1]] + lookLeft;
+                lookValue[tab1_ThirdPlace[i]] = lookValue[tab1_ThirdPlace[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_ThirdPlace[i-1]] = pointsValue[tab1_ThirdPlace[i-1]] + 0;
+                pointsValue[tab1_ThirdPlace[i]] = pointsValue[tab1_ThirdPlace[i]] + 1;
+                console.log(pointsValue);
+
                 topThird = tab1_ThirdPlace[i];
                 i = -1;
                 j = 0;
                 console.log(tab1_2);
                 showNew();
             }else{
+                // TimePoints
+                lookValue[tab1_2[i-1]] = lookValue[tab1_2[i-1]] + lookLeft;
+                lookValue[tab1_2[i]] = lookValue[tab1_2[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_2[i-1]] = pointsValue[tab1_2[i-1]] + 1;
+                pointsValue[tab1_2[i]] = pointsValue[tab1_2[i]] + 2;
+                console.log(pointsValue);
+
                 topOne = tab1_2[i]; 
                 topSec = tab1_2[i-1];
 
-                document.getElementById("fir").value = topOne+1;
-                document.getElementById("sec").value = topSec+1;
-                document.getElementById("thr").value = topThird+1;
+                // document.getElementById("fir").value = topOne+1;
+                // document.getElementById("sec").value = topSec+1;
+                // document.getElementById("thr").value = topThird+1;
+
+                document.getElementById("t1").value = lookValue;
+                document.getElementById("t2").value = pointsValue;
 
                 console.log(tab_food[0][topOne]);
                 console.log(tab_food[0][topSec]);

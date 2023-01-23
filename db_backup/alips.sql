@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2023, 14:19
+-- Czas generowania: 22 Sty 2023, 23:00
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -20,6 +20,54 @@ SET time_zone = "+00:00";
 --
 -- Baza danych: `alips`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `business_color`
+--
+
+CREATE TABLE `business_color` (
+  `id` int(11) NOT NULL,
+  `Name` varchar(255) COLLATE utf8mb4_polish_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `business_color`
+--
+
+INSERT INTO `business_color` (`id`, `Name`) VALUES
+(0, 'Fioletowo-białe'),
+(1, 'Fioletowo-czarne'),
+(2, 'JasnoZielono-białe'),
+(3, 'JasnoZielono-czarne'),
+(4, 'Łososiowo-białe'),
+(5, 'Łososiowo-czarne'),
+(6, 'Miętowo-białe'),
+(7, 'Miętowo-czarne'),
+(8, 'Niebiesko-białe'),
+(9, 'Niebiesko-czarne'),
+(10, 'Pomarańczowo-białe'),
+(11, 'Pomarańczowo-czarne'),
+(12, 'Szaro-białe'),
+(13, 'Szaro-czarne'),
+(14, 'Zielono-białe'),
+(15, 'Zielono-czarne');
+
+-- --------------------------------------------------------
+
+--
+-- Struktura tabeli dla tabeli `business_color_user`
+--
+
+CREATE TABLE `business_color_user` (
+  `id` int(11) NOT NULL,
+  `idColor` int(11) NOT NULL,
+  `idUser` int(11) NOT NULL,
+  `points` int(11) NOT NULL,
+  `lookTimePoints` int(11) NOT NULL,
+  `date` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
 -- --------------------------------------------------------
 
@@ -95,7 +143,10 @@ CREATE TABLE `game_eye_tetris` (
 --
 
 INSERT INTO `game_eye_tetris` (`id`, `id_user`, `points`, `date`) VALUES
-(1, 0, 4, '2023-01-22');
+(1, 0, 4, '2023-01-22'),
+(2, 1, 8, '2023-01-22'),
+(3, 0, 1, '2023-01-01'),
+(4, 0, 6, '2023-01-04');
 
 -- --------------------------------------------------------
 
@@ -118,7 +169,7 @@ CREATE TABLE `game_talk_milionaires` (
 INSERT INTO `game_talk_milionaires` (`id`, `idPlayer`, `question`, `money`, `gameDate`) VALUES
 (1, 1, 1, 500, '2022-11-21'),
 (2, 0, 0, 0, '2023-01-22'),
-(3, 0, 1, 0, '2023-01-22');
+(3, 0, 2, 1000, '2023-01-20');
 
 -- --------------------------------------------------------
 
@@ -143,6 +194,15 @@ CREATE TABLE `game_talk_ships` (
   `gameDate` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
+--
+-- Zrzut danych tabeli `game_talk_ships`
+--
+
+INSERT INTO `game_talk_ships` (`id`, `idHost`, `hostDashboard`, `destroyHost`, `playerHostMove`, `hostRedy`, `idGuest`, `guestDashboard`, `destroyGuest`, `playerGuestMove`, `guestRedy`, `game_key`, `idWinPlayer`, `gameDate`) VALUES
+(1, 0, '2,2,0,0,0,0,0,2,2,0,0,0,0,0,2,0,8,0,0,0,0,2,0,8,0,0,0,0,2,0,8,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0', 9, 9, 1, 1, '0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,0,2,2', 9, 12, 1, 6086140, 0, '2023-01-22'),
+(2, 0, NULL, NULL, NULL, 0, NULL, NULL, NULL, NULL, 0, 5215030, NULL, '2023-01-22'),
+(3, 0, '2,2,0,0,0,0,0,2,2,0,0,0,0,0,2,0,8,0,0,0,0,2,0,8,0,0,0,0,2,0,8,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0', 9, 11, 1, 1, '0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,0,0,0,2,2,0,0,0,0,0,2,2', 9, 10, 1, 6086180, 1, '2023-01-23');
+
 -- --------------------------------------------------------
 
 --
@@ -166,9 +226,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `reg_date`, `last_login_date`, `lastActive`, `last_logout_date`, `idActive`) VALUES
-(0, '0', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-22 13:25:23', 1674393488, '2022-10-17 02:08:04', 1),
-(1, '1', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2022-12-04 11:47:39', 1670196330, '2022-12-04 11:46:05', 1),
-(4, '4', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
+(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-22 15:18:12', 1674417564, '2023-01-22 15:17:56', 1),
+(1, 'test', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2023-01-22 21:36:31', 1674419800, '2022-12-04 11:46:05', 1),
+(4, 'test2', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -210,13 +270,25 @@ CREATE TABLE `videochat` (
 --
 
 INSERT INTO `videochat` (`id`, `idUser`, `keyHost`, `keyHostFull`, `keyActive`, `lastVideo`, `keyModified`) VALUES
-(1, 0, '8922730', 'https://meet.jit.si/8922730', '1', NULL, 0),
+(1, 0, '8490160', 'https://meet.jit.si/8490160', '1', NULL, 0),
 (2, 1, 'xd', 'https://meet.jit.si/xd', 'xd', '2022-11-21 16:03:23', 1),
 (3, 4, '3', '', '3', NULL, 0);
 
 --
 -- Indeksy dla zrzutów tabel
 --
+
+--
+-- Indeksy dla tabeli `business_color`
+--
+ALTER TABLE `business_color`
+  ADD PRIMARY KEY (`Name`);
+
+--
+-- Indeksy dla tabeli `business_color_user`
+--
+ALTER TABLE `business_color_user`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `business_food`
@@ -279,6 +351,12 @@ ALTER TABLE `videochat`
 --
 
 --
+-- AUTO_INCREMENT dla tabeli `business_color_user`
+--
+ALTER TABLE `business_color_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT dla tabeli `business_food`
 --
 ALTER TABLE `business_food`
@@ -294,7 +372,7 @@ ALTER TABLE `business_food_user`
 -- AUTO_INCREMENT dla tabeli `game_eye_tetris`
 --
 ALTER TABLE `game_eye_tetris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT dla tabeli `game_talk_milionaires`
@@ -306,7 +384,7 @@ ALTER TABLE `game_talk_milionaires`
 -- AUTO_INCREMENT dla tabeli `game_talk_ships`
 --
 ALTER TABLE `game_talk_ships`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT dla tabeli `user`
@@ -336,6 +414,12 @@ ALTER TABLE `videochat`
 ALTER TABLE `business_food_user`
   ADD CONSTRAINT `business_food_user_ibfk_1` FOREIGN KEY (`idFood`) REFERENCES `business_food` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE,
   ADD CONSTRAINT `business_food_user_ibfk_2` FOREIGN KEY (`idUser`) REFERENCES `user` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE;
+
+--
+-- Ograniczenia dla tabeli `game_eye_tetris`
+--
+ALTER TABLE `game_eye_tetris`
+  ADD CONSTRAINT `game_eye_tetris_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Ograniczenia dla tabeli `game_talk_milionaires`

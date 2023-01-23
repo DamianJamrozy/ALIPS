@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 23 Sty 2023, 16:49
+-- Czas generowania: 23 Sty 2023, 17:04
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -37,22 +37,22 @@ CREATE TABLE `business_color` (
 --
 
 INSERT INTO `business_color` (`id`, `Name`) VALUES
-(0, 'Fioletowo-białe'),
-(1, 'Fioletowo-czarne'),
-(2, 'JasnoZielono-białe'),
-(3, 'JasnoZielono-czarne'),
-(4, 'Łososiowo-białe'),
-(5, 'Łososiowo-czarne'),
-(6, 'Miętowo-białe'),
-(7, 'Miętowo-czarne'),
-(8, 'Niebiesko-białe'),
-(9, 'Niebiesko-czarne'),
-(10, 'Pomarańczowo-białe'),
-(11, 'Pomarańczowo-czarne'),
-(12, 'Szaro-białe'),
-(13, 'Szaro-czarne'),
-(14, 'Zielono-białe'),
-(15, 'Zielono-czarne');
+(0, 'Niebiesko-białe'),
+(1, 'Szaro-białe'),
+(2, 'Morsko-białe'),
+(3, 'Morska zieleń-białe'),
+(4, 'Zielono-białe'),
+(5, 'Pomarańczowo-białe'),
+(6, 'Łososiowo-białe'),
+(7, 'Fioletowo-białe'),
+(8, 'Niebiesko-czarne'),
+(9, 'Szaro-czarne'),
+(10, 'Morsko-czarne'),
+(11, 'Morska zieleń-czarne'),
+(12, 'Zielono-czarne'),
+(13, 'Pomarańczowo-czarne'),
+(14, 'Łososiowo-czarne'),
+(15, 'Fioletowo-czarne');
 
 -- --------------------------------------------------------
 
@@ -68,6 +68,28 @@ CREATE TABLE `business_color_user` (
   `lookTimePoints` int(11) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
+
+--
+-- Zrzut danych tabeli `business_color_user`
+--
+
+INSERT INTO `business_color_user` (`id`, `idColor`, `idUser`, `points`, `lookTimePoints`, `date`) VALUES
+(10, 0, 0, 4, 216, '2023-01-23'),
+(11, 1, 0, 0, 4, '2023-01-23'),
+(12, 2, 0, 3, 204, '2023-01-23'),
+(13, 3, 0, 0, 5, '2023-01-23'),
+(14, 4, 0, 1, 65, '2023-01-23'),
+(15, 5, 0, 0, 2, '2023-01-23'),
+(16, 6, 0, 0, 4, '2023-01-23'),
+(17, 7, 0, 0, 6, '2023-01-23'),
+(18, 8, 0, 1, 39, '2023-01-23'),
+(19, 9, 0, 0, 6, '2023-01-23'),
+(20, 10, 0, 1, 40, '2023-01-23'),
+(21, 11, 0, 2, 214, '2023-01-23'),
+(22, 12, 0, 0, 4, '2023-01-23'),
+(23, 13, 0, 0, 23, '2023-01-23'),
+(24, 14, 0, 1, 81, '2023-01-23'),
+(25, 15, 0, 5, 181, '2023-01-23');
 
 -- --------------------------------------------------------
 
@@ -241,7 +263,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `reg_date`, `last_login_date`, `lastActive`, `last_logout_date`, `idActive`) VALUES
-(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-23 14:45:57', 1674488791, '2023-01-22 15:17:56', 1),
+(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-23 14:45:57', 1674489788, '2023-01-22 15:17:56', 1),
 (1, 'test', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2023-01-22 21:36:31', 1674419800, '2022-12-04 11:46:05', 1),
 (4, 'test2', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
 
@@ -297,7 +319,7 @@ INSERT INTO `videochat` (`id`, `idUser`, `keyHost`, `keyHostFull`, `keyActive`, 
 -- Indeksy dla tabeli `business_color`
 --
 ALTER TABLE `business_color`
-  ADD PRIMARY KEY (`Name`);
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indeksy dla tabeli `business_color_user`
@@ -369,7 +391,7 @@ ALTER TABLE `videochat`
 -- AUTO_INCREMENT dla tabeli `business_color_user`
 --
 ALTER TABLE `business_color_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT dla tabeli `business_food`

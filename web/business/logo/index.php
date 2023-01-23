@@ -14,7 +14,7 @@
 
 
     $date = date('Y-m-d');
-    $first ="INSERT INTO business_food_user (idUser,idFood,points,lookTimePoints,date) VALUES ('$playerId','0',' $selectPoints[0]','$lookPoints[0]', '$date' ),('$playerId','1',' $selectPoints[1]','$lookPoints[1]', '$date' ),('$playerId','2',' $selectPoints[2]','$lookPoints[2]', '$date' ),('$playerId','3',' $selectPoints[3]','$lookPoints[3]', '$date' ),('$playerId','4',' $selectPoints[4]','$lookPoints[4]', '$date' ),('$playerId','5',' $selectPoints[5]','$lookPoints[5]', '$date' ),('$playerId','6',' $selectPoints[6]','$lookPoints[6]', '$date' ),('$playerId','7',' $selectPoints[7]','$lookPoints[7]', '$date' ),('$playerId','8',' $selectPoints[8]','$lookPoints[8]', '$date' ),('$playerId','9',' $selectPoints[9]','$lookPoints[9]', '$date' ),('$playerId','10',' $selectPoints[10]','$lookPoints[10]', '$date' ),('$playerId','11',' $selectPoints[11]','$lookPoints[11]', '$date' ),('$playerId','12',' $selectPoints[12]','$lookPoints[12]', '$date' ),('$playerId','13',' $selectPoints[13]','$lookPoints[13]', '$date' ),('$playerId','14',' $selectPoints[14]','$lookPoints[14]', '$date' ),('$playerId','15',' $selectPoints[15]','$lookPoints[15]', '$date')";
+    $first ="INSERT INTO business_color_user (idUser,idColor,points,lookTimePoints,date) VALUES ('$playerId','0',' $selectPoints[0]','$lookPoints[0]', '$date' ),('$playerId','1',' $selectPoints[1]','$lookPoints[1]', '$date' ),('$playerId','2',' $selectPoints[2]','$lookPoints[2]', '$date' ),('$playerId','3',' $selectPoints[3]','$lookPoints[3]', '$date' ),('$playerId','4',' $selectPoints[4]','$lookPoints[4]', '$date' ),('$playerId','5',' $selectPoints[5]','$lookPoints[5]', '$date' ),('$playerId','6',' $selectPoints[6]','$lookPoints[6]', '$date' ),('$playerId','7',' $selectPoints[7]','$lookPoints[7]', '$date' ),('$playerId','8',' $selectPoints[8]','$lookPoints[8]', '$date' ),('$playerId','9',' $selectPoints[9]','$lookPoints[9]', '$date' ),('$playerId','10',' $selectPoints[10]','$lookPoints[10]', '$date' ),('$playerId','11',' $selectPoints[11]','$lookPoints[11]', '$date' ),('$playerId','12',' $selectPoints[12]','$lookPoints[12]', '$date' ),('$playerId','13',' $selectPoints[13]','$lookPoints[13]', '$date' ),('$playerId','14',' $selectPoints[14]','$lookPoints[14]', '$date' ),('$playerId','15',' $selectPoints[15]','$lookPoints[15]', '$date')";
     if (mysqli_query($dbconect, $first)) {}	
 
     echo("<script>document.getElementById('dashboard').innerHTML = ``;</script>");
@@ -22,12 +22,12 @@
 
 }
 
- $CheckExist = "SELECT * FROM business_food_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
+ $CheckExist = "SELECT * FROM business_color_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
  $result3 = mysqli_query($dbconect, $CheckExist);
  if (mysqli_num_rows($result3) > 0) {
      while($row = mysqli_fetch_assoc($result3)) {
          $idUser[] = $row["idUser"];
-         $idFood[] = $row["idFood"];
+         $idColor[] = $row["idColor"];
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
@@ -35,11 +35,11 @@
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
         for($i = 0; $i < 3; $i++){
-            $Check = "SELECT * FROM business_food WHERE id = '$idFood[$i]'" ;
+            $Check = "SELECT * FROM business_color WHERE id = '$idColor[$i]'" ;
             $result3 = mysqli_query($dbconect, $Check);
             if (mysqli_num_rows($result3) > 0) {
                 while($row = mysqli_fetch_assoc($result3)) {
-                    $foodName[$i] = $row["Name"];
+                    $colorName[$i] = $row["Name"];
                 }
             }
         }
@@ -57,13 +57,6 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 100% 80%;
-    }
-    #left{
-        background-color:red;
-    }
-    
-    #right{
-        background-color:green;
     }
 
     .separate{
@@ -155,10 +148,10 @@
 <div id="result">
     <h1>Wyniki</h1>
     <?php 
-        if(isset($foodName)){
-            echo("1. ".$foodName[0]."<br>");
-            echo("2. ".$foodName[1]."<br>");
-            echo("3. ".$foodName[2]."<br>");
+        if(isset($colorName)){
+            echo("1. ".$colorName[0]."<br>");
+            echo("2. ".$colorName[1]."<br>");
+            echo("3. ".$colorName[2]."<br>");
         }
     ?>
 </div>
@@ -233,9 +226,9 @@
         // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
         webgazer.showVideoPreview(true).showPredictionPoints(true);
 
-    var tab_food = [
-    ['Kuchnia Brazylijska', 'Kuchnia Bułgarska','Kuchnia Chińska','Kuchnia Chorwacka','Kuchnia Francuska','Kuchnia Grecka','Kuchnia Hiszpańska','Kuchnia Indonezyjska','Kuchnia Indyjska','Kuchnia Japońska','Kuchnia Meksykańska','Kuchnia Polska','Kuchnia Portugalska','Kuchnia Rumuńska','Kuchnia USA','Kuchnia Włoska'],
-    ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacja.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
+        var tab_food = [
+    ['Niebiesko-białe', 'Szaro-białe','Morsko-białe','Morska zieleń-białe','Zielono-białe','Pomarańczowo-białe','Łososiowo-białe','Fioletowo-białe','Niebiesko-czarne', 'Szaro-czarne','Morsko-czarne','Morska zieleń-czarne','Zielono-czarne','Pomarańczowo-czarne','Łososiowo-czarne','Fioletowo-czarne'],
+    ['1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png']
     ];
 
     
@@ -587,12 +580,12 @@
 <?php
  $playerId = $_SESSION["UserId"];
 
- $CheckExist = "SELECT * FROM business_food_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
+ $CheckExist = "SELECT * FROM business_color_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
  $result3 = mysqli_query($dbconect, $CheckExist);
  if (mysqli_num_rows($result3) > 0) {
      while($row = mysqli_fetch_assoc($result3)) {
          $idUser[] = $row["idUser"];
-         $idFood[] = $row["idFood"];
+         $idColor[] = $row["idColor"];
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
@@ -600,11 +593,11 @@
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
         for($i = 0; $i < 3; $i++){
-            $Check = "SELECT * FROM business_food WHERE id = '$idFood[$i]'" ;
+            $Check = "SELECT * FROM business_color WHERE id = '$idColor[$i]'" ;
             $result3 = mysqli_query($dbconect, $Check);
             if (mysqli_num_rows($result3) > 0) {
                 while($row = mysqli_fetch_assoc($result3)) {
-                    $foodName[$i] = $row["Name"];
+                    $colorName[$i] = $row["Name"];
                 }
             }
         }

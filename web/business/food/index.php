@@ -4,20 +4,18 @@
  $playerId = $_SESSION["UserId"];
 
  if(isset($_POST['send'])){
-    $fir = (int)$_POST['fir'];
-    $sec = (int)$_POST['sec'];
-    $thr = (int)$_POST['thr'];
 
     $t1 = $_POST['t1'];
     $t2 = $_POST['t2'];
 
+    // SEPARATE STRING
+    $lookPoints = explode(",", $t1);
+    $selectPoints = explode(",", $t2);
+
+
     $date = date('Y-m-d');
-    $first ="INSERT INTO business_food_user (idUser,idFood,points,date) VALUES ('$playerId','$fir','3', '$date' )";
+    $first ="INSERT INTO business_food_user (idUser,idFood,points,lookTimePoints,date) VALUES ('$playerId','0',' $selectPoints[0]','$lookPoints[0]', '$date' ),('$playerId','1',' $selectPoints[1]','$lookPoints[1]', '$date' ),('$playerId','2',' $selectPoints[2]','$lookPoints[2]', '$date' ),('$playerId','3',' $selectPoints[3]','$lookPoints[3]', '$date' ),('$playerId','4',' $selectPoints[4]','$lookPoints[4]', '$date' ),('$playerId','5',' $selectPoints[5]','$lookPoints[5]', '$date' ),('$playerId','6',' $selectPoints[6]','$lookPoints[6]', '$date' ),('$playerId','7',' $selectPoints[7]','$lookPoints[7]', '$date' ),('$playerId','8',' $selectPoints[8]','$lookPoints[8]', '$date' ),('$playerId','9',' $selectPoints[9]','$lookPoints[9]', '$date' ),('$playerId','10',' $selectPoints[10]','$lookPoints[10]', '$date' ),('$playerId','11',' $selectPoints[11]','$lookPoints[11]', '$date' ),('$playerId','12',' $selectPoints[12]','$lookPoints[12]', '$date' ),('$playerId','13',' $selectPoints[13]','$lookPoints[13]', '$date' ),('$playerId','14',' $selectPoints[14]','$lookPoints[14]', '$date' ),('$playerId','15',' $selectPoints[15]','$lookPoints[15]', '$date')";
     if (mysqli_query($dbconect, $first)) {}	
-    $second ="INSERT INTO business_food_user (idUser,idFood,points,date) VALUES ('$playerId','$sec','2', '$date' )";
-    if (mysqli_query($dbconect, $second)) {}	
-    $thrird ="INSERT INTO business_food_user (idUser,idFood,points,date) VALUES ('$playerId','$thr','1', '$date' )";
-    if (mysqli_query($dbconect, $thrird)) {}
 
     echo("<script>document.getElementById('dashboard').innerHTML = ``;</script>");
     echo("<script>document.getElementById('result').style.display = 'block';</script>");
@@ -33,7 +31,6 @@
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
-        /* echo '<script>alert("Oddałeś/aś już głos w tym badaniu."); window.location.href= "../index.php";</script>'; */
         echo("<script>document.getElementById('dashboard').innerHTML = ``</script>");
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
@@ -173,28 +170,8 @@
     <center>
     <div id="vsBack">
         <form method="POST" name="sendSubmit">
-            <!-- <input type="number" name="fir" id="fir" style="visibility: hidden;">
-            <input type="number" name="sec" id="sec" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-
-            <input type="number" name="fir" id="fir" style="visibility: hidden;">
-            <input type="number" name="sec" id="sec" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-
-            <input type="number" name="fir" id="fir" style="visibility: hidden;">
-            <input type="number" name="sec" id="sec" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-
-            <input type="number" name="fir" id="fir" style="visibility: hidden;">
-            <input type="number" name="sec" id="sec" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;"> -->
-
-            <input type="text" name="t1" id="t1">
-            <input type="text" name="t2" id="t2">
+            <input type="text" name="t1" id="t1" style="visibility: hidden;">
+            <input type="text" name="t2" id="t2" style="visibility: hidden;">
             <input type="submit" id="send" name="send" style="visibility: hidden;">
         </form>
     </div>
@@ -229,21 +206,19 @@
         }
         var xprediction = data.x; //these x coordinates are relative to the viewport
         var yprediction = data.y; //these y coordinates are relative to the viewport
-        //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
         iter++;
-        /* j++; */
 
         if(iter==5){
             iter=0;
 
             // LEFT
-            if(xprediction < 510){
+            if(xprediction < 510 && lookLeft<9999){
                 lookLeft++;
             }
             
             // RIGHT
-            if(xprediction > (window.innerWidth - 510)){
+            if(xprediction > (window.innerWidth - 510) && lookRight<9999){
                 lookRight++;
             }
 
@@ -304,7 +279,6 @@
 
     // Used like so
     shuffle(tab1_16);
-/*     console.log(arr); */
 
     var i = -1;
     var j = 16;
@@ -478,10 +452,6 @@
                 topOne = tab1_2[i-1]; 
                 topSec = tab1_2[i];
 
-                // document.getElementById("fir").value = topOne;
-                // document.getElementById("sec").value = topSec;
-                // document.getElementById("thr").value = topThird;
-
                 document.getElementById("t1").value = lookValue;
                 document.getElementById("t2").value = pointsValue;
 
@@ -589,10 +559,6 @@
                 topOne = tab1_2[i]; 
                 topSec = tab1_2[i-1];
 
-                // document.getElementById("fir").value = topOne+1;
-                // document.getElementById("sec").value = topSec+1;
-                // document.getElementById("thr").value = topThird+1;
-
                 document.getElementById("t1").value = lookValue;
                 document.getElementById("t2").value = pointsValue;
 
@@ -615,10 +581,6 @@
 			phrases[0] = phrases[0].toLowerCase();
 		});
 		}
-
-  
-
-
 </script>
 
 
@@ -634,7 +596,6 @@
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
-        /* echo '<script>alert("Oddałeś/aś już głos w tym badaniu."); window.location.href= "../index.php";</script>'; */
         echo("<script>document.getElementById('dashboard').innerHTML = ``</script>");
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 

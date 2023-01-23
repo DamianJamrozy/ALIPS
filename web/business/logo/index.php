@@ -4,42 +4,38 @@
  $playerId = $_SESSION["UserId"];
 
  if(isset($_POST['send'])){
+
+    $t1 = $_POST['t1'];
+    $t2 = $_POST['t2'];
+
+    // SEPARATE STRING
+    $lookPoints = explode(",", $t1);
+    $selectPoints = explode(",", $t2);
+
+
     $date = date('Y-m-d');
-    $fir = (int)$_POST['fir'];
-    $sec = (int)$_POST['sec'];
-    $thr = (int)$_POST['thr'];
-
-    $tPointsfir = (int)$_POST['tPointsFir'];
-    $tPointssec = (int)$_POST['tPointsSec'];
-    $tPointsthr = (int)$_POST['tPointsThr'];
-
-    $first ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$fir','3', '$tPointsfir', '$date' )";
+    $first ="INSERT INTO business_food_user (idUser,idFood,points,lookTimePoints,date) VALUES ('$playerId','0',' $selectPoints[0]','$lookPoints[0]', '$date' ),('$playerId','1',' $selectPoints[1]','$lookPoints[1]', '$date' ),('$playerId','2',' $selectPoints[2]','$lookPoints[2]', '$date' ),('$playerId','3',' $selectPoints[3]','$lookPoints[3]', '$date' ),('$playerId','4',' $selectPoints[4]','$lookPoints[4]', '$date' ),('$playerId','5',' $selectPoints[5]','$lookPoints[5]', '$date' ),('$playerId','6',' $selectPoints[6]','$lookPoints[6]', '$date' ),('$playerId','7',' $selectPoints[7]','$lookPoints[7]', '$date' ),('$playerId','8',' $selectPoints[8]','$lookPoints[8]', '$date' ),('$playerId','9',' $selectPoints[9]','$lookPoints[9]', '$date' ),('$playerId','10',' $selectPoints[10]','$lookPoints[10]', '$date' ),('$playerId','11',' $selectPoints[11]','$lookPoints[11]', '$date' ),('$playerId','12',' $selectPoints[12]','$lookPoints[12]', '$date' ),('$playerId','13',' $selectPoints[13]','$lookPoints[13]', '$date' ),('$playerId','14',' $selectPoints[14]','$lookPoints[14]', '$date' ),('$playerId','15',' $selectPoints[15]','$lookPoints[15]', '$date')";
     if (mysqli_query($dbconect, $first)) {}	
-    $second ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$sec','2', '$tPointssec', '$date' )";
-    if (mysqli_query($dbconect, $second)) {}	
-    $thrird ="INSERT INTO business_color_user (id,idUser,idColor,points,lookTimePoints,date) VALUES ('','$playerId','$thr','1', '$tPointsthr', '$date' )";
-    if (mysqli_query($dbconect, $thrird)) {}
 
     echo("<script>document.getElementById('dashboard').innerHTML = ``;</script>");
     echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
 }
 
- $CheckExist = "SELECT * FROM business_color_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
+ $CheckExist = "SELECT * FROM business_food_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
  $result3 = mysqli_query($dbconect, $CheckExist);
  if (mysqli_num_rows($result3) > 0) {
      while($row = mysqli_fetch_assoc($result3)) {
          $idUser[] = $row["idUser"];
-         $idColor[] = $row["idColor"];
+         $idFood[] = $row["idFood"];
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
-        /* echo '<script>alert("Oddałeś/aś już głos w tym badaniu."); window.location.href= "../index.php";</script>'; */
         echo("<script>document.getElementById('dashboard').innerHTML = ``</script>");
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
         for($i = 0; $i < 3; $i++){
-            $Check = "SELECT * FROM business_color WHERE id = '$idColor[$i]'" ;
+            $Check = "SELECT * FROM business_food WHERE id = '$idFood[$i]'" ;
             $result3 = mysqli_query($dbconect, $Check);
             if (mysqli_num_rows($result3) > 0) {
                 while($row = mysqli_fetch_assoc($result3)) {
@@ -63,11 +59,11 @@
         background-size: 100% 80%;
     }
     #left{
-        /* background-color:red; */
+        background-color:red;
     }
     
     #right{
-        /* background-color:green; */
+        background-color:green;
     }
 
     .separate{
@@ -155,7 +151,7 @@
        display:none;
     }
 </style>
-<div class="topHead">Firma tworząca smoothie szuka najlepszej wersji kolorystycznej logotypu.</div>
+<div class="topHead">Jakiej spośród wymienionych kuchii świata brakuje Ci w Rzeszowie?</div>
 <div id="result">
     <h1>Wyniki</h1>
     <?php 
@@ -174,13 +170,8 @@
     <center>
     <div id="vsBack">
         <form method="POST" name="sendSubmit">
-            <input type="number" name="fir" id="fir" style="visibility: hidden;">
-            <input type="number" name="sec" id="sec" style="visibility: hidden;">
-            <input type="number" name="thr" id="thr" style="visibility: hidden;">
-
-            <input type="number" name="tPointsFir" id="tPointsFir" style="visibility: hidden;">
-            <input type="number" name="tPointsSec" id="tPointsSec" style="visibility: hidden;">
-            <input type="number" name="tPointsThr" id="tPointsThr" style="visibility: hidden;">
+            <input type="text" name="t1" id="t1" style="visibility: hidden;">
+            <input type="text" name="t2" id="t2" style="visibility: hidden;">
             <input type="submit" id="send" name="send" style="visibility: hidden;">
         </form>
     </div>
@@ -194,19 +185,20 @@
 </div>
 
 
-<script src="https://webgazer.cs.brown.edu/webgazer.js?"></script>
+
 <script src="../../../js/voiceController.js"></script>
-<!-- <script src="../../../generator/eye_tracking/webgazer.js"></script> -->
+<script src="https://webgazer.cs.brown.edu/webgazer.js?"></script>
 
 
 
 
-<script>
-
-    
-        var iter=0;
-        var i = 0;
-        var j = 0;
+<script async>
+    var lookLeft = 0;
+    var lookRight = 0;
+    var iter=0;
+    var i = 0;
+    var j = 0;
+    var lookValue = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
         webgazer.setGazeListener(function(data, elapsedTime) {
         if (data == null) {
@@ -214,21 +206,19 @@
         }
         var xprediction = data.x; //these x coordinates are relative to the viewport
         var yprediction = data.y; //these y coordinates are relative to the viewport
-        //console.log(elapsedTime); //elapsed time is based on time since begin was called
 
         iter++;
-        /* j++; */
 
         if(iter==5){
             iter=0;
 
             // LEFT
-            if(xprediction < 75){
+            if(xprediction < 510 && lookLeft<9999){
                 lookLeft++;
             }
             
             // RIGHT
-            if(xprediction > (window.innerWidth - 75)){
+            if(xprediction > (window.innerWidth - 510) && lookRight<9999){
                 lookRight++;
             }
 
@@ -243,13 +233,13 @@
         // Zmiana na false sprawi ukrycie kamery i punktów na twarzy
         webgazer.showVideoPreview(true).showPredictionPoints(true);
 
-
     var tab_food = [
-    ['Niebiesko-białe', 'Szaro-białe','Morsko-białe','Morska zieleń-białe','Zielono-białe','Pomarańczowo-białe','Łososiowo-białe','Fioletowo-białe','Niebiesko-czarne', 'Szaro-czarne','Morsko-czarne','Morska zieleń-czarne','Zielono-czarne','Pomarańczowo-czarne','Łososiowo-czarne','Fioletowo-czarne'],
-    ['1.png','2.png','3.png','4.png','5.png','6.png','7.png','8.png','9.png','10.png','11.png','12.png','13.png','14.png','15.png','16.png']
+    ['Kuchnia Brazylijska', 'Kuchnia Bułgarska','Kuchnia Chińska','Kuchnia Chorwacka','Kuchnia Francuska','Kuchnia Grecka','Kuchnia Hiszpańska','Kuchnia Indonezyjska','Kuchnia Indyjska','Kuchnia Japońska','Kuchnia Meksykańska','Kuchnia Polska','Kuchnia Portugalska','Kuchnia Rumuńska','Kuchnia USA','Kuchnia Włoska'],
+    ['Brazylijska.jpg','Bułgarska.jpg','Chińska.jpg','Chorwacja.jpg','Francuska.jpg','Grecka.jpg','Hiszpańska.jpg','Indonezyjska.jpg','Indyjska.jpg','Japońska.jpg','Meksykańska.jpg','Polska.jpg','Portugalska.jpg','Rumuńska.jpg','USA.jpg','Włoska.jpg']
     ];
 
     
+
     var tab1_16 = ['0','1','2','3','4','5','6','7','8','9','10','11','12','13','14','15'];
     var tab1_8 = [];
     var tab1_4 = [];
@@ -258,6 +248,8 @@
     var topOne, topSec, topThird, k;
     var used;
     var length = tab1_16.length;
+
+    var pointsValue = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
 
     var left = document.getElementById('left');
     var left_txt = document.getElementById('left_txt');
@@ -287,7 +279,6 @@
 
     // Used like so
     shuffle(tab1_16);
-/*     console.log(arr); */
 
     var i = -1;
     var j = 16;
@@ -350,13 +341,7 @@
         }
        
     }
-    
-    var lookLeft = 0;
-    var lookRight = 0;
 
-    var lookFir;
-    var lookSec;
-    var lookThr;
 
     if (annyang) {
 			// choose language
@@ -371,10 +356,18 @@
 		// START Speak Shoot functions
 		function leftCommand() { 
             if (j == 16){
-                lookLeft = 0;
-                lookRight = 0;
+                // TimePoints
+                lookValue[tab1_16[i-1]] = lookValue[tab1_16[i-1]] + lookLeft;
+                lookValue[tab1_16[i]] = lookValue[tab1_16[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_16[i-1]] = pointsValue[tab1_16[i-1]] + 1;
+                pointsValue[tab1_16[i]] = pointsValue[tab1_16[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_8.push(tab1_16[i-1]);
-                console.log(tab1_8);
+                //console.log(tab1_8);
                 if (k == length){
                     j = 8;
                     shuffle(tab1_8);
@@ -382,10 +375,20 @@
                     i = -1;
                     console.log(tab1_8);
                 }
-                showNew();
-            }else if (j == 8){
                 lookLeft = 0;
                 lookRight = 0;
+                showNew();
+            }else if (j == 8){
+                // TimePoints
+                lookValue[tab1_8[i-1]] = lookValue[tab1_8[i-1]] + lookLeft;
+                lookValue[tab1_8[i]] = lookValue[tab1_8[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_8[i-1]] = pointsValue[tab1_8[i-1]] + 1;
+                pointsValue[tab1_8[i]] = pointsValue[tab1_8[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_4.push(tab1_8[i-1]);
                 console.log(tab1_4);
                 if (k == length){
@@ -397,8 +400,16 @@
                 }
                 showNew();
             }else if (j == 4){
-                lookLeft = 0;
-                lookRight = 0;
+                 // TimePoints
+                lookValue[tab1_4[i-1]] = lookValue[tab1_4[i-1]] + lookLeft;
+                lookValue[tab1_4[i]] = lookValue[tab1_4[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_4[i-1]] = pointsValue[tab1_4[i-1]] + 1;
+                pointsValue[tab1_4[i]] = pointsValue[tab1_4[i]] + 0;
+                console.log(pointsValue);
+
                 tab1_2.push(tab1_4[i-1]);
                 tab1_ThirdPlace.push(tab1_4[i]);
                 console.log(tab1_ThirdPlace);
@@ -412,31 +423,37 @@
                 }
                 showNew();
             }else if (j == 2){
-                lookThr = lookLeft;
-                lookLeft = 0;
-                lookRight = 0;
+                // TimePoints
+                lookValue[tab1_ThirdPlace[i-1]] = lookValue[tab1_ThirdPlace[i-1]] + lookLeft;
+                lookValue[tab1_ThirdPlace[i]] = lookValue[tab1_ThirdPlace[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_ThirdPlace[i-1]] = pointsValue[tab1_ThirdPlace[i-1]] + 1;
+                pointsValue[tab1_ThirdPlace[i]] = pointsValue[tab1_ThirdPlace[i]] + 0;
+                console.log(pointsValue);
+
                 topThird = tab1_ThirdPlace[i-1];
                 i = -1;
                 console.log(tab1_2);
                 j = 0;
                 showNew();
             }else{
+                // TimePoints
+                lookValue[tab1_2[i-1]] = lookValue[tab1_2[i-1]] + lookLeft;
+                lookValue[tab1_2[i]] = lookValue[tab1_2[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_2[i-1]] = pointsValue[tab1_2[i-1]] + 2;
+                pointsValue[tab1_2[i]] = pointsValue[tab1_2[i]] + 1;
+                console.log(pointsValue);
+
                 topOne = tab1_2[i-1]; 
                 topSec = tab1_2[i];
 
-                lookFir = lookLeft;
-                lookSec = lookRight;
-
-                lookLeft = 0;
-                lookRight = 0;
-
-                document.getElementById("fir").value = topOne;
-                document.getElementById("sec").value = topSec;
-                document.getElementById("thr").value = topThird;
-
-                document.getElementById("tPointsFir").value = lookFir;
-                document.getElementById("tPointsSec").value = lookSec;
-                document.getElementById("tPointsThr").value = lookThr;
+                document.getElementById("t1").value = lookValue;
+                document.getElementById("t2").value = pointsValue;
 
                 console.log(tab_food[0][topOne]);
                 console.log(tab_food[0][topSec]);
@@ -448,8 +465,16 @@
 
 		function rightCommand() {   
             if (j == 16){
-                lookLeft = 0;
-                lookRight = 0;
+                // TimePoints
+                lookValue[tab1_16[i-1]] = lookValue[tab1_16[i-1]] + lookLeft;
+                lookValue[tab1_16[i]] = lookValue[tab1_16[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_16[i-1]] = pointsValue[tab1_16[i-1]] + 0;
+                pointsValue[tab1_16[i]] = pointsValue[tab1_16[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_8.push(tab1_16[i]);
                 console.log(tab1_8);
                 if (k == length){
@@ -461,8 +486,16 @@
                 }
                 showNew();
             }else if (j == 8){
-                lookLeft = 0;
-                lookRight = 0;
+                // TimePoints
+                lookValue[tab1_8[i-1]] = lookValue[tab1_8[i-1]] + lookLeft;
+                lookValue[tab1_8[i]] = lookValue[tab1_8[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_8[i-1]] = pointsValue[tab1_8[i-1]] + 0;
+                pointsValue[tab1_8[i]] = pointsValue[tab1_8[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_4.push(tab1_8[i]);
                 console.log(tab1_4);
                 if (k == length){
@@ -474,8 +507,16 @@
                 }
                 showNew();
             }else if (j == 4){
-                lookLeft = 0;
-                lookRight = 0;
+                 // TimePoints
+                 lookValue[tab1_4[i-1]] = lookValue[tab1_4[i-1]] + lookLeft;
+                lookValue[tab1_4[i]] = lookValue[tab1_4[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_4[i-1]] = pointsValue[tab1_4[i-1]] + 0;
+                pointsValue[tab1_4[i]] = pointsValue[tab1_4[i]] + 1;
+                console.log(pointsValue);
+
                 tab1_2.push(tab1_4[i]);
                 tab1_ThirdPlace.push(tab1_4[i-1]);
                 console.log(tab1_ThirdPlace);
@@ -489,31 +530,37 @@
                 }
                 showNew();
             }else if (j == 2){
-                lookThr = lookRight;
-                lookLeft = 0;
-                lookRight = 0;
+                 // TimePoints
+                 lookValue[tab1_ThirdPlace[i-1]] = lookValue[tab1_ThirdPlace[i-1]] + lookLeft;
+                lookValue[tab1_ThirdPlace[i]] = lookValue[tab1_ThirdPlace[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_ThirdPlace[i-1]] = pointsValue[tab1_ThirdPlace[i-1]] + 0;
+                pointsValue[tab1_ThirdPlace[i]] = pointsValue[tab1_ThirdPlace[i]] + 1;
+                console.log(pointsValue);
+
                 topThird = tab1_ThirdPlace[i];
                 i = -1;
                 j = 0;
                 console.log(tab1_2);
                 showNew();
             }else{
+                // TimePoints
+                lookValue[tab1_2[i-1]] = lookValue[tab1_2[i-1]] + lookLeft;
+                lookValue[tab1_2[i]] = lookValue[tab1_2[i]] + lookRight;
+                console.log(lookValue);
+                
+                // SelectPoints
+                pointsValue[tab1_2[i-1]] = pointsValue[tab1_2[i-1]] + 1;
+                pointsValue[tab1_2[i]] = pointsValue[tab1_2[i]] + 2;
+                console.log(pointsValue);
+
                 topOne = tab1_2[i]; 
                 topSec = tab1_2[i-1];
 
-                lookFir = lookRight;
-                lookSec = lookLeft;
-
-                lookLeft = 0;
-                lookRight = 0;
-
-                document.getElementById("fir").value = topOne+1;
-                document.getElementById("sec").value = topSec+1;
-                document.getElementById("thr").value = topThird+1;
-
-                document.getElementById("tPointsFir").value = lookFir;
-                document.getElementById("tPointsSec").value = lookSec;
-                document.getElementById("tPointsThr").value = lookThr;
+                document.getElementById("t1").value = lookValue;
+                document.getElementById("t2").value = pointsValue;
 
                 console.log(tab_food[0][topOne]);
                 console.log(tab_food[0][topSec]);
@@ -534,36 +581,26 @@
 			phrases[0] = phrases[0].toLowerCase();
 		});
 		}
-        
-    document.addEventListener('keydown', function(e) {
-        // left and right arrow keys (move)
-        if (e.which === 37) {
-            leftCommand();
-        }else if(e.which === 39){
-            rightCommand();
-        }
-    });
 </script>
 
 
 <?php
  $playerId = $_SESSION["UserId"];
 
- $CheckExist = "SELECT * FROM business_color_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
+ $CheckExist = "SELECT * FROM business_food_user WHERE idUser = '$playerId' ORDER BY points DESC" ;
  $result3 = mysqli_query($dbconect, $CheckExist);
  if (mysqli_num_rows($result3) > 0) {
      while($row = mysqli_fetch_assoc($result3)) {
          $idUser[] = $row["idUser"];
-         $idColor[] = $row["idColor"];
+         $idFood[] = $row["idFood"];
          $idPoints[] = $row["points"];
      }
      if($idUser[0] == $playerId){
-        /* echo '<script>alert("Oddałeś/aś już głos w tym badaniu."); window.location.href= "../index.php";</script>'; */
         echo("<script>document.getElementById('dashboard').innerHTML = ``</script>");
         echo("<script>document.getElementById('result').style.display = 'block';</script>");
 
         for($i = 0; $i < 3; $i++){
-            $Check = "SELECT * FROM business_color WHERE id = '$idColor[$i]'" ;
+            $Check = "SELECT * FROM business_food WHERE id = '$idFood[$i]'" ;
             $result3 = mysqli_query($dbconect, $Check);
             if (mysqli_num_rows($result3) > 0) {
                 while($row = mysqli_fetch_assoc($result3)) {

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Czas generowania: 22 Sty 2023, 23:00
+-- Czas generowania: 23 Sty 2023, 16:49
 -- Wersja serwera: 10.4.24-MariaDB
 -- Wersja PHP: 8.1.6
 
@@ -113,6 +113,7 @@ CREATE TABLE `business_food_user` (
   `idUser` int(11) NOT NULL,
   `idFood` int(11) NOT NULL,
   `points` int(11) NOT NULL,
+  `lookTimePoints` int(5) NOT NULL,
   `date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_polish_ci;
 
@@ -120,10 +121,23 @@ CREATE TABLE `business_food_user` (
 -- Zrzut danych tabeli `business_food_user`
 --
 
-INSERT INTO `business_food_user` (`id`, `idUser`, `idFood`, `points`, `date`) VALUES
-(11, 1, 11, 3, '2022-12-04'),
-(12, 1, 3, 2, '2022-12-04'),
-(13, 1, 10, 1, '2022-12-04');
+INSERT INTO `business_food_user` (`id`, `idUser`, `idFood`, `points`, `lookTimePoints`, `date`) VALUES
+(25, 0, 0, 1, 24, '2023-01-23'),
+(26, 0, 1, 0, 30, '2023-01-23'),
+(27, 0, 2, 0, 94, '2023-01-23'),
+(28, 0, 3, 1, 82, '2023-01-23'),
+(29, 0, 4, 0, 6, '2023-01-23'),
+(30, 0, 5, 0, 4, '2023-01-23'),
+(31, 0, 6, 1, 51, '2023-01-23'),
+(32, 0, 7, 1, 102, '2023-01-23'),
+(33, 0, 8, 5, 240, '2023-01-23'),
+(34, 0, 9, 0, 31, '2023-01-23'),
+(35, 0, 10, 3, 167, '2023-01-23'),
+(36, 0, 11, 4, 433, '2023-01-23'),
+(37, 0, 12, 0, 32, '2023-01-23'),
+(38, 0, 13, 0, 2, '2023-01-23'),
+(39, 0, 14, 2, 213, '2023-01-23'),
+(40, 0, 15, 0, 6, '2023-01-23');
 
 -- --------------------------------------------------------
 
@@ -146,7 +160,8 @@ INSERT INTO `game_eye_tetris` (`id`, `id_user`, `points`, `date`) VALUES
 (1, 0, 4, '2023-01-22'),
 (2, 1, 8, '2023-01-22'),
 (3, 0, 1, '2023-01-01'),
-(4, 0, 6, '2023-01-04');
+(4, 0, 6, '2023-01-04'),
+(5, 0, 0, '2023-01-23');
 
 -- --------------------------------------------------------
 
@@ -226,7 +241,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `login`, `email`, `password`, `reg_date`, `last_login_date`, `lastActive`, `last_logout_date`, `idActive`) VALUES
-(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-22 15:18:12', 1674417564, '2023-01-22 15:17:56', 1),
+(0, 'djamrozy', 'djamrozy@ur.edu.pl', '9e38e8d688743e0d07d669a1fcbcd35b', '2022-09-01 12:54:31', '2023-01-23 14:45:57', 1674488791, '2023-01-22 15:17:56', 1),
 (1, 'test', 'test@test.pl', '9e38e8d688743e0d07d669a1fcbcd35b', NULL, '2023-01-22 21:36:31', 1674419800, '2022-12-04 11:46:05', 1),
 (4, 'test2', 'test2@test2.pl', 'd41d8cd98f00b204e9800998ecf8427e', '2022-10-03 15:50:10', NULL, 0, NULL, 0);
 
@@ -270,7 +285,7 @@ CREATE TABLE `videochat` (
 --
 
 INSERT INTO `videochat` (`id`, `idUser`, `keyHost`, `keyHostFull`, `keyActive`, `lastVideo`, `keyModified`) VALUES
-(1, 0, '8490160', 'https://meet.jit.si/8490160', '1', NULL, 0),
+(1, 0, '1402470', 'https://meet.jit.si/1402470', '1', NULL, 0),
 (2, 1, 'xd', 'https://meet.jit.si/xd', 'xd', '2022-11-21 16:03:23', 1),
 (3, 4, '3', '', '3', NULL, 0);
 
@@ -354,7 +369,7 @@ ALTER TABLE `videochat`
 -- AUTO_INCREMENT dla tabeli `business_color_user`
 --
 ALTER TABLE `business_color_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT dla tabeli `business_food`
@@ -366,13 +381,13 @@ ALTER TABLE `business_food`
 -- AUTO_INCREMENT dla tabeli `business_food_user`
 --
 ALTER TABLE `business_food_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT dla tabeli `game_eye_tetris`
 --
 ALTER TABLE `game_eye_tetris`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT dla tabeli `game_talk_milionaires`

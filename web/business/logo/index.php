@@ -144,7 +144,7 @@
        display:none;
     }
 </style>
-<div class="topHead">Jakiej spośród wymienionych kuchii świata brakuje Ci w Rzeszowie?</div>
+<div class="topHead">Firma tworząca smothie szuka najlepszej wersji kolorystycznej logotypu.</div>
 <div id="result">
     <h1>Wyniki</h1>
     <?php 

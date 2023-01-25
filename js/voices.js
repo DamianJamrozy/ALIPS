@@ -39,7 +39,10 @@ annyang.setLanguage('pl-PL');
 
     // Additional
     'statystyki.': showStats,
-    'dashboard.': showStart
+    'dashboard.': showStart,
+
+    'komendy głosowe.': Speech,
+    'śledzenie wzroku.': Eye
   };
 
    // START Navigation functions
@@ -66,6 +69,12 @@ annyang.setLanguage('pl-PL');
 	function showStart(){
 		document.getElementById("statistic-games").style.display = "none";
 		document.getElementById("start").style.display = "block";
+	}
+  function Speech(){
+		window.open("../files/pdf/PoleceniaGlosowe.pdf");
+	}
+	function Eye(){
+		window.open("../files/pdf/KonfiguracjaWzroku.pdf");
 	}
  
 

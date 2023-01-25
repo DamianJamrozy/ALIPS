@@ -316,10 +316,10 @@
 
 		POMOC<br>
 		<hr>
-
-		Komendy głosowe
+		<p id="statistic" onclick=Speech()>Komendy głosowe</p>
 		<hr>
-		Śledzenie wzroku
+		<p id="statistic" onclick=Eye()>Śledzenie wzroku</p>
+		
 		<hr>
 
 	
@@ -512,6 +512,12 @@
 	function showStart(){
 		document.getElementById("statistic-games").style.display = "none";
 		document.getElementById("start").style.display = "block";
+	}
+	function Speech(){
+		window.open("../files/pdf/PoleceniaGlosowe.pdf");
+	}
+	function Eye(){
+		window.open("../files/pdf/KonfiguracjaWzroku.pdf");
 	}
 </script>
 

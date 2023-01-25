@@ -33,11 +33,11 @@
 
 		Instrukcja obsługi
 		<hr>
-		<a href="../files/pdf/Battleship.pdf">Battleship</a><br><br>
-		<a href="../files/pdf/Milionerzy.pdf">Milionerzy</a><br><br>
-		<a href="../files/pdf/Tetris.pdf">Tetris</a><br><br>
+		<a href="../files/pdf/Battleship.pdf" target="_blank">Battleship</a><br><br>
+		<a href="../files/pdf/Milionerzy.pdf" target="_blank">Milionerzy</a><br><br>
+		<a href="../files/pdf/Tetris.pdf" target="_blank">Tetris</a><br><br>
 		
-		<a href="../files/pdf/BadanieRynku.pdf">Badanie rynku</a><br><br>
+		<a href="../files/pdf/BadanieRynku.pdf" target="_blank">Badanie rynku</a><br><br>
 
 
 	</div>

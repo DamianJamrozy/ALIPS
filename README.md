@@ -1,4 +1,5 @@
 PL
+
 **Aplikacja internetowa z graficznym interfejsem użytkownika opartym na
 technologii typu eye-tracking oraz speech recognition.**
 
@@ -22,6 +23,7 @@ przebadanym aspekcie jakim jest produkcja stron internetowych z wykorzystaniem
 technologii do komunikacji bezdotykowej.
 
 ENG
+
 **Web application with a graphical user interface based on eye-tracking and
 speech recognition technology.**
 

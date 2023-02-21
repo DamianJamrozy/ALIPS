@@ -71,7 +71,7 @@
 </style>
 
 <body>
-<hr>SPEAK RECOGNITION<hr>
+<hr>SPEECH RECOGNITION<hr>
 <a href="talk/battleship"><div class="game_hub ships">
     <div class="game_txt">
         STATKI - MULTIPLAYER
@@ -88,7 +88,7 @@
         Tetris
     </div>
 </div></a>
-<hr>SPEAK RECOGNITION & EYE TRACKING<hr>
+<hr>SPEECH RECOGNITION & EYE TRACKING<hr>
 <a href="business/"><div class="game_hub rynek">
     <div class="game_txt">
         Badanie rynku

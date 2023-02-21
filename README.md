@@ -46,4 +46,5 @@ researched aspect of producing websites using technology for contactless
 communication.
 
 
+
 *Projekt jest w pełni własnością autora 'Damiana Jamroży'. Zabraniane jest wykorzystywanie kodu w celach materialnych, a także ingerencja w kod źródłowy autora oprogramowania. Każde uchylenie od reguły traktowane jest jako złamanie praw autorskich.
